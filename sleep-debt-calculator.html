@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sleep Debt Calculator | Find Your Exact Sleep Deficit</title>
+    <meta name="description" content="Use our free, science-backed Sleep Debt Calculator to find out exactly how many hours of sleep you owe your body. Learn how to recover based on US guidelines.">
+    <meta name="keywords" content="sleep debt calculator, how much sleep do i owe, sleep deficit calculator, recover from sleep debt, weekly sleep debt">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sleepdebtcalculator.online/sleep-debt-calculator.html">
+    <meta property="og:title" content="Free Sleep Debt Calculator - Find Your Deficit">
+    <meta property="og:description" content="Calculate your exact weekly sleep deficit and get a recovery plan based on your daily sleep hours.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'], serif: ['Playfair Display', 'serif'] },
+                    colors: {
+                        brand: {
+                            light: '#f8fafc', white: '#ffffff', primary: '#0f766e', primaryHover: '#115e59',
+                            secondary: '#0ea5e9', text: '#1e293b', muted: '#64748b'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Animations & UI */
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .animate-fade-in { animation: fadeIn 0.4s ease-out forwards; }
+        
+        input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+        
+        details > summary { list-style: none; }
+        details > summary::-webkit-details-marker { display: none; }
+        details[open] summary ~ * { animation: sweep .3s ease-in-out; }
+        @keyframes sweep { 0% {opacity: 0; transform: translateY(-10px)} 100% {opacity: 1; transform: translateY(0)} }
+    </style>
+</head>
+<body class="antialiased bg-brand-light text-brand-text font-sans flex flex-col min-h-screen">
+
+    <!-- Premium Sticky Navbar -->
+    <header class="bg-brand-white/90 backdrop-blur-md sticky top-0 z-50 border-b border-gray-100 shadow-sm transition-all duration-300">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <a href="index.html" class="flex items-center gap-2 group">
+                    <div class="w-10 h-10 bg-brand-primary rounded-xl flex items-center justify-center text-white shadow-md group-hover:scale-105 transition-transform">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                    </div>
+                    <span class="font-serif font-bold text-2xl tracking-tight text-brand-text">Sleep<span class="text-brand-primary">Debt</span></span>
+                </a>
+                <nav class="hidden md:flex space-x-8 items-center">
+                    <a href="index.html" class="text-brand-muted hover:text-brand-primary font-medium transition-colors">Home</a>
+                    <a href="calculator.html" class="text-brand-primary font-bold transition-colors">All Tools</a>
+                    <a href="index.html#faqs" class="text-brand-muted hover:text-brand-primary font-medium transition-colors">FAQs</a>
+                </nav>
+                <div class="flex items-center md:hidden">
+                    <button id="mobile-menu-btn" type="button" class="text-brand-text hover:text-brand-primary focus:outline-none p-2 rounded-md">
+                        <svg id="menu-icon-open" class="h-6 w-6 block" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+                        <svg id="menu-icon-close" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="md:hidden hidden bg-brand-white border-b border-gray-100" id="mobile-menu">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium text-brand-text hover:bg-gray-50 hover:text-brand-primary">Home</a>
+                <a href="calculator.html" class="block px-3 py-2 rounded-md text-base font-medium text-brand-primary bg-teal-50">All Tools</a>
+                <a href="index.html#faqs" class="block px-3 py-2 rounded-md text-base font-medium text-brand-text hover:bg-gray-50 hover:text-brand-primary">FAQs</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative bg-brand-white pt-16 pb-12 border-b border-gray-100 text-center px-4 overflow-hidden">
+        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5 pointer-events-none"></div>
+        <div class="relative z-10 max-w-3xl mx-auto">
+            <span class="inline-block py-1 px-3 rounded-full bg-teal-50 border border-teal-100 text-brand-primary text-sm font-semibold tracking-wide mb-4">
+                Free Online Tool
+            </span>
+            <h1 class="font-serif text-4xl md:text-5xl font-bold text-brand-text mb-4">Weekly Sleep Debt Calculator</h1>
+            <p class="text-brand-muted text-lg max-w-2xl mx-auto">
+                Find out exactly how many hours of sleep you owe your body over the last 7 days and get a science-backed recovery plan.
+            </p>
+        </div>
+    </section>
+
+    <!-- Main Content Container -->
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex-grow w-full space-y-12">
+
+      <!-- THE CALCULATOR TOOL -->
+<section id="calculator" class="scroll-mt-24">
+    <div class="bg-brand-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden">
+        
+        <!-- Tool Header -->
+        <div class="bg-teal-50/50 p-6 md:p-8 border-b border-teal-100 text-center">
+            <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center text-brand-primary shadow-sm mx-auto mb-4">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+            </div>
+            <h2 class="text-2xl font-bold text-brand-text mb-2">Calculate Your Deficit</h2>
+            <p class="text-sm text-brand-muted max-w-md mx-auto">Enter your target sleep and your actual sleep hours for the past 7 days. The tool will calculate your total sleep debt.</p>
+        </div>
+
+        <!-- Tool Body -->
+        <div class="p-6 md:p-10">
+            
+            <!-- Target Sleep Input -->
+            <div class="mb-10 max-w-sm mx-auto text-center">
+                <label for="target-sleep" class="block text-sm font-bold text-brand-text mb-2 uppercase tracking-wide">Target Sleep Per Night</label>
+                <div class="relative inline-block w-full">
+                    <input type="number" id="target-sleep" value="8" min="1" max="14" step="0.5" class="w-full bg-brand-light border border-gray-300 text-brand-text text-center text-3xl font-bold rounded-xl focus:ring-2 focus:ring-brand-primary focus:border-brand-primary block p-4 transition-all shadow-inner">
+                    <div class="absolute inset-y-0 right-4 flex items-center pointer-events-none">
+                        <span class="text-brand-muted font-medium">hours</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 7 Days Grid -->
+            <div class="mb-10">
+                <h3 class="text-sm font-bold text-brand-text mb-4 text-center uppercase tracking-wide">Actual Sleep (Last 7 Days)</h3>
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                    <div>
+                        <label class="block text-xs font-medium text-brand-muted mb-1 text-center">Monday</label>
+                        <input type="number" class="actual-sleep w-full bg-brand-white border border-gray-300 text-brand-text text-center rounded-lg focus:ring-2 focus:ring-brand-primary p-3 transition-all font-semibold" placeholder="e.g. 7" min="0" max="24" step="0.5">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-medium text-brand-muted mb-1 text-center">Tuesday</label>
+                        <input type="number" class="actual-sleep w-full bg-brand-white border border-gray-300 text-brand-text text-center rounded-lg focus:ring-2 focus:ring-brand-primary p-3 transition-all font-semibold" placeholder="e.g. 6.5" min="0" max="24" step="0.5">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-medium text-brand-muted mb-1 text-center">Wednesday</label>
+                        <input type="number" class="actual-sleep w-full bg-brand-white border border-gray-300 text-brand-text text-center rounded-lg focus:ring-2 focus:ring-brand-primary p-3 transition-all font-semibold" placeholder="e.g. 8" min="0" max="24" step="0.5">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-medium text-brand-muted mb-1 text-center">Thursday</label>
+                        <input type="number" class="actual-sleep w-full bg-brand-white border border-gray-300 text-brand-text text-center rounded-lg focus:ring-2 focus:ring-brand-primary p-3 transition-all font-semibold" placeholder="e.g. 5" min="0" max="24" step="0.5">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-medium text-brand-muted mb-1 text-center">Friday</label>
+                        <input type="number" class="actual-sleep w-full bg-brand-white border border-gray-300 text-brand-text text-center rounded-lg focus:ring-2 focus:ring-brand-primary p-3 transition-all font-semibold" placeholder="e.g. 7" min="0" max="24" step="0.5">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-medium text-brand-muted mb-1 text-center">Saturday</label>
+                        <input type="number" class="actual-sleep w-full bg-brand-white border border-gray-300 text-brand-text text-center rounded-lg focus:ring-2 focus:ring-brand-primary p-3 transition-all font-semibold" placeholder="e.g. 9" min="0" max="24" step="0.5">
+                    </div>
+                    <div class="col-span-2 sm:col-span-1">
+                        <label class="block text-xs font-medium text-brand-muted mb-1 text-center">Sunday</label>
+                        <input type="number" class="actual-sleep w-full bg-brand-white border border-gray-300 text-brand-text text-center rounded-lg focus:ring-2 focus:ring-brand-primary p-3 transition-all font-semibold" placeholder="e.g. 8" min="0" max="24" step="0.5">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Calculate Button -->
+            <button onclick="calculateDebt()" class="w-full bg-brand-primary hover:bg-brand-primaryHover text-white font-bold text-lg py-4 rounded-xl transition-all shadow-[0_4px_20px_rgba(15,118,110,0.3)] hover:shadow-[0_4px_25px_rgba(15,118,110,0.5)] transform hover:-translate-y-0.5 flex justify-center items-center gap-2">
+                Calculate My Sleep Debt
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
+            </button>
+
+            <!-- Result Box -->
+            <div id="result-box" class="hidden mt-8 p-6 bg-brand-light rounded-2xl border border-gray-200 text-center transition-all duration-300 shadow-inner">
+                <h3 class="text-lg font-medium text-brand-muted mb-2">Your Weekly Sleep Debt:</h3>
+                <div id="result-number" class="font-serif text-5xl font-bold mb-3 text-brand-danger">0</div>
+                <p id="result-message" class="text-sm text-brand-text max-w-md mx-auto leading-relaxed"></p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- PREMIUM AD SPACE -->
+<div class="w-full bg-gray-50 border border-dashed border-gray-300 rounded-2xl p-8 text-center shadow-sm">
+    <span class="text-gray-400 text-xs font-semibold tracking-widest uppercase">Advertisement</span>
+    <!-- Monetag / AdSense Code Yahan Aayega -->
+</div>
+
+      <!-- SEO CONTENT PART 1 -->
+<section class="bg-brand-white rounded-3xl shadow-sm border border-gray-100 p-6 md:p-10">
+    <article class="prose prose-lg prose-slate max-w-none text-brand-muted leading-relaxed">
+        
+        <h2 class="font-serif text-3xl font-bold text-brand-text mb-6">What is Sleep Debt and How Does It Affect You?</h2>
+        
+        <p class="mb-6">
+            In the fast-paced, high-stress environment of the United States, sleep is often treated as a luxury rather than a biological necessity. We sacrifice hours of rest to meet work deadlines, study for exams, or simply scroll through our phones. But the human body operates like a strict financial system: when you borrow time from sleep, you accumulate interest. This is known as <strong class="text-brand-text">Sleep Debt</strong>.
+        </p>
+
+        <p class="mb-6">
+            Sleep debt (or sleep deficit) is the cumulative effect of not getting enough sleep over a period of time. It is the mathematical difference between the amount of sleep your body <em>needs</em> to function optimally and the amount of sleep you <em>actually get</em>. 
+        </p>
+
+        <p class="mb-6">
+            According to the Centers for Disease Control and Prevention (CDC), adults aged 18-60 require a minimum of 7 hours of sleep per night. However, the National Sleep Foundation suggests that 8 hours is the optimal target for most adults. If your body requires 8 hours, but you consistently sleep for 6 hours, you are accumulating a debt of 2 hours per day—or 14 hours per week.
+        </p>
+
+        <h3 class="font-serif text-2xl font-bold text-brand-text mt-10 mb-4">How to Calculate Your Exact Sleep Debt</h3>
+        
+        <p class="mb-4">
+            Calculating your sleep debt is the first step toward reclaiming your energy. While you can use our <a href="#calculator" class="text-brand-primary font-semibold hover:underline">calculator tool above</a> to get instant results, here is the manual formula used by sleep specialists:
+        </p>
+
+        <ul class="list-disc pl-6 space-y-3 mb-6">
+            <li><strong>Step 1:</strong> Determine your ideal nightly sleep target (e.g., 8 hours).</li>
+            <li><strong>Step 2:</strong> Track your actual sleep hours for 7 days.</li>
+            <li><strong>Step 3:</strong> Multiply your target by 7 (e.g., 8 x 7 = 56 hours needed).</li>
+            <li><strong>Step 4:</strong> Add up your actual sleep hours over those 7 days (e.g., 6+6+7+5+6+8+7 = 45 hours).</li>
+            <li><strong>Step 5:</strong> Subtract actual sleep from needed sleep (56 - 45 = <strong>11 hours of sleep debt</strong>).</li>
+        </ul>
+
+        <div class="bg-teal-50 border-l-4 border-brand-primary p-4 rounded-r-lg my-8">
+            <p class="text-brand-primary font-medium m-0">
+                <strong>Note:</strong> Sleep debt can also be calculated over a month or even a year. Chronic sleep debt is much harder to recover from than acute (short-term) sleep debt.
+            </p>
+        </div>
+
+        <h3 class="font-serif text-2xl font-bold text-brand-text mt-10 mb-4">The Hidden Dangers of Sleep Deficit</h3>
+        <p class="mb-4">
+            You might think you can function perfectly fine on 5 or 6 hours of sleep, but science says otherwise. When you accumulate sleep debt, your cognitive performance declines significantly—even if you <em>feel</em> awake. Your brain's prefrontal cortex, which handles decision-making, problem-solving, and emotional regulation, takes the biggest hit. 
+        </p>
+        <p class="mb-6">
+            Chronic sleep deprivation has been linked to severe health issues, including weakened immunity, weight gain, cardiovascular disease, and an increased risk of anxiety and depression. In the US workforce, this deficit costs businesses billions of dollars annually in lost productivity and workplace accidents.
+        </p>
+    </article>
+</section>
+
+<!-- AGLA PHASE YAHAN AAYEGA -->
+
+     <!-- SEO CONTENT PART 2 -->
+<section class="bg-brand-white rounded-3xl shadow-sm border border-gray-100 p-6 md:p-10 mt-8">
+    <article class="prose prose-lg prose-slate max-w-none text-brand-muted leading-relaxed">
+        
+        <h2 class="font-serif text-3xl font-bold text-brand-text mb-6">How to Recover from Sleep Debt (The Right Way)</h2>
+        
+        <p class="mb-6">
+            If our calculator above shows that you have accumulated a significant sleep deficit, the first thing you should know is: <strong>you cannot fix a week of bad sleep with one long 12-hour session on Saturday.</strong> While sleeping in on the weekend might feel good temporarily, it disrupts your circadian rhythm and leads to a phenomenon known in the US as <em>"Social Jet Lag."</em>
+        </p>
+
+        <p class="mb-6">
+            When you wake up at 6 AM on weekdays but sleep until 11 AM on Sundays, your body feels like it has flown across three time zones. This makes waking up on Monday morning even harder and increases your sleep debt for the following week. 
+        </p>
+
+        <h3 class="font-serif text-2xl font-bold text-brand-text mt-8 mb-4">Science-Backed Strategies to Pay Off Sleep Debt</h3>
+        
+        <ul class="list-disc pl-6 space-y-4 mb-8">
+            <li>
+                <strong class="text-brand-text">Take Strategic Power Naps:</strong> Instead of one long nap, take short 20-minute naps during the early afternoon. This restores alertness without making you groggy. Avoid napping after 3 PM to protect your nighttime sleep.
+            </li>
+            <li>
+                <strong class="text-brand-text">Go to Bed 1-2 Hours Earlier:</strong> If you owe your body 10 hours of sleep, the most effective way to recover is to go to bed 1 hour earlier each night for the next week. This gradually pays off the debt without shocking your system.
+            </li>
+            <li>
+                <strong class="text-brand-text">Maintain a Consistent Schedule:</strong> Your body craves routine. Going to bed and waking up at the same time every day—even on weekends—is the fastest way to reset your internal clock and prevent future sleep debt.
+            </li>
+            <li>
+                <strong class="text-brand-text">Optimize Your Sleep Environment:</strong> Keep your bedroom cool (between 60°F and 67°F), dark, and quiet. A cooler room helps your body drop its core temperature, which is essential for deep sleep.
+            </li>
+        </ul>
+
+        <h3 class="font-serif text-2xl font-bold text-brand-text mt-10 mb-4">The Hidden Culprits: Caffeine and Dehydration</h3>
+        
+        <p class="mb-4">
+            Sometimes, sleep debt isn't just about a lack of time in bed; it's about the habits you follow during the day. Two of the biggest culprits that silently ruin your sleep quality are caffeine and dehydration.
+        </p>
+
+        <p class="mb-4">
+            <strong class="text-brand-text">The Caffeine Trap:</strong> Coffee is deeply ingrained in American work culture. But caffeine is a stimulant with a half-life of about 5 hours. If you drink a large coffee at 3 PM, half of it is still in your system at 8 PM. Even if you fall asleep, the residual caffeine prevents deep, restorative sleep. Use our <a href="caffeine-calculator.html" class="text-brand-primary font-semibold hover:underline">Caffeine Cut-off Calculator</a> to find out exactly when you should stop drinking coffee for the day.
+        </p>
+
+        <p class="mb-6">
+            <strong class="text-brand-text">The Hydration Dilemma:</strong> Even mild dehydration can cause dry mouth, muscle cramps, and a higher heart rate at night, which can pull you out of deep sleep. However, drinking too much water right before bed will cause you to wake up for bathroom trips. Use our <a href="hydration-calculator.html" class="text-brand-primary font-semibold hover:underline">Daily Hydration Calculator</a> to find your perfect water intake and front-load your hydration during the morning and afternoon.
+        </p>
+
+        <div class="bg-sky-50 border-l-4 border-brand-secondary p-4 rounded-r-lg my-8">
+            <p class="text-brand-secondary font-medium m-0">
+                <strong>Pro Tip for Shift Workers:</strong> If you work night shifts (common in US healthcare and manufacturing), calculating your sleep debt is even more critical. Your circadian rhythm is already disrupted, so you must be intentional about creating a dark, quiet sleep environment during the day and strictly managing your caffeine intake.
+            </p>
+        </div>
+    </article>
+</section>
+
+<!-- AGLA PHASE YAHAN AAYEGA -->
+
+    <!-- SEO CONTENT PART 3: COMPARISON TABLE -->
+<section class="bg-brand-white rounded-3xl shadow-sm border border-gray-100 p-6 md:p-10 mt-8">
+    
+    <h2 class="font-serif text-3xl font-bold text-brand-text mb-6">Sleep Debt vs. Sleep Deprivation: What's the Difference?</h2>
+    
+    <p class="text-brand-muted leading-relaxed mb-6">
+        While the terms are often used interchangeably, there is a distinct difference between having <strong>sleep debt</strong> and suffering from <strong>sleep deprivation</strong>. Understanding this difference is crucial for finding the right solution.
+    </p>
+
+    <!-- Premium Responsive Table -->
+    <div class="overflow-x-auto mb-10 rounded-xl border border-gray-200 shadow-sm">
+        <table class="w-full text-left border-collapse bg-brand-white">
+            <thead>
+                <tr class="bg-brand-light border-b border-gray-200">
+                    <th class="p-4 font-bold text-brand-text w-1/4">Feature</th>
+                    <th class="p-4 font-bold text-brand-text w-3/8">Sleep Debt (Sleep Deficit)</th>
+                    <th class="p-4 font-bold text-brand-text w-3/8">Sleep Deprivation</th>
+                </tr>
+            </thead>
+            <tbody class="text-sm md:text-base text-brand-muted">
+                <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                    <td class="p-4 font-semibold text-brand-text">Definition</td>
+                    <td class="p-4">The cumulative difference between the sleep you need and the sleep you get over time.</td>
+                    <td class="p-4">The acute (short-term) condition of not getting enough sleep for a few days.</td>
+                </tr>
+                <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                    <td class="p-4 font-semibold text-brand-text">Duration</td>
+                    <td class="p-4">Chronic (weeks, months, or years). It builds up slowly.</td>
+                    <td class="p-4">Acute (usually 1 to 3 days). Often caused by a specific event.</td>
+                </tr>
+                <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                    <td class="p-4 font-semibold text-brand-text">Main Cause</td>
+                    <td class="p-4">Lifestyle choices, shift work, or mild insomnia.</td>
+                    <td class="p-4">Medical emergencies, exam cramming, or severe stress.</td>
+                </tr>
+                <tr class="hover:bg-gray-50 transition-colors">
+                    <td class="p-4 font-semibold text-brand-text">Recovery Time</td>
+                    <td class="p-4">Takes days or weeks of consistent, good sleep to repay.</td>
+                    <td class="p-4">Can often be reversed with one or two nights of full sleep.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h3 class="font-serif text-2xl font-bold text-brand-text mt-10 mb-4">The Impact on Mental Health and US Workforce</h3>
+    
+    <p class="mb-4">
+        While the physical toll of sleep debt is severe (weakened immune system, weight gain), the mental and cognitive effects are often felt first. When you don't get enough sleep, your amygdala (the part of the brain that processes emotions) becomes hyperactive. This is why people who are sleep-deprived often feel irritable, anxious, or stressed over minor issues.
+    </p>
+
+    <p class="mb-4">
+        Furthermore, sleep is when your brain consolidates memories. If you are studying for a US university exam or trying to learn a new skill at work, skipping sleep is counterproductive. Deep sleep helps transfer information from short-term to long-term memory. Without it, your brain essentially hits a "save error."
+    </p>
+
+    <p class="mb-6">
+        The economic impact is staggering. According to a landmark study by the RAND Corporation, sleep deprivation among U.S. workers costs the economy up to <strong>$411 billion annually</strong> due to absenteeism, presenteeism (being at work but not functioning effectively), and workplace accidents. For professionals in the US, prioritizing sleep is not a luxury; it is a business imperative.
+    </p>
+</section>
+
+<!-- CLEAN AD SPACE 2 -->
+<div class="w-full bg-gray-50 border border-dashed border-gray-300 rounded-2xl p-8 text-center shadow-sm mt-8">
+    <span class="text-gray-400 text-xs font-semibold tracking-widest uppercase">Advertisement</span>
+    <!-- Monetag / AdSense Code Yahan Aayega -->
+</div>
+
+<!-- AGLA PHASE YAHAN AAYEGA -->
+
+    
