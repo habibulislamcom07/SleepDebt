@@ -252,7 +252,79 @@
 
       </div>
     </section>
+<!-- ============================================================
+     PREMIUM CTA CARD (Replaces the Calculator on Homepage)
+     ============================================================ -->
 
+<section class="relative z-10 mx-auto -mt-24 max-w-4xl px-4 sm:-mt-32 sm:px-6 lg:px-8">
+  
+  <div class="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-2xl">
+    <div class="grid lg:grid-cols-2">
+      
+      <!-- Left Side: Value Proposition -->
+      <div class="p-8 sm:p-12 flex flex-col justify-center border-b border-slate-200 lg:border-b-0 lg:border-r">
+        <span class="inline-flex items-center gap-2 rounded-full bg-brand-50 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-brand-700 w-max mb-4">
+          Most Popular Tool
+        </span>
+        <h2 class="font-display text-3xl font-extrabold text-ink-900 leading-tight">
+          Calculate Your Exact Sleep Debt in 30 Seconds.
+        </h2>
+        <p class="mt-4 text-[15px] leading-relaxed text-slate-600">
+          Don't guess if you're tired. Enter your last 7 days of sleep to discover your exact deficit, your average sleep per night, and a scientifically backed recovery plan.
+        </p>
+        
+        <ul class="mt-6 space-y-3">
+          <li class="flex items-center gap-3 text-sm font-medium text-slate-700">
+            <svg class="h-5 w-5 text-emerald-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            Based on National Sleep Foundation data
+          </li>
+          <li class="flex items-center gap-3 text-sm font-medium text-slate-700">
+            <svg class="h-5 w-5 text-emerald-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            Includes custom recovery timeline
+          </li>
+          <li class="flex items-center gap-3 text-sm font-medium text-slate-700">
+            <svg class="h-5 w-5 text-emerald-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            100% Free & Private (No sign-up)
+          </li>
+        </ul>
+      </div>
+
+      <!-- Right Side: Visual Action / Button -->
+      <div class="bg-brand-900 p-8 sm:p-12 flex flex-col items-center justify-center text-center relative overflow-hidden">
+        <!-- Background Glow -->
+        <div class="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-brand-500/20 blur-3xl" aria-hidden="true"></div>
+        
+        <span class="grid h-20 w-20 place-items-center rounded-full bg-white/10 ring-4 ring-white/5 mb-6">
+          <svg class="h-10 w-10 text-brand-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </span>
+        
+        <h3 class="font-display text-xl font-bold text-white mb-2">Ready to find out?</h3>
+        <p class="text-sm text-brand-200 mb-6">It takes less than a minute.</p>
+        
+        <!-- Main CTA Button to actual tool -->
+        <a href="/sleep-debt-calculator.html" class="group inline-flex w-full items-center justify-center gap-2 rounded-xl bg-brand-500 px-6 py-4 text-base font-bold text-white transition-all hover:bg-brand-400 hover:shadow-glow">
+          Open Sleep Calculator
+          <svg class="h-5 w-5 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        
+        <p class="mt-4 text-[11px] font-medium text-brand-300/60 flex items-center gap-1.5">
+          <svg class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+          Secure & Private
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Monetag Native Ad Placeholder (Below CTA) -->
+  <div class="mt-6 flex justify-center">
+    <div class="flex min-h-[90px] w-full max-w-3xl items-center justify-center rounded-xl bg-slate-100 border-2 border-dashed border-slate-300 px-4 py-6 text-center">
+      <span class="font-mono text-[11px] font-bold uppercase tracking-[0.2em] text-slate-400">Monetag Ad Space — 728x90 / Responsive</span>
+    </div>
+  </div>
+
+</section>
+    
     <!-- Main Calculator Interface -->
     <section id="calculator" class="relative z-10 mx-auto -mt-24 max-w-5xl px-4 sm:-mt-32 sm:px-6 lg:px-8">
       
@@ -352,55 +424,6 @@
               <!-- Metrics Grid -->
               <div class="mt-6 grid grid-cols-2 gap-3">
                 <div class="rounded-xl bg-white/5 p-4 ring-1 ring-white/10 text-center">
-                  <p class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Avg Sleep</p>
-                  <p id="outAvg" class="mt-1 font-mono text-lg font-bold text-white">-- <span class="text-xs">hrs/night</span></p>
-                </div>
-                <div class="rounded-xl bg-white/5 p-4 ring-1 ring-white/10 text-center">
-                  <p class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Recovery Time</p>
-                  <p id="outRecovery" class="mt-1 font-mono text-lg font-bold text-white">-- <span class="text-xs">days</span></p>
-                </div>
-              </div>
-
-              <!-- Insight Box -->
-              <div id="insightBox" class="mt-4 hidden rounded-xl border border-brand-500/30 bg-brand-500/10 p-4">
-                <p class="text-[12px] leading-relaxed text-brand-100" id="insightText">
-                  Your sleep debt is calculated based on the difference between your target sleep and actual sleep over the last 7 days.
-                </p>
-              </div>
-            </div>
-
-            <!-- Action Buttons -->
-            <div class="relative mt-8 border-t border-white/10 pt-6">
-              <p class="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-3">Save or Share Result</p>
-              <div class="flex gap-2">
-                <button type="button" id="copyBtn" class="flex flex-1 items-center justify-center gap-2 rounded-xl bg-white/10 px-3 py-2.5 text-xs font-bold text-white transition-colors hover:bg-white/20">
-                  <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
-                  Copy
-                </button>
-                <button type="button" id="shareBtn" class="flex flex-1 items-center justify-center gap-2 rounded-xl bg-white/10 px-3 py-2.5 text-xs font-bold text-white transition-colors hover:bg-white/20">
-                  <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/></svg>
-                  Share
-                </button>
-                <button type="button" id="saveBtn" class="flex flex-1 items-center justify-center gap-2 rounded-xl bg-white/10 px-3 py-2.5 text-xs font-bold text-white transition-colors hover:bg-white/20">
-                  <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/></svg>
-                  Save
-                </button>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Monetag Native Ad Placeholder (In-Page Push / Banner) -->
-      <div class="mt-6 flex justify-center">
-        <div class="flex min-h-[90px] w-full max-w-3xl items-center justify-center rounded-xl bg-slate-100 border-2 border-dashed border-slate-300 px-4 py-6 text-center">
-          <span class="font-mono text-[11px] font-bold uppercase tracking-[0.2em] text-slate-400">Monetag Ad Space — 728x90 / Responsive</span>
-        </div>
-      </div>
-
-    </section>
 
       <!-- ============================================================
      PHASE 4/8 — THE 20-TOOL DIRECTORY GRID (Categorized)
