@@ -13,7 +13,8 @@
     <style>
         /* --- DARK THEME CSS --- */
         :root {
-            --bg-color: #090e1f;
+            --bg-color: #090e1f; /* Main Background */
+            --app-bg: #0d1427;   /* Slightly lighter for desktop container */
             --card-bg: #11182b;
             --text-main: #ffffff;
             --text-muted: #8892b0;
@@ -27,26 +28,30 @@
             background-color: var(--bg-color);
             color: var(--text-main);
             display: flex;
-            flex-direction: column;
-            align-items: center;
+            justify-content: center; /* Centers horizontally */
             min-height: 100vh;
             line-height: 1.6;
             overflow-x: hidden;
         }
 
+        /* --- DESKTOP FIX: This wrapper keeps it app-like --- */
         .main-container {
             width: 100%;
-            max-width: 600px;
-            padding: 15px;
+            max-width: 650px; /* Limits width on desktop */
+            padding: 20px 15px;
             display: flex;
             flex-direction: column;
             gap: 20px;
+            
+            /* Add a subtle shadow/border on desktop to make it look like a mobile app screen */
+            background-color: var(--app-bg);
+            box-shadow: 0 0 30px rgba(0,0,0,0.5); 
         }
 
         /* Logo Header */
         .logo-container {
             text-align: center;
-            margin-top: 40px;
+            margin-top: 20px;
             margin-bottom: 10px;
             display: flex;
             justify-content: center;
@@ -190,18 +195,26 @@
         @media (min-width: 768px) {
             .ad-placeholder { min-height: 90px; }
             footer { flex-direction: row; justify-content: center; }
+            
+            /* Add a slight border radius to the main container on desktop */
+            .main-container {
+                border-radius: 16px;
+                margin: 30px 0;
+                border: 1px solid var(--border-color);
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- Header Logo -->
-    <div class="logo-container">
-        <span class="moon">🌙</span>
-        <span class="logo-text">Sleep Debt Calculator</span>
-    </div>
-
+    <!-- Main Wrapper (Keeps everything centered on desktop) -->
     <div class="main-container">
+
+        <!-- Header Logo -->
+        <div class="logo-container">
+            <span class="moon">🌙</span>
+            <span class="logo-text">Sleep Debt Calculator</span>
+        </div>
 
         <!-- ADSTERRA CODE: TOP BANNER -->
         <div class="ad-placeholder">
@@ -270,7 +283,7 @@
             <h2>Explore Other Sleep Tools</h2>
             <div class="tools-grid">
                 
-                <!-- Sleep Cycle Calculator (Includes Bedtime & Wake-up) -->
+                <!-- Sleep Cycle Calculator -->
                 <a href="sleep-cycle.html" target="_blank" rel="noopener noreferrer" class="tool-card">
                     <div class="tool-icon">⏰</div>
                     <div class="tool-info">
@@ -306,16 +319,16 @@
             Adsterra Bottom Banner Ad
         </div>
 
-    </div>
+        <!-- Footer -->
+        <footer>
+            <p>© 2026 SleepDebtCalculator.online. All rights reserved.</p>
+            <div>
+                <a href="privacy.html">Privacy Policy</a> | 
+                <a href="contact.html">Contact Us</a>
+            </div>
+        </footer>
 
-    <!-- Footer -->
-    <footer>
-        <p>© 2026 SleepDebtCalculator.online. All rights reserved.</p>
-        <div>
-            <a href="privacy.html">Privacy Policy</a> | 
-            <a href="contact.html">Contact Us</a>
-        </div>
-    </footer>
+    </div> <!-- End Main Container -->
 
     <!-- JavaScript Calculator Logic -->
     <script>
