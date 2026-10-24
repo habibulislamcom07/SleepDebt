@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    
+    <!-- SEO: Problem Solving & Long-Tail Keywords -->
+    <title>Best Nap Time Calculator | How long should I nap?</title>
+    <meta name="description" content="Why do I feel groggy after a nap? Use our Nap Time Calculator to find the perfect power nap duration or full sleep cycle. Wake up feeling refreshed instantly.">
+    <meta name="keywords" content="nap time calculator, how long should i nap, best nap duration, power nap calculator, why do i feel groggy after a nap, 20 minute nap, 90 minute nap">
+    <meta name="robots" content="index, follow">
+
+    <style>
+        /* --- SAME DARK THEME CSS --- */
+        :root {
+            --bg-color: #090e1f;
+            --card-bg: #11182b;
+            --text-main: #ffffff;
+            --text-muted: #8892b0;
+            --accent-yellow: #f4d35e;
+            --border-color: #23304d;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        
+        body { 
+            background-color: var(--bg-color); 
+            color: var(--text-main); 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            min-height: 100vh; 
+            line-height: 1.6; 
+            overflow-x: hidden; 
+        }
+        
+        .main-container { width: 100%; max-width: 600px; padding: 15px; display: flex; flex-direction: column; gap: 20px; }
+        
+        /* Logo Header */
+        .logo-container { text-align: center; margin-top: 30px; margin-bottom: 10px; display: flex; justify-content: center; align-items: center; gap: 10px; }
+        .logo-text { font-size: clamp(22px, 6vw, 28px); font-weight: 600; letter-spacing: 1px; }
+        .icon { color: var(--accent-yellow); font-size: clamp(28px, 7vw, 34px); }
+        
+        /* Adsterra Placeholders */
+        .ad-placeholder { width: 100%; min-height: 60px; background-color: var(--card-bg); border: 1px dashed var(--border-color); display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: 12px; text-align: center; border-radius: 8px; }
+
+        h1 { font-size: clamp(18px, 5vw, 24px); text-align: center; margin-bottom: 5px; }
+        .subtitle { text-align: center; font-size: clamp(13px, 4vw, 15px); color: var(--text-muted); margin-bottom: 10px; }
+
+        /* Calculator Box */
+        .calculator-box {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            width: 100%;
+            text-align: center;
+        }
+
+        .input-group {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+
+        input[type="time"] {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+            padding: 12px 15px;
+            border-radius: 8px;
+            font-size: 20px;
+            font-weight: bold;
+            outline: none;
+            text-align: center;
+            width: 100%;
+            max-width: 200px;
+        }
+        input[type="time"]::-webkit-calendar-picker-indicator { filter: invert(1); cursor: pointer; }
+
+        .btn {
+            width: 100%;
+            background-color: var(--accent-yellow);
+            color: var(--bg-color);
+            border: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: clamp(16px, 4.5vw, 18px);
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn:hover { background-color: #e0c04b; }
+
+        .result-box {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            display: none;
+            text-align: left;
+        }
+
+        .result-box p.top-text { font-size: 14px; color: var(--text-muted); margin-bottom: 15px; text-align: center; }
+        
+        .nap-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nap-card:last-child { margin-bottom: 0; }
+        
+        .nap-info h4 { font-size: 16px; color: var(--accent-yellow); margin-bottom: 4px; }
+        .nap-info p { font-size: 12px; color: var(--text-muted); }
+        
+        .nap-time { font-size: 20px; font-weight: bold; color: var(--text-main); }
+        
+        .badge { font-size: 10px; background-color: #4ade80; color: #000; padding: 2px 6px; border-radius: 4px; margin-left: 5px; vertical-align: middle;}
+        .badge-danger { background-color: #ff4d4d; color: white; }
+
+        /* SEO Content & FAQ */
+        .content-section { background-color: var(--card-bg); padding: 20px; border-radius: 12px; border: 1px solid var(--border-color); width: 100%; }
+        .content-section h2 { color: var(--accent-yellow); font-size: clamp(16px, 4.5vw, 20px); margin-bottom: 12px; border-bottom: 1px solid var(--border-color); padding-bottom: 8px; }
+        .content-section h3 { font-size: clamp(14px, 4vw, 16px); margin-top: 15px; margin-bottom: 8px; color: var(--text-main); }
+        .content-section p { font-size: clamp(13px, 3.5vw, 14px); color: var(--text-muted); margin-bottom: 12px; }
+        
+        .faq-item { margin-bottom: 15px; }
+        .faq-item h4 { color: var(--accent-yellow); font-size: 14px; margin-bottom: 5px; }
+        .faq-item p { margin-bottom: 0; }
+
+        /* Related Tools */
+        .related-tools-section { background-color: var(--card-bg); padding: 20px; border-radius: 12px; border: 1px solid var(--border-color); width: 100%; }
+        .related-tools-section h2 { text-align: center; font-size: clamp(16px, 4.5vw, 18px); margin-bottom: 15px; color: var(--text-main); }
+        .tools-grid { display: flex; flex-direction: column; gap: 10px; }
+        .tool-card { display: flex; align-items: center; background-color: var(--bg-color); border: 1px solid var(--border-color); padding: 12px; border-radius: 8px; text-decoration: none; transition: 0.3s; }
+        .tool-card:hover { border-color: var(--accent-yellow); transform: translateY(-2px); }
+        .tool-icon { font-size: 20px; margin-right: 12px; background-color: var(--card-bg); padding: 8px; border-radius: 50%; display: flex; justify-content: center; align-items: center; }
+        .tool-info h3 { font-size: 15px; color: var(--accent-yellow); margin: 0 0 3px 0; }
+        .tool-info p { font-size: 12px; color: var(--text-muted); margin: 0; }
+
+        /* Footer */
+        footer { padding: 20px; font-size: 12px; color: var(--text-muted); text-align: center; width: 100%; border-top: 1px solid var(--border-color); margin-top: 20px; display: flex; flex-direction: column; gap: 8px; }
+        footer a { color: var(--accent-yellow); text-decoration: none; margin: 0 5px; }
+
+        @media (min-width: 768px) { .ad-placeholder { min-height: 90px; } footer { flex-direction: row; justify-content: center; } }
+    </style>
+</head>
+<body>
+
+    <!-- Header Logo -->
+    <div class="logo-container">
+        <span class="icon">😴</span>
+        <span class="logo-text">Nap Time Calculator</span>
+    </div>
+
+    <div class="main-container">
+
+        <!-- ADSTERRA TOP BANNER -->
+        <div class="ad-placeholder">Adsterra Top Banner Ad</div>
+
+        <h1>How long should you nap?</h1>
+        <p class="subtitle">Avoid sleep inertia and wake up feeling energized.</p>
+
+        <!-- MAIN TOOL -->
+        <div class="calculator-box">
+            <div class="input-group">
+                <input type="time" id="napStartTime">
+            </div>
+
+            <button class="btn" onclick="calculateNap()">Calculate Best Nap Time 💤</button>
+
+            <div id="napResult" class="result-box">
+                <p class="top-text">Based on your start time, here are your best options:</p>
+                
+                <div class="nap-card">
+                    <div class="nap-info">
+                        <h4>Power Nap <span class="badge">Best</span></h4>
+                        <p>Boosts alertness without grogginess.</p>
+                    </div>
+                    <div class="nap-time" id="time20">--:--</div>
+                </div>
+
+                <div class="nap-card">
+                    <div class="nap-info">
+                        <h4>Recovery Nap <span class="badge-danger badge">Groggy</span></h4>
+                        <p>Deep sleep stage. Hard to wake up.</p>
+                    </div>
+                    <div class="nap-time" id="time45">--:--</div>
+                </div>
+
+                <div class="nap-card">
+                    <div class="nap-info">
+                        <h4>Full Cycle Nap <span class="badge">Best</span></h4>
+                        <p>Includes REM sleep. Great for memory.</p>
+                    </div>
+                    <div class="nap-time" id="time90">--:--</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SEO CONTENT (Problem Solving) -->
+        <div class="content-section">
+            <h2>Why do I feel groggy after a nap?</h2>
+            <p>If you wake up from a nap feeling worse than before, you are experiencing <strong>Sleep Inertia</strong>. This happens when you wake up during deep sleep (usually between 30 to 60 minutes into a nap). The best way to avoid this is by using a <strong>Nap Time Calculator</strong> to plan either a short 20-minute Power Nap or a full 90-minute sleep cycle.</p>
+            
+            <h3>The Science of the Perfect Nap</h3>
+            <p>Our bodies sleep in cycles of roughly 90 minutes. 
+            <br>• <strong>20 Minutes:</strong> You stay in light sleep (Stage 1 & 2), waking up refreshed.
+            <br>• <strong>90 Minutes:</strong> You complete a full cycle including REM sleep, which is great for creativity and memory.
+            <br>• <strong>Avoid 45-60 Minutes:</strong> You enter slow-wave (deep) sleep, making it very hard to wake up without feeling groggy.</p>
+        </div>
+
+        <!-- FAQ SECTION -->
+        <div class="content-section">
+            <h2>Frequently Asked Questions</h2>
+            
+            <div class="faq-item">
+                <h4>What is a power nap?</h4>
+                <p>A power nap is a short sleep session of about 15 to 20 minutes. It ends before you enter deep sleep, providing a quick boost of alertness and energy without the grogginess.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h4>What is the best time of day to take a nap?</h4>
+                <p>The best time is usually between 1:00 PM and 3:00 PM. This is when your body naturally experiences a dip in energy (circadian rhythm) and it is far enough from bedtime to not disrupt your night sleep.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>How do I wake up from a 20-minute nap?</h4>
+                <p>Set an alarm for exactly 25 minutes (5 minutes to fall asleep + 20 minutes of sleep) so you wake up during the light sleep phase. Also, keeping the room bright helps you wake up faster.</p>
+            </div>
+        </div>
+
+        <!-- RELATED TOOLS (NEW TABS) -->
+        <div class="related-tools-section">
+            <h2>Explore Other Sleep Tools</h2>
+            <div class="tools-grid">
+                
+                <a href="index.html" target="_blank" rel="noopener noreferrer" class="tool-card">
+                    <div class="tool-icon">🧮</div>
+                    <div class="tool-info">
+                        <h3>Sleep Debt Calculator</h3>
+                        <p>Find out how much sleep you owe your body.</p>
+                    </div>
+                </a>
+
+                <a href="sleep-cycle.html" target="_blank" rel="noopener noreferrer" class="tool-card">
+                    <div class="tool-icon">🌙</div>
+                    <div class="tool-info">
+                        <h3>Sleep Cycle Calculator</h3>
+                        <p>What time should I sleep or wake up?</p>
+                    </div>
+                </a>
+
+                <a href="caffeine.html" target="_blank" rel="noopener noreferrer" class="tool-card">
+                    <div class="tool-icon">☕</div>
+                    <div class="tool-info">
+                        <h3>Caffeine Half-Life Calculator</h3>
+                        <p>Will your coffee keep you awake tonight?</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- ADSTERRA BOTTOM BANNER -->
+        <div class="ad-placeholder">Adsterra Bottom Banner Ad</div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 SleepDebtCalculator.online. All rights reserved.</p>
+        <div><a href="index.html">Home</a> | <a href="privacy.html">Privacy Policy</a></div>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        function formatTime(date) {
+            let hours = date.getHours(); let minutes = date.getMinutes(); let ampm = hours >= 12 ? 'PM' : 'AM';
+            hours = hours % 12; hours = hours ? hours : 12; minutes = minutes < 10 ? '0' + minutes : minutes;
+            return hours + ':' + minutes + ' ' + ampm;
+        }
+
+        function calculateNap() {
+            const startTimeInput = document.getElementById('napStartTime').value;
+            const resultBox = document.getElementById('napResult');
+
+            if (!startTimeInput) {
+                alert("Please select a start time.");
+                return;
+            }
+
+            const [hours, minutes] = startTimeInput.split(':').map(Number);
+            let startDate = new Date();
+            startDate.setHours(hours, minutes, 0, 0);
+
+            // Add 5 minutes to fall asleep for all calculations
+            const timeToFallAsleep = 5 * 60000;
+
+            // 20 min Power Nap
+            let time20 = new Date(startDate.getTime() + timeToFallAsleep + (20 * 60000));
+            document.getElementById('time20').innerText = formatTime(time20);
+
+            // 45 min Groggy Nap
+            let time45 = new Date(startDate.getTime() + timeToFallAsleep + (45 * 60000));
+            document.getElementById('time45').innerText = formatTime(time45);
+
+            // 90 min Full Cycle
+            let time90 = new Date(startDate.getTime() + timeToFallAsleep + (90 * 60000));
+            document.getElementById('time90').innerText = formatTime(time90);
+
+            resultBox.style.display = 'block';
+        }
+
+        // Set default time to current time on load
+        window.onload = function() {
+            const now = new Date();
+            const h = now.getHours().toString().padStart(2, '0');
+            const m = now.getMinutes().toString().padStart(2, '0');
+            document.getElementById('napStartTime').value = `${h}:${m}`;
+            calculateNap(); // Auto-calculate on load
+        };
+    </script>
+</body>
+</html>
