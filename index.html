@@ -4,14 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     
-    <!-- SEO: Problem-Solving Long-Tail Keywords for Sleep Debt -->
     <title>Sleep Debt Calculator | How Much Sleep Do I Owe? (Free Tool)</title>
     <meta name="description" content="Always tired? Use our Sleep Debt Calculator to find out exactly how many hours of sleep you owe your body. Learn how to calculate sleep deficit and recover fast.">
     <meta name="keywords" content="sleep debt calculator, how to calculate sleep debt, sleep deficit calculator, why am i always tired, how to catch up on lost sleep, sleep deprivation effects, calculate lost sleep">
     <meta name="robots" content="index, follow">
 
     <style>
-        /* --- FULL SCREEN DARK THEME --- */
+        /* --- DARK THEME CSS --- */
         :root {
             --bg-color: #0b1021; 
             --card-bg: #151e36;  
@@ -37,24 +36,59 @@
         .main-container {
             width: 100%;
             max-width: 800px;
-            padding: 40px 20px;
+            padding: 20px;
             display: flex;
             flex-direction: column;
             gap: 25px;
         }
 
-        /* Logo Header */
-        .logo-container {
-            text-align: center;
-            margin-bottom: 10px;
+        /* --- NEW NAVIGATION MENU CSS --- */
+        .navbar {
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .navbar .logo-container {
+            display: flex;
             align-items: center;
             gap: 10px;
+            text-decoration: none;
         }
-        .logo-text { font-size: clamp(24px, 5vw, 32px); font-weight: 600; letter-spacing: 1px; }
-        .moon { color: var(--accent-yellow); font-size: clamp(30px, 6vw, 40px); }
-        
+        .navbar .logo-text { font-size: clamp(20px, 4vw, 24px); font-weight: 600; color: var(--text-main); }
+        .navbar .moon { color: var(--accent-yellow); font-size: clamp(24px, 5vw, 28px); }
+
+        .nav-links {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--accent-yellow);
+        }
+
+        /* Mobile adjustments for menu */
+        @media (max-width: 600px) {
+            .navbar { justify-content: center; text-align: center; }
+            .nav-links { justify-content: center; width: 100%; gap: 10px; }
+            .nav-links a { font-size: 13px; padding: 5px; }
+        }
+
         /* Adsterra Placeholders */
         .ad-placeholder {
             width: 100%;
@@ -187,7 +221,7 @@
         .tool-info h3 { font-size: 16px; color: var(--accent-yellow); margin: 0 0 5px 0; }
         .tool-info p { font-size: 13px; color: var(--text-muted); margin: 0; }
 
-        /* --- UPDATED FOOTER CSS --- */
+        /* --- NAYA FOOTER CSS --- */
         footer { 
             padding: 30px 20px; 
             font-size: 13px; 
@@ -201,31 +235,10 @@
             gap: 12px; 
         }
         
-        .footer-links {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .footer-links a { 
-            color: var(--accent-yellow); 
-            text-decoration: none; 
-            font-weight: 500;
-            transition: 0.3s;
-        }
-
-        .footer-links a:hover {
-            color: #ffffff;
-            text-decoration: underline;
-        }
-
-        .footer-links span {
-            color: var(--text-muted);
-            opacity: 0.5;
-            font-size: 12px;
-        }
+        .footer-links { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 10px; }
+        .footer-links a { color: var(--accent-yellow); text-decoration: none; font-weight: 500; transition: 0.3s; }
+        .footer-links a:hover { color: #ffffff; text-decoration: underline; }
+        .footer-links span { color: var(--text-muted); opacity: 0.5; font-size: 12px; }
 
         /* --- DESKTOP SPECIFIC FIXES --- */
         @media (min-width: 768px) {
@@ -238,14 +251,26 @@
 
     <div class="main-container">
 
-        <!-- Header Logo -->
-        <div class="logo-container">
-            <span class="moon">🌙</span>
-            <span class="logo-text">Sleep Debt Calculator</span>
-        </div>
+        <!-- NEW NAVIGATION MENU START -->
+        <header class="navbar">
+            <a href="index.html" class="logo-container">
+                <span class="moon">🌙</span>
+                <span class="logo-text">Sleep Calculator</span>
+            </a>
+            <nav class="nav-links">
+                <a href="index.html" class="active">Home</a>
+                <a href="sleep-cycle.html">Sleep Cycle</a>
+                <a href="caffeine.html">Caffeine</a>
+                <a href="nap.html">Nap Time</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+        </header>
+        <!-- NEW NAVIGATION MENU END -->
 
         <!-- ADSTERRA CODE: TOP BANNER -->
         <div class="ad-placeholder">
+            <!-- Yahan Adsterra ka Banner (728x90 / 320x50) Code Paste Karein -->
             Adsterra Top Banner Ad
         </div>
 
@@ -339,6 +364,7 @@
 
         <!-- ADSTERRA CODE: BOTTOM BANNER -->
         <div class="ad-placeholder">
+            <!-- Yahan Adsterra ka Bottom Banner Code Paste Karein -->
             Adsterra Bottom Banner Ad
         </div>
 
@@ -396,6 +422,12 @@
             resultDiv.innerHTML = `Your total sleep debt is <br><span style="font-size: 28px; font-weight: bold;">${totalDebt} hours</span><br> over ${days} days.`;
         }
     </script>
+
+    <!-- ============================================== -->
+    <!-- ADSTERRA SCRIPTS (SOCIAL BAR & POPUNDER)       -->
+    <!-- ============================================== -->
+    <script data-cfasync="false" src="https://bauval.org/14/c2e8b6a0744b11045176ac8027b166fe"></script>
+    <script data-cfasync="false" src="https://abscloud.org/1/7b543158f36ec26f083d375b2a6547ec"></script>
 
 </body>
 </html>
