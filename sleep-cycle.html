@@ -1,0 +1,428 @@
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    
+    <!-- SEO: Problem-Solving Keywords -->
+    <title>Sleep Cycle Calculator: What Time Should I Sleep? | Wake Up Refreshed</title>
+    <meta name="description" content="Waking up tired even after 8 hours? Use our free sleep cycle calculator to find the best bedtime. Avoid sleep inertia. Find out what time to sleep if you wake up at 6 AM or 7 AM.">
+    <meta name="keywords" content="what time should i sleep if i wake up at 6am, how to wake up feeling refreshed, best bedtime calculator, sleep cycle calculator, why do i wake up tired, sleep inertia fix, wake up time calculator">
+    <meta name="robots" content="index, follow">
+
+    <style>
+        /* --- BASE STYLES (Same as Homepage) --- */
+        :root {
+            --bg-color: #0b1021;
+            --card-bg: #121a2f;
+            --text-main: #ffffff;
+            --text-muted: #a0b3c6;
+            --accent-yellow: #f4d35e;
+            --border-color: #2a3b5c;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .main-container {
+            width: 100%;
+            max-width: 650px;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* Logo Header */
+        .logo-container {
+            text-align: center;
+            margin-top: 30px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 0 10px;
+        }
+        .logo-text { font-size: clamp(20px, 6vw, 28px); font-weight: bold; white-space: nowrap; }
+        .moon { color: var(--accent-yellow); font-size: clamp(24px, 7vw, 34px); }
+        .stars { color: var(--text-muted); font-size: clamp(12px, 4vw, 16px); }
+
+        /* Adsterra Placeholders */
+        .ad-placeholder {
+            width: 100%;
+            min-height: 60px;
+            background-color: var(--card-bg);
+            border: 1px dashed var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            font-size: 12px;
+            text-align: center;
+            border-radius: 8px;
+        }
+
+        /* Headings */
+        h1 { font-size: clamp(18px, 5vw, 24px); text-align: center; margin-bottom: 5px; }
+        .subtitle { text-align: center; font-size: clamp(13px, 4vw, 15px); color: var(--text-muted); margin-bottom: 10px; }
+
+        /* Calculator Boxes */
+        .calculator-box {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            width: 100%;
+            text-align: center;
+        }
+        
+        .calculator-box h2 {
+            font-size: 16px;
+            color: var(--text-main);
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        /* Input Fields */
+        .input-wrapper {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+
+        input[type="time"] {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+            padding: 12px 15px;
+            border-radius: 8px;
+            font-size: 20px;
+            font-weight: bold;
+            outline: none;
+            text-align: center;
+            width: 100%;
+            max-width: 200px;
+        }
+        
+        input[type="time"]::-webkit-calendar-picker-indicator {
+            filter: invert(1);
+            cursor: pointer;
+        }
+
+        .btn {
+            width: 100%;
+            background-color: var(--accent-yellow);
+            color: var(--bg-color);
+            border: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: clamp(16px, 4.5vw, 18px);
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn:hover { background-color: #e0c04b; }
+
+        /* Results Area */
+        .result-box {
+            margin-top: 15px;
+            display: none;
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 15px;
+        }
+        
+        .result-box p { font-size: 13px; color: var(--text-muted); margin-bottom: 10px; }
+        
+        .time-slot {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 18px;
+            font-weight: bold;
+            color: var(--accent-yellow);
+        }
+        .time-slot:last-child { border-bottom: none; }
+        .cycle-label { font-size: 12px; color: var(--text-muted); font-weight: normal; }
+        
+        .divider-text {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 14px;
+            margin: 20px 0;
+        }
+
+        /* Content & FAQ Sections */
+        .content-section {
+            background-color: var(--card-bg);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            width: 100%;
+        }
+        .content-section h2 { color: var(--accent-yellow); font-size: clamp(16px, 4.5vw, 20px); margin-bottom: 12px; border-bottom: 1px solid var(--border-color); padding-bottom: 8px; }
+        .content-section h3 { font-size: clamp(14px, 4vw, 16px); margin-top: 15px; margin-bottom: 8px; color: var(--text-main); }
+        .content-section p { font-size: clamp(13px, 3.5vw, 14px); color: var(--text-muted); margin-bottom: 12px; }
+        
+        /* FAQ */
+        .faq-item { margin-bottom: 15px; }
+        .faq-item h4 { color: var(--accent-yellow); font-size: 14px; margin-bottom: 5px; }
+        .faq-item p { margin-bottom: 0; }
+
+        /* Related Tools Section */
+        .related-tools-section {
+            background-color: var(--card-bg);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            width: 100%;
+        }
+        .related-tools-section h2 { text-align: center; font-size: clamp(16px, 4.5vw, 18px); margin-bottom: 15px; color: var(--text-main); }
+        .tools-grid { display: flex; flex-direction: column; gap: 10px; }
+        .tool-card { display: flex; align-items: center; background-color: var(--bg-color); border: 1px solid var(--border-color); padding: 12px; border-radius: 8px; text-decoration: none; transition: 0.3s; }
+        .tool-card:hover { border-color: var(--accent-yellow); transform: translateY(-2px); }
+        .tool-icon { font-size: 20px; margin-right: 12px; background-color: var(--card-bg); padding: 8px; border-radius: 50%; display: flex; justify-content: center; align-items: center; }
+        .tool-info h3 { font-size: 15px; color: var(--accent-yellow); margin: 0 0 3px 0; }
+        .tool-info p { font-size: 12px; color: var(--text-muted); margin: 0; }
+
+        /* Footer */
+        footer { padding: 20px; font-size: 12px; color: var(--text-muted); text-align: center; width: 100%; border-top: 1px solid var(--border-color); margin-top: 20px; display: flex; flex-direction: column; gap: 8px; }
+        footer a { color: var(--accent-yellow); text-decoration: none; margin: 0 5px; }
+
+        @media (min-width: 768px) {
+            .ad-placeholder { min-height: 90px; }
+            .calculator-box, .content-section, .related-tools-section { padding: 25px; }
+            footer { flex-direction: row; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Logo -->
+    <div class="logo-container">
+        <span class="stars">✨</span>
+        <span class="moon">🌙</span>
+        <span class="logo-text">Sleep Cycle Calculator</span>
+        <span class="stars">✨</span>
+    </div>
+
+    <div class="main-container">
+
+        <!-- ADSTERRA CODE: TOP BANNER -->
+        <div class="ad-placeholder">
+            <!-- Yahan Adsterra ka Top Banner Code Paste Karein -->
+            Adsterra Top Banner Ad
+        </div>
+
+        <!-- H1: Targeting Problem -->
+        <h1>Wake Up Tired? Calculate Your Best Sleep Time</h1>
+        <p class="subtitle">Avoid sleep inertia and wake up feeling refreshed.</p>
+
+        <!-- CALCULATOR 1: BEDTIME -->
+        <div class="calculator-box">
+            <h2>What time should you go to sleep if you wake up at?</h2>
+            <div class="input-wrapper">
+                <input type="time" id="wakeUpTime" value="07:00">
+            </div>
+            <button class="btn" onclick="calculateBedtime()">Calculate Bedtime 🌙</button>
+
+            <div id="bedtimeResult" class="result-box">
+                <p>To wake up refreshed at <span id="displayWakeTime" style="color:var(--text-main); font-weight:bold;"></span>, try going to bed at:</p>
+                <div id="bedtimeSlots"></div>
+            </div>
+        </div>
+
+        <div class="divider-text">Want to sleep right now?</div>
+
+        <!-- CALCULATOR 2: WAKE UP TIME -->
+        <div class="calculator-box">
+            <h2>If I go to sleep now, what time should I wake up?</h2>
+            <div class="input-wrapper">
+                <input type="time" id="sleepTime" value="22:00">
+            </div>
+            <button class="btn" onclick="calculateWakeUp()">Calculate Wake-Up Time ⏰</button>
+
+            <div id="wakeupResult" class="result-box">
+                <p>If you fall asleep at <span id="displaySleepTime" style="color:var(--text-main); font-weight:bold;"></span>, set your alarm for:</p>
+                <div id="wakeupSlots"></div>
+            </div>
+        </div>
+
+        <!-- SEO Rich Content (Problem Solving) -->
+        <div class="content-section">
+            <h2>Why Do I Wake Up Tired Even After 8 Hours?</h2>
+            <p>If you find yourself asking <strong>"why do I feel tired after sleeping 8 hours?"</strong>, the answer usually lies in your sleep cycles. Human sleep consists of multiple **90-minute cycles**. If your alarm rings while you are in a deep sleep phase, you will experience severe "Sleep Inertia" (grogginess).</p>
+            <p>Our <strong>sleep cycle calculator</strong> solves this problem. It works backward from your wake-up time to find the perfect bedtime so you wake up at the end of a light sleep cycle, feeling completely refreshed.</p>
+            
+            <h3>How to fix your sleep schedule?</h3>
+            <p>Consistency is key. If you want to know <strong>what time you should sleep if you wake up at 6 AM</strong>, the calculator will suggest times like 8:45 PM, 10:15 PM, or 11:45 PM. Pick one and stick to it daily. Avoid using your phone 30 minutes before bed to reduce sleep debt.</p>
+        </div>
+
+        <!-- FAQ Section (Targeting Direct Google Searches) -->
+        <div class="content-section">
+            <h2>Frequently Asked Questions</h2>
+            
+            <div class="faq-item">
+                <h4>What time should I go to bed if I wake up at 6 AM?</h4>
+                <p>To wake up at 6:00 AM feeling refreshed, your ideal bedtimes (including 15 mins to fall asleep) are 8:45 PM, 10:15 PM, or 11:45 PM. These times align with complete 90-minute sleep cycles.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h4>Why do I wake up groggy and tired?</h4>
+                <p>Waking up groggy is a sign of waking up during deep sleep (Sleep Inertia). By calculating your sleep cycles, you ensure your alarm goes off during a light sleep phase, making it much easier to get out of bed.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h4>Is 6 hours of sleep enough if I feel fine?</h4>
+                <p>While some people function on 6 hours, most adults need 7-9 hours (5-6 cycles) for optimal health. If you frequently sleep 6 hours, use our <a href="index.html" style="color:var(--accent-yellow);">Sleep Debt Calculator</a> to see if you are accumulating a sleep deficit.</p>
+            </div>
+        </div>
+
+        <!-- Related Tools Section -->
+        <div class="related-tools-section">
+            <h2>Explore Other Sleep Tools</h2>
+            <div class="tools-grid">
+                
+                <a href="index.html" target="_blank" rel="noopener noreferrer" class="tool-card">
+                    <div class="tool-icon">🧮</div>
+                    <div class="tool-info">
+                        <h3>Sleep Debt Calculator</h3>
+                        <p>Find out how much sleep you owe your body.</p>
+                    </div>
+                </a>
+
+                <a href="caffeine.html" target="_blank" rel="noopener noreferrer" class="tool-card">
+                    <div class="tool-icon">☕</div>
+                    <div class="tool-info">
+                        <h3>Caffeine Half-Life Calculator</h3>
+                        <p>Will your coffee keep you awake tonight?</p>
+                    </div>
+                </a>
+
+                <a href="nap.html" target="_blank" rel="noopener noreferrer" class="tool-card">
+                    <div class="tool-icon">😴</div>
+                    <div class="tool-info">
+                        <h3>Best Nap Time Calculator</h3>
+                        <p>Find the perfect power nap duration for energy.</p>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+
+        <!-- ADSTERRA CODE: BOTTOM BANNER -->
+        <div class="ad-placeholder">
+            <!-- Yahan Adsterra ka Bottom Banner Code Paste Karein -->
+            Adsterra Bottom Banner Ad
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 SleepDebtCalculator.online. All rights reserved.</p>
+        <div>
+            <a href="index.html">Home</a> |
+            <a href="privacy.html">Privacy Policy</a> | 
+            <a href="contact.html">Contact Us</a>
+        </div>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        function formatTime(date) {
+            let hours = date.getHours();
+            let minutes = date.getMinutes();
+            let ampm = hours >= 12 ? 'PM' : 'AM';
+            hours = hours % 12;
+            hours = hours ? hours : 12; 
+            minutes = minutes < 10 ? '0' + minutes : minutes;
+            return hours + ':' + minutes + ' ' + ampm;
+        }
+
+        function calculateBedtime() {
+            const wakeTimeInput = document.getElementById('wakeUpTime').value;
+            if(!wakeTimeInput) return alert("Please select a wake up time.");
+
+            const [wakeHours, wakeMinutes] = wakeTimeInput.split(':').map(Number);
+            let wakeDate = new Date();
+            wakeDate.setHours(wakeHours, wakeMinutes, 0, 0);
+
+            document.getElementById('displayWakeTime').innerText = formatTime(wakeDate);
+            
+            let slotsHTML = '';
+            const cycles = [6, 5, 4, 3]; 
+
+            cycles.forEach(cycle => {
+                let bedtime = new Date(wakeDate.getTime() - (cycle * 90 * 60000) - (15 * 60000));
+                let recommended = (cycle === 6 || cycle === 5) ? '<span class="cycle-label" style="color:#4ade80;">(Best)</span>' : `<span class="cycle-label">(${cycle} cycles)</span>`;
+                
+                slotsHTML += `
+                    <div class="time-slot">
+                        <span>${formatTime(bedtime)}</span>
+                        ${recommended}
+                    </div>
+                `;
+            });
+
+            document.getElementById('bedtimeSlots').innerHTML = slotsHTML;
+            document.getElementById('bedtimeResult').style.display = 'block';
+        }
+
+        function calculateWakeUp() {
+            const sleepTimeInput = document.getElementById('sleepTime').value;
+            if(!sleepTimeInput) return alert("Please select a sleep time.");
+
+            const [sleepHours, sleepMinutes] = sleepTimeInput.split(':').map(Number);
+            let sleepDate = new Date();
+            sleepDate.setHours(sleepHours, sleepMinutes, 0, 0);
+
+            document.getElementById('displaySleepTime').innerText = formatTime(sleepDate);
+
+            let slotsHTML = '';
+            const cycles = [4, 5, 6]; 
+
+            cycles.forEach(cycle => {
+                let wakeupTime = new Date(sleepDate.getTime() + (15 * 60000) + (cycle * 90 * 60000));
+                let recommended = (cycle === 5 || cycle === 6) ? '<span class="cycle-label" style="color:#4ade80;">(Best)</span>' : `<span class="cycle-label">(${cycle} cycles)</span>`;
+                
+                slotsHTML += `
+                    <div class="time-slot">
+                        <span>${formatTime(wakeupTime)}</span>
+                        ${recommended}
+                    </div>
+                `;
+            });
+
+            document.getElementById('wakeupSlots').innerHTML = slotsHTML;
+            document.getElementById('wakeupResult').style.display = 'block';
+        }
+
+        window.onload = function() {
+            calculateBedtime();
+            calculateWakeUp();
+        };
+    </script>
+
+</body>
+</html>
