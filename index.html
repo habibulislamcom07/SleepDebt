@@ -13,8 +13,8 @@
     <style>
         /* --- FULL SCREEN DARK THEME --- */
         :root {
-            --bg-color: #0b1021; /* Deep Navy Background */
-            --card-bg: #151e36;  /* Lighter box background */
+            --bg-color: #0b1021; 
+            --card-bg: #151e36;  
             --text-main: #ffffff;
             --text-muted: #a0aec0;
             --accent-yellow: #f4d35e;
@@ -29,16 +29,15 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            min-height: 100vh; /* Full screen height */
+            min-height: 100vh;
             line-height: 1.6;
             overflow-x: hidden;
         }
 
-        /* Container to keep content centered but wider on desktop */
         .main-container {
             width: 100%;
-            max-width: 800px; /* Wider for desktop, looks better */
-            padding: 40px 20px; /* More padding on desktop */
+            max-width: 800px;
+            padding: 40px 20px;
             display: flex;
             flex-direction: column;
             gap: 25px;
@@ -80,7 +79,7 @@
             background-color: var(--card-bg);
             border: 1px solid var(--border-color);
             border-radius: 12px;
-            padding: 30px; /* More padding for desktop */
+            padding: 30px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
             width: 100%;
         }
@@ -141,7 +140,7 @@
             word-wrap: break-word;
         }
         
-        /* SEO Content & FAQ - Wider layout */
+        /* SEO Content & FAQ */
         .content-section {
             background-color: var(--card-bg);
             padding: 30px;
@@ -167,7 +166,6 @@
         }
         .related-tools-section h2 { text-align: center; font-size: clamp(18px, 4vw, 20px); margin-bottom: 20px; color: var(--text-main); }
         
-        /* Grid layout for tools (1 column on mobile, 2 columns on desktop) */
         .tools-grid { 
             display: grid; 
             grid-template-columns: 1fr; 
@@ -189,25 +187,55 @@
         .tool-info h3 { font-size: 16px; color: var(--accent-yellow); margin: 0 0 5px 0; }
         .tool-info p { font-size: 13px; color: var(--text-muted); margin: 0; }
 
-        /* Footer */
-        footer { padding: 30px 20px; font-size: 13px; color: var(--text-muted); text-align: center; width: 100%; border-top: 1px solid var(--border-color); margin-top: 20px; display: flex; flex-direction: column; gap: 10px; }
-        footer a { color: var(--accent-yellow); text-decoration: none; margin: 0 10px; }
+        /* --- UPDATED FOOTER CSS --- */
+        footer { 
+            padding: 30px 20px; 
+            font-size: 13px; 
+            color: var(--text-muted); 
+            text-align: center; 
+            width: 100%; 
+            border-top: 1px solid var(--border-color); 
+            margin-top: 20px; 
+            display: flex; 
+            flex-direction: column; 
+            gap: 12px; 
+        }
+        
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-links a { 
+            color: var(--accent-yellow); 
+            text-decoration: none; 
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+
+        .footer-links span {
+            color: var(--text-muted);
+            opacity: 0.5;
+            font-size: 12px;
+        }
 
         /* --- DESKTOP SPECIFIC FIXES --- */
         @media (min-width: 768px) {
             .ad-placeholder { min-height: 90px; }
-            footer { flex-direction: row; justify-content: center; }
-            
-            /* Make related tools 2 columns on desktop */
-            .tools-grid {
-                grid-template-columns: 1fr 1fr;
-            }
+            .tools-grid { grid-template-columns: 1fr 1fr; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Main Wrapper -->
     <div class="main-container">
 
         <!-- Header Logo -->
@@ -247,7 +275,7 @@
             <div id="result"></div>
         </div>
 
-        <!-- SEO CONTENT (Problem Solving) -->
+        <!-- SEO CONTENT -->
         <div class="content-section">
             <h2>Why Am I Always Tired? Understanding Sleep Debt</h2>
             <p>If you constantly ask yourself <strong>"why am I always tired"</strong>, you might be suffering from Sleep Debt. Sleep debt is the cumulative effect of not getting enough sleep over time. If you need 8 hours but only get 6, you build a deficit of 2 hours every day.</p>
@@ -257,7 +285,7 @@
             <p>The best way is to gradually add 1-2 extra hours of sleep per night and take short 20-minute power naps during the day. Check out our related tools below to plan your perfect sleep schedule.</p>
         </div>
 
-        <!-- FAQ SECTION (Long-Tail Keywords) -->
+        <!-- FAQ SECTION -->
         <div class="content-section">
             <h2>Frequently Asked Questions</h2>
             
@@ -277,12 +305,11 @@
             </div>
         </div>
 
-        <!-- RELATED TOOLS (ALL OPEN IN NEW TAB) -->
+        <!-- RELATED TOOLS -->
         <div class="related-tools-section">
             <h2>Explore Other Sleep Tools</h2>
             <div class="tools-grid">
                 
-                <!-- Sleep Cycle Calculator -->
                 <a href="sleep-cycle.html" target="_blank" rel="noopener noreferrer" class="tool-card">
                     <div class="tool-icon">⏰</div>
                     <div class="tool-info">
@@ -291,7 +318,6 @@
                     </div>
                 </a>
 
-                <!-- Caffeine Calculator -->
                 <a href="caffeine.html" target="_blank" rel="noopener noreferrer" class="tool-card">
                     <div class="tool-icon">☕</div>
                     <div class="tool-info">
@@ -300,7 +326,6 @@
                     </div>
                 </a>
 
-                <!-- Nap Calculator -->
                 <a href="nap.html" target="_blank" rel="noopener noreferrer" class="tool-card">
                     <div class="tool-icon">😴</div>
                     <div class="tool-info">
@@ -317,14 +342,22 @@
             Adsterra Bottom Banner Ad
         </div>
 
-        <!-- Footer -->
+        <!-- NAYA FOOTER START -->
         <footer>
             <p>© 2026 SleepDebtCalculator.online. All rights reserved.</p>
-            <div>
-                <a href="privacy.html">Privacy Policy</a> | 
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <span>|</span>
+                <a href="about.html">About Us</a>
+                <span>|</span>
+                <a href="privacy.html">Privacy Policy</a>
+                <span>|</span>
+                <a href="terms.html">Terms of Service</a>
+                <span>|</span>
                 <a href="contact.html">Contact Us</a>
             </div>
         </footer>
+        <!-- NAYA FOOTER END -->
 
     </div> <!-- End Main Container -->
 
