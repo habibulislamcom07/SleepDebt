@@ -12,7 +12,7 @@
     <link rel="icon" type="image/png" href="favicon.png">
 
     <style>
-        /* --- CLEAN DARK THEME CSS --- */
+        /* --- PREMIUM FULL-SCREEN DARK THEME --- */
         :root {
             --bg-color: #0b1021; 
             --card-bg: rgba(21, 30, 54, 0.85); 
@@ -28,7 +28,7 @@
 
         body {
             background-color: var(--bg-color);
-            background-image: radial-gradient(circle at 50% 10%, #17213b 0%, #0b1021 60%);
+            background-image: radial-gradient(circle at 50% 0%, #17213b 0%, #0b1021 50%);
             color: var(--text-main);
             display: flex;
             flex-direction: column;
@@ -38,77 +38,145 @@
             overflow-x: hidden;
         }
 
+        /* WIDER CONTAINER FOR DESKTOP */
         .main-container {
             width: 100%;
-            max-width: 650px;
+            max-width: 1000px; /* Widened for desktop */
             padding: 40px 20px;
             display: flex;
             flex-direction: column;
-            gap: 25px;
+            gap: 30px;
             align-items: center;
         }
 
         /* Logo */
         .logo-container { text-align: center; margin-bottom: 20px; display: flex; justify-content: center; align-items: center; gap: 10px; }
-        .logo-text { font-size: clamp(24px, 6vw, 32px); font-weight: 700; letter-spacing: 0.5px; }
-        .moon { color: var(--accent-yellow); font-size: clamp(28px, 7vw, 36px); filter: drop-shadow(0 0 10px rgba(244, 211, 94, 0.4)); }
+        .logo-text { font-size: clamp(28px, 5vw, 40px); font-weight: 800; letter-spacing: 1px; }
+        .moon { color: var(--accent-yellow); font-size: clamp(32px, 6vw, 48px); filter: drop-shadow(0 0 15px rgba(244, 211, 94, 0.5)); }
 
         /* Ad Placeholders */
         .ad-container { width: 100%; display: flex; justify-content: center; align-items: center; min-height: 60px; overflow: hidden; margin: 10px 0; }
 
         /* Main Headings */
-        h1 { font-size: clamp(22px, 5vw, 26px); text-align: center; margin-bottom: 5px; font-weight: 700; }
-        .subtitle { text-align: center; font-size: clamp(14px, 4vw, 15px); color: var(--text-muted); margin-bottom: 15px; }
+        h1 { font-size: clamp(24px, 4vw, 36px); text-align: center; margin-bottom: 10px; font-weight: 800; }
+        .subtitle { text-align: center; font-size: clamp(16px, 2vw, 18px); color: var(--text-muted); margin-bottom: 20px; }
 
         /* Calculator Box */
-        .calculator-box { background: var(--card-bg); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.05); border-top: 1px solid rgba(255, 255, 255, 0.1); border-radius: 16px; padding: 30px; box-shadow: 0 15px 35px rgba(0,0,0,0.4); width: 100%; }
+        .calculator-box { 
+            background: var(--card-bg); 
+            backdrop-filter: blur(12px); 
+            border: 1px solid rgba(255, 255, 255, 0.08); 
+            border-top: 2px solid rgba(255, 255, 255, 0.15); 
+            border-radius: 20px; 
+            padding: 40px; 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5); 
+            width: 100%; 
+            max-width: 700px; /* Keep calculator centered and clean */
+        }
 
-        .input-group { display: flex; justify-content: space-between; align-items: center; background-color: rgba(11, 16, 33, 0.6); border: 1px solid var(--border-color); border-radius: 10px; padding: 15px 20px; margin-bottom: 15px; transition: all 0.3s ease; }
-        .input-group:focus-within { border-color: var(--accent-yellow); box-shadow: 0 0 15px var(--glow-color); }
-        .input-group label { font-size: 15px; color: var(--text-muted); flex: 1; font-weight: 500;}
-        .input-group input { background: transparent; border: none; color: var(--accent-yellow); font-size: 20px; font-weight: 700; text-align: right; width: 80px; outline: none; }
-        .input-group input::placeholder { color: #4a5568; font-weight: 400; font-size: 16px;}
+        .input-group { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            background-color: rgba(11, 16, 33, 0.7); 
+            border: 1px solid var(--border-color); 
+            border-radius: 12px; 
+            padding: 18px 25px; 
+            margin-bottom: 20px; 
+            transition: all 0.3s ease; 
+        }
+        .input-group:focus-within { border-color: var(--accent-yellow); box-shadow: 0 0 20px var(--glow-color); }
+        .input-group label { font-size: 16px; color: var(--text-muted); flex: 1; font-weight: 600;}
+        .input-group input { background: transparent; border: none; color: var(--accent-yellow); font-size: 22px; font-weight: 800; text-align: right; width: 100px; outline: none; }
+        .input-group input::placeholder { color: #4a5568; font-weight: 500; font-size: 16px;}
 
-        .btn { width: 100%; background: var(--accent-gradient); color: #0b1021; border: none; padding: 16px; border-radius: 10px; font-size: 16px; font-weight: 800; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 8px 20px rgba(244, 211, 94, 0.25); margin-top: 10px; text-transform: uppercase; }
-        .btn:hover { transform: translateY(-2px); box-shadow: 0 12px 25px rgba(244, 211, 94, 0.4); }
+        .btn { 
+            width: 100%; 
+            background: var(--accent-gradient); 
+            color: #0b1021; 
+            border: none; 
+            padding: 18px; 
+            border-radius: 12px; 
+            font-size: 18px; 
+            font-weight: 900; 
+            cursor: pointer; 
+            transition: all 0.3s ease; 
+            box-shadow: 0 10px 25px rgba(244, 211, 94, 0.3); 
+            text-transform: uppercase; 
+            letter-spacing: 1px;
+        }
+        .btn:hover { transform: translateY(-3px); box-shadow: 0 15px 35px rgba(244, 211, 94, 0.5); }
 
-        #result { margin-top: 20px; padding: 20px; background-color: rgba(244, 211, 94, 0.08); border: 1px solid var(--accent-yellow); border-radius: 10px; font-size: 16px; color: var(--text-main); text-align: center; display: none; animation: fadeIn 0.5s ease; }
+        #result { 
+            margin-top: 25px; 
+            padding: 25px; 
+            background-color: rgba(244, 211, 94, 0.08); 
+            border: 1px solid var(--accent-yellow); 
+            border-radius: 12px; 
+            font-size: 18px; 
+            color: var(--text-main); 
+            text-align: center; 
+            display: none; 
+            animation: fadeIn 0.5s ease; 
+        }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
         
         /* SEO Content */
-        .content-section { background-color: var(--card-bg); padding: 30px; border-radius: 16px; border: 1px solid rgba(255, 255, 255, 0.05); width: 100%; }
-        .content-section h2 { color: var(--accent-yellow); font-size: 20px; margin-bottom: 15px; border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 10px; }
-        .content-section h3 { font-size: 16px; margin-top: 20px; margin-bottom: 10px; color: var(--text-main); }
-        .content-section p { font-size: 14px; color: var(--text-muted); margin-bottom: 15px; text-align: justify;}
+        .content-section { 
+            background-color: var(--card-bg); 
+            padding: 40px; 
+            border-radius: 20px; 
+            border: 1px solid rgba(255, 255, 255, 0.05); 
+            width: 100%; 
+        }
+        .content-section h2 { color: var(--accent-yellow); font-size: clamp(22px, 3vw, 28px); margin-bottom: 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 15px; }
+        .content-section h3 { font-size: clamp(18px, 2vw, 22px); margin-top: 25px; margin-bottom: 10px; color: var(--text-main); }
+        .content-section p { font-size: clamp(15px, 1.5vw, 16px); color: var(--text-muted); margin-bottom: 20px; text-align: justify;}
         
-        .faq-item { margin-bottom: 15px; }
-        .faq-item h4 { color: var(--accent-yellow); font-size: 15px; margin-bottom: 5px; }
+        .faq-item { margin-bottom: 20px; }
+        .faq-item h4 { color: var(--accent-yellow); font-size: 18px; margin-bottom: 8px; }
         .faq-item p { margin-bottom: 0; }
 
         /* Related Tools */
-        .related-tools-section { width: 100%; margin-top: 10px; }
-        .related-tools-section h3 { text-align: center; font-size: 16px; color: var(--text-muted); margin-bottom: 15px; font-weight: 400;}
-        .tools-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
-        .tool-card { display: flex; align-items: center; background-color: var(--card-bg); border: 1px solid var(--border-color); padding: 15px; border-radius: 12px; text-decoration: none; transition: all 0.3s ease; }
-        .tool-card:hover { border-color: var(--accent-yellow); transform: translateY(-2px); }
-        .tool-icon { font-size: 24px; margin-right: 15px; background-color: rgba(244, 211, 94, 0.1); padding: 10px; border-radius: 10px; }
-        .tool-info h4 { font-size: 15px; color: var(--accent-yellow); margin: 0 0 3px 0; }
-        .tool-info p { font-size: 12px; color: var(--text-muted); margin: 0; }
+        .related-tools-section { width: 100%; margin-top: 20px; }
+        .related-tools-section h3 { text-align: center; font-size: 20px; color: var(--text-muted); margin-bottom: 25px; font-weight: 500;}
+        
+        /* GRID LAYOUT FOR DESKTOP */
+        .tools-grid { 
+            display: grid; 
+            grid-template-columns: 1fr; 
+            gap: 20px; 
+        }
+        
+        .tool-card { 
+            display: flex; 
+            align-items: center; 
+            background-color: var(--card-bg); 
+            border: 1px solid var(--border-color); 
+            padding: 20px; 
+            border-radius: 16px; 
+            text-decoration: none; 
+            transition: all 0.3s ease; 
+        }
+        .tool-card:hover { border-color: var(--accent-yellow); transform: translateY(-4px); box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
+        .tool-icon { font-size: 32px; margin-right: 20px; background-color: rgba(244, 211, 94, 0.1); padding: 15px; border-radius: 12px; }
+        .tool-info h4 { font-size: 18px; color: var(--accent-yellow); margin: 0 0 5px 0; }
+        .tool-info p { font-size: 14px; color: var(--text-muted); margin: 0; }
 
         /* Footer */
-        footer { padding: 30px 20px; font-size: 13px; color: var(--text-muted); text-align: center; width: 100%; margin-top: auto; display: flex; flex-direction: column; gap: 12px; }
-        .footer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; align-items: center; }
-        .footer-links a { color: var(--accent-yellow); text-decoration: none; transition: 0.3s; font-weight: 500;}
+        footer { padding: 40px 20px; font-size: 14px; color: var(--text-muted); text-align: center; width: 100%; margin-top: auto; display: flex; flex-direction: column; gap: 15px; background: rgba(11, 16, 33, 0.9); border-top: 1px solid rgba(255,255,255,0.05); }
+        .footer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; align-items: center; }
+        .footer-links a { color: var(--accent-yellow); text-decoration: none; transition: 0.3s; font-weight: 600;}
         .footer-links a:hover { color: #ffffff; text-decoration: underline; }
-        .footer-links span { color: var(--text-muted); opacity: 0.5; font-size: 11px;}
+        .footer-links span { color: var(--text-muted); opacity: 0.4; font-size: 12px;}
 
-        /* --- RESPONSIVE AD CONTROL (CSS) --- */
+        /* --- RESPONSIVE AD & LAYOUT CONTROL --- */
         .desktop-ad { display: none; }
         .mobile-ad { display: flex; justify-content: center; width: 100%; }
 
         @media (min-width: 768px) {
-            .tools-grid { grid-template-columns: 1fr 1fr; }
-            .footer-links { gap: 20px; }
+            /* 3 Columns on Desktop */
+            .tools-grid { grid-template-columns: repeat(3, 1fr); } 
             .desktop-ad { display: flex; justify-content: center; width: 100%; }
             .mobile-ad { display: none; }
         }
@@ -121,7 +189,7 @@
         <div class="logo-container">
             <span class="moon">🌙</span>
             <span class="logo-text">Sleep Debt</span>
-            <span class="moon" style="font-size: 16px; margin-left: 5px;">✨</span>
+            <span class="moon" style="font-size: 20px; margin-left: 5px;">✨</span>
         </div>
 
         <!-- TOP BANNER AD -->
@@ -140,6 +208,7 @@
             </div>
         </div>
 
+        <!-- MAIN CALCULATOR -->
         <h1>Calculate Your Total Sleep Debt</h1>
         <p class="subtitle">Find out exactly how many hours of sleep you owe your body.</p>
 
@@ -160,12 +229,6 @@
             <div id="result"></div>
         </div>
 
-        <!-- MIDDLE NATIVE BANNER AD -->
-        <div class="ad-container" style="min-height: 100px; margin: 10px 0;">
-            <script async="async" data-cfasync="false" src="https://bauval.org/21/3ed04116e4f609f3aca33e7142cf98f5"></script>
-            <div id="container-3ed04116e4f609f3aca33e7142cf98f5"></div>
-        </div>
-
         <!-- SEO CONTENT -->
         <div class="content-section">
             <h2>Why Am I Always Tired? Understanding Sleep Debt</h2>
@@ -174,14 +237,6 @@
             
             <h3>How to recover from sleep debt?</h3>
             <p>The best way is to gradually add 1-2 extra hours of sleep per night and take short 20-minute power naps during the day. Check out our related tools below to plan your perfect sleep schedule.</p>
-        </div>
-
-                <!-- MIDDLE 300x250 BANNER AD -->
-        <div class="ad-container" style="min-height: 250px; margin: 10px 0;">
-            <script type="text/javascript">
-              atOptions = { 'key' : '2fabe4675181edafae77f4c3b398cf8d', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} };
-            </script>
-            <script type="text/javascript" src="https://bauval.org/22/2fabe4675181edafae77f4c3b398cf8d"></script>
         </div>
 
         <!-- FAQ SECTION -->
@@ -293,7 +348,7 @@
             resultDiv.style.backgroundColor = 'rgba(244, 211, 94, 0.1)';
             resultDiv.style.borderColor = '#f4d35e';
             resultDiv.style.color = '#f4d35e';
-            resultDiv.innerHTML = `Total Sleep Debt: <br><span style="font-size: 32px; font-weight: 800; color:#fff;">${totalDebt} hours</span><br> over ${days} days.`;
+            resultDiv.innerHTML = `Total Sleep Debt: <br><span style="font-size: 36px; font-weight: 900; color:#fff;">${totalDebt} hours</span><br> over ${days} days.`;
         }
     </script>
 
