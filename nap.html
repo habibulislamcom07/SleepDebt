@@ -13,116 +13,119 @@
     <style>
         /* --- FULL SCREEN DARK THEME --- */
         :root {
-            --bg-color: #0b1021; /* Deep Navy Background */
-            --card-bg: #151e36;  /* Lighter box background */
+            --bg-color: #0b1021; 
+            --card-bg: rgba(21, 30, 54, 0.6);  
             --text-main: #ffffff;
             --text-muted: #a0aec0;
             --accent-yellow: #f4d35e;
-            --border-color: #2a3b5c;
+            --border-color: rgba(255, 255, 255, 0.1);
+            --glow-color: rgba(244, 211, 94, 0.2);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         
         body { 
             background-color: var(--bg-color); 
+            background-image: radial-gradient(circle at 50% 0%, #17213b 0%, #0b1021 50%);
+            background-attachment: fixed;
             color: var(--text-main); 
             display: flex; 
             flex-direction: column; 
             align-items: center; 
             min-height: 100vh; 
-            line-height: 1.6; 
+            line-height: 1.8; 
             overflow-x: hidden; 
         }
         
-        /* Wider container for desktop */
         .main-container { 
             width: 100%; 
-            max-width: 800px; 
-            padding: 40px 20px; 
+            max-width: 900px; 
+            padding: 20px 15px; 
             display: flex; 
             flex-direction: column; 
-            gap: 25px; 
+            gap: 20px; 
+            align-items: center;
         }
         
         /* Logo Header */
-        .logo-container { text-align: center; margin-bottom: 10px; display: flex; justify-content: center; align-items: center; gap: 10px; }
-        .logo-text { font-size: clamp(24px, 5vw, 32px); font-weight: 600; letter-spacing: 1px; }
-        .icon { color: var(--accent-yellow); font-size: clamp(30px, 6vw, 40px); }
+        .logo-container { text-align: center; margin-bottom: 15px; display: flex; justify-content: center; align-items: center; gap: 10px; }
+        .logo-text { font-size: 28px; font-weight: 800; letter-spacing: 0.5px; }
+        .icon { color: var(--accent-yellow); font-size: 36px; filter: drop-shadow(0 0 15px rgba(244, 211, 94, 0.5)); animation: float 3s ease-in-out infinite; }
+        @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-8px); } 100% { transform: translateY(0px); } }
         
-        /* Adsterra Placeholders */
-        .ad-placeholder { width: 100%; min-height: 60px; background-color: var(--card-bg); border: 1px dashed var(--border-color); display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: 12px; text-align: center; border-radius: 8px; }
+        /* Ad Placeholders */
+        .ad-container { width: 100%; display: flex; justify-content: center; align-items: center; min-height: 60px; overflow: hidden; margin: 5px 0; }
 
-        h1 { font-size: clamp(22px, 5vw, 28px); text-align: center; margin-bottom: 5px; }
-        .subtitle { text-align: center; font-size: clamp(14px, 3vw, 16px); color: var(--text-muted); margin-bottom: 10px; }
+        h1 { font-size: 26px; text-align: center; margin-bottom: 5px; font-weight: 800; }
+        .subtitle { text-align: center; font-size: 14px; color: var(--text-muted); margin-bottom: 15px; }
 
         /* Calculator Box */
         .calculator-box {
-            background-color: var(--card-bg);
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
             border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
             width: 100%;
+            max-width: 600px;
             text-align: center;
         }
 
-        .input-group {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 20px;
-        }
+        .input-group { display: flex; justify-content: center; margin-bottom: 20px; }
 
         input[type="time"] {
-            background-color: var(--bg-color);
-            color: var(--text-main);
+            background-color: rgba(11, 16, 33, 0.5);
+            color: var(--accent-yellow);
             border: 1px solid var(--border-color);
             padding: 15px 20px;
-            border-radius: 8px;
+            border-radius: 12px;
             font-size: 22px;
             font-weight: bold;
             outline: none;
             text-align: center;
             width: 100%;
             max-width: 250px;
+            transition: 0.3s;
         }
+        input[type="time"]:focus { border-color: var(--accent-yellow); box-shadow: 0 0 15px var(--glow-color); }
         input[type="time"]::-webkit-calendar-picker-indicator { filter: invert(1); cursor: pointer; }
 
         .btn {
             width: 100%;
-            background-color: var(--accent-yellow);
-            color: var(--bg-color);
+            background: linear-gradient(135deg, #f4d35e 0%, #e0c04b 100%);
+            color: #0b1021;
             border: none;
             padding: 16px;
-            border-radius: 8px;
-            font-size: clamp(16px, 4vw, 18px);
-            font-weight: bold;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 800;
             cursor: pointer;
             transition: 0.3s;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 8px;
+            box-shadow: 0 10px 20px rgba(244, 211, 94, 0.2);
+            text-transform: uppercase;
         }
-        .btn:hover { background-color: #e0c04b; }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 15px 30px rgba(244, 211, 94, 0.4); }
 
         .result-box {
-            margin-top: 20px;
+            margin-top: 25px;
             padding: 20px;
-            background-color: var(--bg-color);
+            background-color: rgba(11, 16, 33, 0.5);
             border: 1px solid var(--border-color);
-            border-radius: 8px;
+            border-radius: 12px;
             display: none;
             text-align: left;
         }
 
-        .result-box p.top-text { font-size: 15px; color: var(--text-muted); margin-bottom: 15px; text-align: center; }
+        .result-box p.top-text { font-size: 14px; color: var(--text-muted); margin-bottom: 15px; text-align: center; }
         
         .nap-card {
-            background-color: var(--card-bg);
+            background-color: var(--bg-color);
             border: 1px solid var(--border-color);
-            border-radius: 8px;
+            border-radius: 12px;
             padding: 15px 20px;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -134,64 +137,62 @@
         
         .nap-time { font-size: 22px; font-weight: bold; color: var(--text-main); }
         
-        .badge { font-size: 11px; background-color: #4ade80; color: #000; padding: 3px 8px; border-radius: 4px; margin-left: 5px; vertical-align: middle;}
+        .badge { font-size: 10px; background-color: #4ade80; color: #000; padding: 2px 6px; border-radius: 4px; margin-left: 5px; vertical-align: middle;}
         .badge-danger { background-color: #ff4d4d; color: white; }
 
         /* SEO Content & FAQ */
-        .content-section { background-color: var(--card-bg); padding: 30px; border-radius: 12px; border: 1px solid var(--border-color); width: 100%; }
-        .content-section h2 { color: var(--accent-yellow); font-size: clamp(18px, 4vw, 22px); margin-bottom: 15px; border-bottom: 1px solid var(--border-color); padding-bottom: 10px; }
-        .content-section h3 { font-size: clamp(16px, 3.5vw, 18px); margin-top: 20px; margin-bottom: 10px; color: var(--text-main); }
-        .content-section p { font-size: clamp(14px, 3vw, 15px); color: var(--text-muted); margin-bottom: 15px; }
+        .content-section { background: var(--card-bg); backdrop-filter: blur(12px); padding: 25px; border-radius: 16px; border: 1px solid var(--border-color); width: 100%; max-width: 900px; }
+        .content-section h2 { color: var(--accent-yellow); font-size: 22px; margin-bottom: 15px; border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 10px; }
+        .content-section h3 { font-size: 18px; margin-top: 20px; margin-bottom: 10px; color: var(--text-main); }
+        .content-section p { font-size: 15px; color: var(--text-muted); margin-bottom: 15px; text-align: justify; line-height: 1.7;}
+        .content-section ul { margin-left: 20px; color: var(--text-muted); font-size: 15px; margin-bottom: 15px; }
+        .content-section a { color: var(--accent-yellow); text-decoration: none; font-weight: bold; }
+        .content-section a:hover { text-decoration: underline; }
         
         .faq-item { margin-bottom: 20px; }
-        .faq-item h4 { color: var(--accent-yellow); font-size: 16px; margin-bottom: 5px; }
+        .faq-item h4 { color: var(--accent-yellow); font-size: 17px; margin-bottom: 8px; }
         .faq-item p { margin-bottom: 0; }
 
         /* Related Tools */
-        .related-tools-section { background-color: var(--card-bg); padding: 30px; border-radius: 12px; border: 1px solid var(--border-color); width: 100%; }
-        .related-tools-section h2 { text-align: center; font-size: clamp(18px, 4vw, 20px); margin-bottom: 20px; color: var(--text-main); }
-        
-        /* Grid layout for tools */
-        .tools-grid { 
-            display: grid; 
-            grid-template-columns: 1fr; 
-            gap: 15px; 
-        }
-        
-        .tool-card { 
-            display: flex; 
-            align-items: center; 
-            background-color: var(--bg-color); 
-            border: 1px solid var(--border-color); 
-            padding: 15px; 
-            border-radius: 8px; 
-            text-decoration: none; 
-            transition: 0.3s; 
-        }
-        .tool-card:hover { border-color: var(--accent-yellow); transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
-        .tool-icon { font-size: 24px; margin-right: 15px; background-color: var(--card-bg); padding: 10px; border-radius: 50%; display: flex; justify-content: center; align-items: center; }
-        .tool-info h3 { font-size: 16px; color: var(--accent-yellow); margin: 0 0 5px 0; }
+        .related-tools-section { width: 100%; max-width: 900px; margin-top: 10px; }
+        .related-tools-section h3 { text-align: center; font-size: 20px; color: var(--text-main); margin-bottom: 15px; font-weight: 600;}
+        .tools-grid { display: grid; grid-template-columns: 1fr; gap: 15px; }
+        .tool-card { display: flex; align-items: center; background: var(--card-bg); backdrop-filter: blur(8px); border: 1px solid var(--border-color); padding: 15px; border-radius: 14px; text-decoration: none; transition: all 0.3s ease; }
+        .tool-card:hover { border-color: var(--accent-yellow); transform: translateY(-3px); }
+        .tool-icon { font-size: 28px; margin-right: 15px; background-color: rgba(244, 211, 94, 0.1); padding: 12px; border-radius: 10px; }
+        .tool-info h4 { font-size: 18px; color: var(--accent-yellow); margin: 0 0 3px 0; }
         .tool-info p { font-size: 13px; color: var(--text-muted); margin: 0; }
 
         /* Footer */
-        footer { padding: 30px 20px; font-size: 13px; color: var(--text-muted); text-align: center; width: 100%; border-top: 1px solid var(--border-color); margin-top: 20px; display: flex; flex-direction: column; gap: 10px; }
-        footer a { color: var(--accent-yellow); text-decoration: none; margin: 0 10px; }
+        footer { padding: 30px 15px; font-size: 13px; color: var(--text-muted); text-align: center; width: 100%; margin-top: auto; display: flex; flex-direction: column; gap: 15px; background: rgba(11, 16, 33, 0.95); border-top: 1px solid var(--border-color); }
+        .footer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; align-items: center; }
+        .footer-links a { color: var(--accent-yellow); text-decoration: none; transition: 0.3s; font-weight: 600;}
+        .footer-links a:hover { color: #ffffff; text-decoration: underline; }
+        .footer-links span { color: var(--text-muted); opacity: 0.4; font-size: 12px;}
 
-        /* --- DESKTOP SPECIFIC FIXES --- */
+        /* --- DESKTOP RESPONSIVE --- */
+        .desktop-ad { display: none; }
+        .mobile-ad { display: flex; justify-content: center; width: 100%; }
+
         @media (min-width: 768px) {
-            .ad-placeholder { min-height: 90px; }
-            footer { flex-direction: row; justify-content: center; }
-            
-            /* Make related tools 2 columns on desktop */
-            .tools-grid {
-                grid-template-columns: 1fr 1fr;
-            }
+            .main-container { padding: 40px 20px; gap: 30px; }
+            .logo-text { font-size: 42px; }
+            .icon { font-size: 50px; }
+            h1 { font-size: 36px; }
+            .subtitle { font-size: 18px; }
+            .calculator-box { padding: 40px; border-radius: 24px; }
+            .content-section { padding: 45px; border-radius: 20px; }
+            .content-section h2 { font-size: 28px; }
+            .content-section p { font-size: 17px; }
+            .faq-item h4 { font-size: 20px; }
+            .tools-grid { grid-template-columns: repeat(3, 1fr); } 
+            .desktop-ad { display: flex; justify-content: center; width: 100%; }
+            .mobile-ad { display: none; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Main Wrapper -->
     <div class="main-container">
 
         <!-- Header Logo -->
@@ -200,8 +201,21 @@
             <span class="logo-text">Nap Time Calculator</span>
         </div>
 
-        <!-- ADSTERRA TOP BANNER -->
-        <div class="ad-placeholder">Adsterra Top Banner Ad</div>
+        <!-- TOP BANNER AD -->
+        <div class="ad-container">
+            <div class="desktop-ad">
+                <script>
+                  atOptions = { 'key' : 'ef4f7b291c17b1009e33c2dd1269593c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+                </script>
+                <script type="text/javascript" src="https://bauval.org/22/ef4f7b291c17b1009e33c2dd1269593c"></script>
+            </div>
+            <div class="mobile-ad">
+                <script type="text/javascript">
+                  atOptions = { 'key' : 'e58f96be627c4f39aa8b22755f020bce', 'format' : 'iframe', 'height' : 50, 'width' : 320, 'params' : {} };
+                </script>
+                <script type="text/javascript" src="https://bauval.org/22/e58f96be627c4f39aa8b22755f020bce"></script>
+            </div>
+        </div>
 
         <h1>How long should you nap?</h1>
         <p class="subtitle">Avoid sleep inertia and wake up feeling energized.</p>
@@ -243,7 +257,35 @@
             </div>
         </div>
 
-        <!-- SEO CONTENT (Problem Solving) -->
+        <!-- RELATED TOOLS (Moved UP) -->
+        <div class="related-tools-section">
+            <h3>Explore Other Tools</h3>
+            <div class="tools-grid">
+                <a href="index.html" target="_blank" rel="noopener noreferrer" class="tool-card">
+                    <div class="tool-icon">🧮</div>
+                    <div class="tool-info">
+                        <h4>Sleep Debt</h4>
+                        <p>How much sleep do you owe?</p>
+                    </div>
+                </a>
+                <a href="sleep-cycle.html" target="_blank" rel="noopener noreferrer" class="tool-card">
+                    <div class="tool-icon">🌙</div>
+                    <div class="tool-info">
+                        <h4>Sleep Cycle</h4>
+                        <p>Best bedtime & wake-up time.</p>
+                    </div>
+                </a>
+                <a href="caffeine.html" target="_blank" rel="noopener noreferrer" class="tool-card">
+                    <div class="tool-icon">☕</div>
+                    <div class="tool-info">
+                        <h4>Caffeine Tracker</h4>
+                        <p>Will coffee ruin your sleep?</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- SEO CONTENT -->
         <div class="content-section">
             <h2>Why do I feel groggy after a nap?</h2>
             <p>If you wake up from a nap feeling worse than before, you are experiencing <strong>Sleep Inertia</strong>. This happens when you wake up during deep sleep (usually between 30 to 60 minutes into a nap). The best way to avoid this is by using a <strong>Nap Time Calculator</strong> to plan either a short 20-minute Power Nap or a full 90-minute sleep cycle.</p>
@@ -275,47 +317,38 @@
             </div>
         </div>
 
-        <!-- RELATED TOOLS (NEW TABS) -->
-        <div class="related-tools-section">
-            <h2>Explore Other Sleep Tools</h2>
-            <div class="tools-grid">
-                
-                <a href="index.html" target="_blank" rel="noopener noreferrer" class="tool-card">
-                    <div class="tool-icon">🧮</div>
-                    <div class="tool-info">
-                        <h3>Sleep Debt Calculator</h3>
-                        <p>Find out how much sleep you owe your body.</p>
-                    </div>
-                </a>
-
-                <a href="sleep-cycle.html" target="_blank" rel="noopener noreferrer" class="tool-card">
-                    <div class="tool-icon">🌙</div>
-                    <div class="tool-info">
-                        <h3>Sleep Cycle Calculator</h3>
-                        <p>What time should I sleep or wake up?</p>
-                    </div>
-                </a>
-
-                <a href="caffeine.html" target="_blank" rel="noopener noreferrer" class="tool-card">
-                    <div class="tool-icon">☕</div>
-                    <div class="tool-info">
-                        <h3>Caffeine Half-Life Calculator</h3>
-                        <p>Will your coffee keep you awake tonight?</p>
-                    </div>
-                </a>
+        <!-- BOTTOM BANNER AD -->
+        <div class="ad-container">
+            <div class="desktop-ad">
+                <script>
+                  atOptions = { 'key' : 'ef4f7b291c17b1009e33c2dd1269593c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+                </script>
+                <script type="text/javascript" src="https://bauval.org/22/ef4f7b291c17b1009e33c2dd1269593c"></script>
+            </div>
+            <div class="mobile-ad">
+                <script type="text/javascript">
+                  atOptions = { 'key' : 'e58f96be627c4f39aa8b22755f020bce', 'format' : 'iframe', 'height' : 50, 'width' : 320, 'params' : {} };
+                </script>
+                <script type="text/javascript" src="https://bauval.org/22/e58f96be627c4f39aa8b22755f020bce"></script>
             </div>
         </div>
 
-        <!-- ADSTERRA BOTTOM BANNER -->
-        <div class="ad-placeholder">Adsterra Bottom Banner Ad</div>
-
-        <!-- Footer -->
-        <footer>
-            <p>© 2026 SleepDebtCalculator.online. All rights reserved.</p>
-            <div><a href="index.html">Home</a> | <a href="privacy.html">Privacy Policy</a></div>
-        </footer>
-
     </div> <!-- End Main Container -->
+
+    <!-- FOOTER -->
+    <footer>
+        <p>© 2026 SleepDebtCalculator.online. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="index.html">Home</a> <span>|</span>
+            <a href="sleep-cycle.html">Sleep Cycle</a> <span>|</span>
+            <a href="caffeine.html">Caffeine</a> <span>|</span>
+            <a href="nap.html">Nap Time</a> <span>|</span>
+            <a href="about.html">About Us</a> <span>|</span>
+            <a href="privacy.html">Privacy Policy</a> <span>|</span>
+            <a href="terms.html">Terms of Service</a> <span>|</span>
+            <a href="contact.html">Contact Us</a>
+        </div>
+    </footer>
 
     <!-- JavaScript Logic -->
     <script>
@@ -338,32 +371,32 @@
             let startDate = new Date();
             startDate.setHours(hours, minutes, 0, 0);
 
-            // Add 5 minutes to fall asleep for all calculations
             const timeToFallAsleep = 5 * 60000;
 
-            // 20 min Power Nap
             let time20 = new Date(startDate.getTime() + timeToFallAsleep + (20 * 60000));
             document.getElementById('time20').innerText = formatTime(time20);
 
-            // 45 min Groggy Nap
             let time45 = new Date(startDate.getTime() + timeToFallAsleep + (45 * 60000));
             document.getElementById('time45').innerText = formatTime(time45);
 
-            // 90 min Full Cycle
             let time90 = new Date(startDate.getTime() + timeToFallAsleep + (90 * 60000));
             document.getElementById('time90').innerText = formatTime(time90);
 
             resultBox.style.display = 'block';
         }
 
-        // Set default time to current time on load
         window.onload = function() {
             const now = new Date();
             const h = now.getHours().toString().padStart(2, '0');
             const m = now.getMinutes().toString().padStart(2, '0');
             document.getElementById('napStartTime').value = `${h}:${m}`;
-            calculateNap(); // Auto-calculate on load
+            calculateNap(); 
         };
     </script>
+
+    <!-- BACKGROUND SCRIPTS (POPUNDER & SOCIAL BAR) -->
+    <script data-cfasync="false" src="https://bauval.org/14/c2e8b6a0744b11045176ac8027b166fe"></script>
+    <script data-cfasync="false" src="https://abscloud.org/1/7b543158f36ec26f083d375b2a6547ec"></script>
+
 </body>
-</html>
+    </html>
