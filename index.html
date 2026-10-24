@@ -1,18 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    
     <!-- Google Site Verification -->
     <meta name="google-site-verification" content="awSCkHr_s5knCd3tYxp5nvsfhrTB_qTyLbS5JiYS25M" />
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    
-    <title>Sleep Debt Calculator | How Much Sleep Do I Owe? (Free Tool)</title>
-    <!-- Baaki meta tags... -->
-        
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    
     <!-- SEO: Meta Tags -->
     <title>Sleep Debt Calculator | How Much Sleep Do I Owe? (Free Tool)</title>
     <meta name="description" content="Always tired? Use our free Sleep Debt Calculator to find out exactly how many hours of sleep you owe your body. Learn how to calculate sleep deficit and recover fast.">
@@ -58,7 +52,7 @@
             align-items: center;
         }
 
-        /* --- STYLISH STARS LOGO --- */
+        /* --- ANIMATED PREMIUM LOGO --- */
         .logo-container { 
             text-align: center; 
             margin-bottom: 15px; 
@@ -70,15 +64,7 @@
             position: relative;
         }
         
-        .stars-wrapper {
-            position: absolute;
-            top: -20px;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-        }
-
+        .stars-wrapper { position: absolute; top: -20px; left: 0; width: 100%; height: 100%; pointer-events: none; }
         .star { position: absolute; color: var(--accent-yellow); opacity: 0.7; animation: twinkle 2s infinite alternate; }
         .s1 { top: 0; left: 10%; font-size: 14px; animation-delay: 0s; }
         .s2 { top: 15px; left: 25%; font-size: 10px; animation-delay: 0.5s; }
@@ -112,7 +98,7 @@
         h1 { font-size: 26px; text-align: center; margin-bottom: 5px; font-weight: 800; }
         .subtitle { text-align: center; font-size: 14px; color: var(--text-muted); margin-bottom: 15px; }
 
-        /* --- CALCULATOR BOX (Responsive) --- */
+        /* --- CALCULATOR BOX --- */
         .calculator-box { 
             background: var(--card-bg); 
             backdrop-filter: blur(16px); 
@@ -171,8 +157,8 @@
             animation: fadeIn 0.5s ease; 
         }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
-                /* Related Tools */
+        
+        /* Related Tools */
         .related-tools-section { width: 100%; max-width: 900px; margin-top: 10px; }
         .related-tools-section h3 { text-align: center; font-size: 20px; color: var(--text-main); margin-bottom: 15px; font-weight: 600;}
         .tools-grid { display: grid; grid-template-columns: 1fr; gap: 15px; }
@@ -191,8 +177,94 @@
         .tool-icon { font-size: 28px; margin-right: 15px; background-color: rgba(244, 211, 94, 0.1); padding: 12px; border-radius: 10px; }
         .tool-info h4 { font-size: 18px; color: var(--accent-yellow); margin: 0 0 3px 0; }
         .tool-info p { font-size: 13px; color: var(--text-muted); margin: 0; }
+    </style>
+</head>
+<body>
 
-        /* Content Section */
+    <div class="main-container">
+
+        <!-- STYLISH STARS LOGO -->
+        <div class="logo-container">
+            <div class="stars-wrapper">
+                <span class="star s1">✨</span>
+                <span class="star s2">✨</span>
+                <span class="star s3">✨</span>
+                <span class="star s4">✨</span>
+                <span class="star s5">✨</span>
+                <span class="star s6">✨</span>
+            </div>
+            
+            <span class="moon">🌙</span>
+            <span class="logo-text">Sleep Debt</span>
+            <span style="font-size: 24px; color: var(--accent-yellow); margin-left: -5px;">✨</span>
+        </div>
+
+        <!-- TOP BANNER AD -->
+        <div class="ad-container">
+            <div class="desktop-ad">
+                <script>
+                  atOptions = { 'key' : 'ef4f7b291c17b1009e33c2dd1269593c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+                </script>
+                <script type="text/javascript" src="https://bauval.org/22/ef4f7b291c17b1009e33c2dd1269593c"></script>
+            </div>
+            <div class="mobile-ad">
+                <script type="text/javascript">
+                  atOptions = { 'key' : 'e58f96be627c4f39aa8b22755f020bce', 'format' : 'iframe', 'height' : 50, 'width' : 320, 'params' : {} };
+                </script>
+                <script type="text/javascript" src="https://bauval.org/22/e58f96be627c4f39aa8b22755f020bce"></script>
+            </div>
+        </div>
+
+        <!-- MAIN CALCULATOR -->
+        <h1>Calculate Your Total Sleep Debt</h1>
+        <p class="subtitle">Find out exactly how many hours of sleep you owe your body.</p>
+
+        <div class="calculator-box">
+            <div class="input-group">
+                <label for="idealSleep">Ideal Sleep (Hrs)</label>
+                <input type="number" id="idealSleep" value="8" min="1" max="24">
+            </div>
+            <div class="input-group">
+                <label for="actualSleep">Actual Sleep (Hrs)</label>
+                <input type="number" id="actualSleep" placeholder="e.g. 6" min="0" max="24">
+            </div>
+            <div class="input-group">
+                <label for="days">Number of Days</label>
+                <input type="number" id="days" placeholder="e.g. 7" min="1">
+            </div>
+            <button class="btn" onclick="calculateDebt()">Calculate Now 🧮</button>
+            <div id="result"></div>
+        </div>
+
+        <!-- RELATED TOOLS -->
+        <div class="related-tools-section">
+            <h3>Explore Other Tools</h3>
+            <div class="tools-grid">
+                <a href="sleep-cycle.html" target="_blank" rel="noopener noreferrer" class="tool-card">
+                    <div class="tool-icon">⏰</div>
+                    <div class="tool-info">
+                        <h4>Sleep Cycle</h4>
+                        <p>Best bedtime & wake-up time.</p>
+                    </div>
+                </a>
+                <a href="caffeine.html" target="_blank" rel="noopener noreferrer" class="tool-card">
+                    <div class="tool-icon">☕</div>
+                    <div class="tool-info">
+                        <h4>Caffeine Tracker</h4>
+                        <p>Will coffee ruin your sleep?</p>
+                    </div>
+                </a>
+                <a href="nap.html" target="_blank" rel="noopener noreferrer" class="tool-card">
+                    <div class="tool-icon">😴</div>
+                    <div class="tool-info">
+                        <h4>Nap Time</h4>
+                        <p>Perfect power nap duration.</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+                /* Content Section */
         .content-section { 
             background: var(--card-bg); 
             backdrop-filter: blur(12px);
@@ -306,7 +378,7 @@
             <div id="result"></div>
         </div>
 
-        <!-- RELATED TOOLS (Moved Up, Right after Calculator) -->
+        <!-- RELATED TOOLS -->
         <div class="related-tools-section">
             <h3>Explore Other Tools</h3>
             <div class="tools-grid">
