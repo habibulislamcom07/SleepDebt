@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     
-    <!-- SEO: Problem Solving & Long-Tail Keywords for Both Tools -->
+    <!-- SEO: Problem Solving & Long-Tail Keywords -->
     <title>Sleep Cycle Calculator | Bedtime & Wake-Up Time Calculator</title>
     <meta name="description" content="Use our Sleep Cycle Calculator to find the best bedtime or wake-up time. Avoid sleep inertia. What time should I sleep if I wake up at 6 AM? Find out instantly.">
     <meta name="keywords" content="sleep cycle calculator, bedtime calculator, wake up time calculator, what time should i sleep, if i sleep now when should i wake up, 90 minute sleep cycle, fix sleep inertia">
@@ -13,8 +13,8 @@
     <style>
         /* --- FULL SCREEN DARK THEME --- */
         :root {
-            --bg-color: #0b1021; /* Deep Navy Background */
-            --card-bg: #151e36;  /* Lighter box background */
+            --bg-color: #0b1021; 
+            --card-bg: #151e36;  
             --text-main: #ffffff;
             --text-muted: #a0aec0;
             --accent-yellow: #f4d35e;
@@ -23,104 +23,38 @@
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
 
-        body { 
-            background-color: var(--bg-color); 
-            color: var(--text-main); 
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
-            min-height: 100vh; 
-            line-height: 1.6; 
-            overflow-x: hidden; 
-        }
+        body { background-color: var(--bg-color); color: var(--text-main); display: flex; flex-direction: column; align-items: center; min-height: 100vh; line-height: 1.6; overflow-x: hidden; }
 
-        /* Wider container for desktop */
-        .main-container { 
-            width: 100%; 
-            max-width: 800px; 
-            padding: 40px 20px; 
-            display: flex; 
-            flex-direction: column; 
-            gap: 25px; 
-        }
+        .main-container { width: 100%; max-width: 800px; padding: 40px 20px; display: flex; flex-direction: column; gap: 25px; }
 
-        /* Logo Header */
         .logo-container { text-align: center; margin-bottom: 10px; display: flex; justify-content: center; align-items: center; gap: 10px; }
         .logo-text { font-size: clamp(24px, 5vw, 32px); font-weight: 600; letter-spacing: 1px; }
         .moon { color: var(--accent-yellow); font-size: clamp(30px, 6vw, 40px); }
 
-        /* Adsterra Placeholders */
         .ad-placeholder { width: 100%; min-height: 60px; background-color: var(--card-bg); border: 1px dashed var(--border-color); display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: 12px; text-align: center; border-radius: 8px; }
 
         h1 { font-size: clamp(22px, 5vw, 28px); text-align: center; margin-bottom: 5px; }
         .subtitle { text-align: center; font-size: clamp(14px, 3vw, 16px); color: var(--text-muted); margin-bottom: 10px; }
 
         /* Calculator Boxes */
-        .calculator-box { 
-            background-color: var(--card-bg); 
-            border: 1px solid var(--border-color); 
-            border-radius: 12px; 
-            padding: 30px; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3); 
-            width: 100%; 
-            text-align: center;
-        }
+        .calculator-box { background-color: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); width: 100%; text-align: center; }
         .calculator-box h2 { font-size: clamp(16px, 4vw, 18px); color: var(--text-main); margin-bottom: 20px; font-weight: 500; }
 
         /* Time Picker */
-        .time-picker-box { 
-            background-color: var(--bg-color); 
-            border: 1px solid var(--border-color); 
-            border-radius: 8px; 
-            display: flex; 
-            justify-content: center; 
-            padding: 20px 15px; 
-            margin-bottom: 20px; 
-            max-width: 400px;
-            margin-left: auto;
-            margin-right: auto;
-        }
+        .time-picker-box { background-color: var(--bg-color); border: 1px solid var(--border-color); border-radius: 8px; display: flex; justify-content: center; padding: 20px 15px; margin-bottom: 20px; max-width: 400px; margin-left: auto; margin-right: auto; }
         .picker-col { display: flex; flex-direction: column; align-items: center; flex: 1; position: relative; }
         .picker-col:not(:last-child)::after { content: ':'; position: absolute; right: -5px; top: 50%; transform: translateY(-50%); font-size: 24px; font-weight: bold; color: var(--text-muted); }
         .picker-col select { background: transparent; color: var(--text-main); border: none; font-size: 24px; font-weight: 600; text-align: center; outline: none; cursor: pointer; appearance: none; -webkit-appearance: none; width: 100%; }
         .picker-col select option { background-color: var(--bg-color); color: var(--text-main); font-size: 18px; }
         .picker-col label { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; }
 
-        .btn { 
-            width: 100%; 
-            max-width: 400px;
-            background-color: var(--accent-yellow); 
-            color: var(--bg-color); 
-            border: none; 
-            padding: 16px; 
-            border-radius: 8px; 
-            font-size: clamp(16px, 4vw, 18px); 
-            font-weight: bold; 
-            cursor: pointer; 
-            transition: 0.3s; 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            gap: 8px; 
-            margin: 0 auto;
-        }
+        .btn { width: 100%; max-width: 400px; background-color: var(--accent-yellow); color: var(--bg-color); border: none; padding: 16px; border-radius: 8px; font-size: clamp(16px, 4vw, 18px); font-weight: bold; cursor: pointer; transition: 0.3s; display: flex; justify-content: center; align-items: center; gap: 8px; margin: 0 auto; }
         .btn:hover { background-color: #e0c04b; }
 
-        .divider-text { text-align: center; color: var(--text-muted); font-size: clamp(14px, 3vw, 16px); margin: 20px 0; }
+        .divider-text { text-align: center; color: var(--text-muted); font-size: clamp(14px, 3vw, 16px); margin: 10px 0; }
 
         /* Results Area */
-        .result-box { 
-            margin-top: 20px; 
-            display: none; 
-            background-color: var(--bg-color); 
-            border: 1px solid var(--border-color); 
-            border-radius: 8px; 
-            padding: 20px; 
-            text-align: left; 
-            max-width: 500px;
-            margin-left: auto;
-            margin-right: auto;
-        }
+        .result-box { margin-top: 20px; display: none; background-color: var(--bg-color); border: 1px solid var(--border-color); border-radius: 8px; padding: 20px; text-align: left; max-width: 500px; margin-left: auto; margin-right: auto; }
         .result-box p { font-size: 14px; color: var(--text-muted); margin-bottom: 15px; text-align: center;}
         .time-slot { display: flex; justify-content: space-between; align-items: center; padding: 12px 15px; border-bottom: 1px solid var(--border-color); font-size: 20px; font-weight: 600; color: var(--accent-yellow); }
         .time-slot:last-child { border-bottom: none; }
@@ -139,24 +73,8 @@
         /* Related Tools Section */
         .related-tools-section { background-color: var(--card-bg); padding: 30px; border-radius: 12px; border: 1px solid var(--border-color); width: 100%; }
         .related-tools-section h2 { text-align: center; font-size: clamp(18px, 4vw, 20px); margin-bottom: 20px; color: var(--text-main); }
-        
-        /* Grid layout for tools */
-        .tools-grid { 
-            display: grid; 
-            grid-template-columns: 1fr; 
-            gap: 15px; 
-        }
-        
-        .tool-card { 
-            display: flex; 
-            align-items: center; 
-            background-color: var(--bg-color); 
-            border: 1px solid var(--border-color); 
-            padding: 15px; 
-            border-radius: 8px; 
-            text-decoration: none; 
-            transition: 0.3s; 
-        }
+        .tools-grid { display: grid; grid-template-columns: 1fr; gap: 15px; }
+        .tool-card { display: flex; align-items: center; background-color: var(--bg-color); border: 1px solid var(--border-color); padding: 15px; border-radius: 8px; text-decoration: none; transition: 0.3s; }
         .tool-card:hover { border-color: var(--accent-yellow); transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
         .tool-icon { font-size: 24px; margin-right: 15px; background-color: var(--card-bg); padding: 10px; border-radius: 50%; display: flex; justify-content: center; align-items: center; }
         .tool-info h3 { font-size: 16px; color: var(--accent-yellow); margin: 0 0 5px 0; }
@@ -166,24 +84,17 @@
         footer { padding: 30px 20px; font-size: 13px; color: var(--text-muted); text-align: center; width: 100%; border-top: 1px solid var(--border-color); margin-top: 20px; display: flex; flex-direction: column; gap: 10px; }
         footer a { color: var(--accent-yellow); text-decoration: none; margin: 0 10px; }
 
-        /* --- DESKTOP SPECIFIC FIXES --- */
         @media (min-width: 768px) {
             .ad-placeholder { min-height: 90px; }
             footer { flex-direction: row; justify-content: center; }
-            
-            /* Make related tools 2 columns on desktop */
-            .tools-grid {
-                grid-template-columns: 1fr 1fr;
-            }
+            .tools-grid { grid-template-columns: 1fr 1fr; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Main Wrapper -->
     <div class="main-container">
 
-        <!-- Header Logo -->
         <div class="logo-container">
             <span class="moon">🌙</span>
             <span class="logo-text">Sleep Calculator</span>
@@ -226,12 +137,40 @@
 
         <div class="divider-text">If you want to go to bed now...</div>
 
+        <!-- ========================================== -->
+        <!-- MIDDLE ADSTERRA BANNER (Naya Ad Space) -->
+        <!-- ========================================== -->
+        <div class="ad-placeholder">
+            <!-- Yahan Adsterra ka Middle Banner Code Paste Karein -->
+            Adsterra Middle Banner Ad
+        </div>
+        <!-- ========================================== -->
+
         <!-- TOOL 2: WAKE-UP CALCULATOR -->
         <div class="calculator-box">
+            <h2>What time are you going to sleep?</h2>
+            <div class="time-picker-box">
+                <div class="picker-col">
+                    <label>Hour</label>
+                    <select id="sleepHour"></select>
+                </div>
+                <div class="picker-col">
+                    <label>Min</label>
+                    <select id="sleepMinute"></select>
+                </div>
+                <div class="picker-col">
+                    <label>AM/PM</label>
+                    <select id="sleepAmpm">
+                        <option value="AM">AM</option>
+                        <option value="PM" selected>PM</option>
+                    </select>
+                </div>
+            </div>
+
             <button class="btn" onclick="calculateWakeUp()">Calculate Wake-Up Time ⏰</button>
 
             <div id="wakeupResult" class="result-box">
-                <p>If you fall asleep right now, set your alarm for:</p>
+                <p>If you fall asleep at <span id="displaySleepTime" style="color:var(--text-main); font-weight:bold;"></span>, set your alarm for:</p>
                 <div id="wakeupSlots"></div>
             </div>
         </div>
@@ -263,7 +202,7 @@
             </div>
         </div>
 
-        <!-- RELATED TOOLS (NEW TABS) -->
+        <!-- RELATED TOOLS -->
         <div class="related-tools-section">
             <h2>Explore Other Sleep Tools</h2>
             <div class="tools-grid">
@@ -303,7 +242,7 @@
             <div><a href="index.html">Home</a> | <a href="privacy.html">Privacy Policy</a></div>
         </footer>
 
-    </div> <!-- End Main Container -->
+    </div> 
 
     <!-- JavaScript Logic for BOTH Tools -->
     <script>
@@ -313,12 +252,23 @@
             
             const hSelect = document.getElementById('wakeHour');
             const mSelect = document.getElementById('wakeMinute');
+            const shSelect = document.getElementById('sleepHour');
+            const smSelect = document.getElementById('sleepMinute');
 
+            // Populate Wake-up Dropdowns (Default 6:30 AM)
             hours.forEach(h => { 
                 let opt = document.createElement('option'); opt.value = h; opt.innerText = h; if(h === 6) opt.selected = true; hSelect.appendChild(opt); 
             });
             minutes.forEach(m => { 
                 let opt = document.createElement('option'); opt.value = m; opt.innerText = m; if(m === "30") opt.selected = true; mSelect.appendChild(opt); 
+            });
+
+            // Populate Sleep Time Dropdowns (Default 10:00 PM)
+            hours.forEach(h => { 
+                let opt = document.createElement('option'); opt.value = h; opt.innerText = h; if(h === 10) opt.selected = true; shSelect.appendChild(opt); 
+            });
+            minutes.forEach(m => { 
+                let opt = document.createElement('option'); opt.value = m; opt.innerText = m; if(m === "00") opt.selected = true; smSelect.appendChild(opt); 
             });
         }
 
@@ -328,7 +278,7 @@
             return hours + ':' + minutes + ' ' + ampm;
         }
 
-        // Calculate Bedtime
+        // Calculate Bedtime (Based on Wake Up time)
         function calculateBedtime() {
             const h = parseInt(document.getElementById('wakeHour').value);
             const m = parseInt(document.getElementById('wakeMinute').value);
@@ -351,13 +301,20 @@
             document.getElementById('bedtimeResult').style.display = 'block';
         }
 
-        // Calculate Wake-Up (Based on Current Time)
+        // Calculate Wake-Up (Based on Sleep time input)
         function calculateWakeUp() {
-            let sleepDate = new Date(); // Gets current device time
+            const h = parseInt(document.getElementById('sleepHour').value);
+            const m = parseInt(document.getElementById('sleepMinute').value);
+            const ampm = document.getElementById('sleepAmpm').value;
+
+            let sleepDate = new Date();
+            let h24 = (h === 12) ? (ampm === 'AM' ? 0 : 12) : (ampm === 'PM' ? h + 12 : h);
+            sleepDate.setHours(h24, m, 0, 0);
+
+            document.getElementById('displaySleepTime').innerText = formatTime(sleepDate);
             let slotsHTML = '';
             
             [4, 5, 6].forEach(cycle => {
-                // Add 15 mins to fall asleep + cycle mins
                 let wakeupTime = new Date(sleepDate.getTime() + (15 * 60000) + (cycle * 90 * 60000));
                 let rec = (cycle === 5 || cycle === 6) ? '<span class="cycle-label" style="color:#4ade80;">(Best)</span>' : `<span class="cycle-label">(${cycle} cycles)</span>`;
                 slotsHTML += `<div class="time-slot"><span>${formatTime(wakeupTime)}</span>${rec}</div>`;
@@ -370,7 +327,8 @@
         // Initialize on page load
         window.onload = function() { 
             populateDropdowns(); 
-            calculateBedtime(); // Pre-calculate on load
+            calculateBedtime(); 
+            calculateWakeUp();
         };
     </script>
 </body>
