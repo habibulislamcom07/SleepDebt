@@ -11,15 +11,14 @@
     <meta name="robots" content="index, follow">
 
     <style>
-        /* --- DARK THEME CSS --- */
+        /* --- FULL SCREEN DARK THEME --- */
         :root {
-            --bg-color: #090e1f; /* Main Background */
-            --app-bg: #0d1427;   /* Slightly lighter for desktop container */
-            --card-bg: #11182b;
+            --bg-color: #0b1021; /* Deep Navy Background */
+            --card-bg: #151e36;  /* Lighter box background */
             --text-main: #ffffff;
-            --text-muted: #8892b0;
+            --text-muted: #a0aec0;
             --accent-yellow: #f4d35e;
-            --border-color: #23304d;
+            --border-color: #2a3b5c;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
@@ -28,38 +27,34 @@
             background-color: var(--bg-color);
             color: var(--text-main);
             display: flex;
-            justify-content: center; /* Centers horizontally */
-            min-height: 100vh;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh; /* Full screen height */
             line-height: 1.6;
             overflow-x: hidden;
         }
 
-        /* --- DESKTOP FIX: This wrapper keeps it app-like --- */
+        /* Container to keep content centered but wider on desktop */
         .main-container {
             width: 100%;
-            max-width: 650px; /* Limits width on desktop */
-            padding: 20px 15px;
+            max-width: 800px; /* Wider for desktop, looks better */
+            padding: 40px 20px; /* More padding on desktop */
             display: flex;
             flex-direction: column;
-            gap: 20px;
-            
-            /* Add a subtle shadow/border on desktop to make it look like a mobile app screen */
-            background-color: var(--app-bg);
-            box-shadow: 0 0 30px rgba(0,0,0,0.5); 
+            gap: 25px;
         }
 
         /* Logo Header */
         .logo-container {
             text-align: center;
-            margin-top: 20px;
             margin-bottom: 10px;
             display: flex;
             justify-content: center;
             align-items: center;
             gap: 10px;
         }
-        .logo-text { font-size: clamp(22px, 6vw, 28px); font-weight: 600; letter-spacing: 1px; }
-        .moon { color: var(--accent-yellow); font-size: clamp(28px, 7vw, 34px); }
+        .logo-text { font-size: clamp(24px, 5vw, 32px); font-weight: 600; letter-spacing: 1px; }
+        .moon { color: var(--accent-yellow); font-size: clamp(30px, 6vw, 40px); }
         
         /* Adsterra Placeholders */
         .ad-placeholder {
@@ -77,16 +72,16 @@
         }
 
         /* Main Tool Headings */
-        h1 { font-size: clamp(18px, 5vw, 24px); text-align: center; margin-bottom: 5px; }
-        .subtitle { text-align: center; font-size: clamp(13px, 4vw, 15px); color: var(--text-muted); margin-bottom: 10px; }
+        h1 { font-size: clamp(22px, 5vw, 28px); text-align: center; margin-bottom: 5px; }
+        .subtitle { text-align: center; font-size: clamp(14px, 3vw, 16px); color: var(--text-muted); margin-bottom: 10px; }
 
         /* Calculator Box */
         .calculator-box {
             background-color: var(--card-bg);
             border: 1px solid var(--border-color);
             border-radius: 12px;
-            padding: 20px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            padding: 30px; /* More padding for desktop */
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
             width: 100%;
         }
 
@@ -97,21 +92,21 @@
             background-color: var(--bg-color);
             border: 1px solid var(--border-color);
             border-radius: 8px;
-            padding: 12px 15px;
-            margin-bottom: 12px;
+            padding: 15px 20px;
+            margin-bottom: 15px;
             width: 100%;
         }
 
-        .input-group label { font-size: 14px; color: var(--text-muted); flex: 1; }
+        .input-group label { font-size: 15px; color: var(--text-muted); flex: 1; }
         
         .input-group input {
             background: transparent;
             border: none;
             color: var(--text-main);
-            font-size: 16px;
+            font-size: 18px;
             font-weight: bold;
             text-align: right;
-            width: 70px;
+            width: 80px;
             outline: none;
         }
 
@@ -120,9 +115,9 @@
             background-color: var(--accent-yellow);
             color: var(--bg-color);
             border: none;
-            padding: 15px;
+            padding: 16px;
             border-radius: 8px;
-            font-size: clamp(16px, 4.5vw, 18px);
+            font-size: clamp(16px, 4vw, 18px);
             font-weight: bold;
             cursor: pointer;
             transition: 0.3s;
@@ -134,80 +129,85 @@
         .btn:hover { background-color: #e0c04b; }
 
         #result {
-            margin-top: 15px;
-            padding: 15px;
+            margin-top: 20px;
+            padding: 20px;
             background-color: rgba(244, 211, 94, 0.1);
             border: 1px solid var(--accent-yellow);
             border-radius: 8px;
-            font-size: 14px;
+            font-size: 16px;
             color: var(--accent-yellow);
             text-align: center;
             display: none;
             word-wrap: break-word;
         }
         
-        /* SEO Content & FAQ */
+        /* SEO Content & FAQ - Wider layout */
         .content-section {
             background-color: var(--card-bg);
-            padding: 20px;
+            padding: 30px;
             border-radius: 12px;
             border: 1px solid var(--border-color);
             width: 100%;
         }
-        .content-section h2 { color: var(--accent-yellow); font-size: clamp(16px, 4.5vw, 20px); margin-bottom: 12px; border-bottom: 1px solid var(--border-color); padding-bottom: 8px; }
-        .content-section h3 { font-size: clamp(14px, 4vw, 16px); margin-top: 15px; margin-bottom: 8px; color: var(--text-main); }
-        .content-section p { font-size: clamp(13px, 3.5vw, 14px); color: var(--text-muted); margin-bottom: 12px; }
+        .content-section h2 { color: var(--accent-yellow); font-size: clamp(18px, 4vw, 22px); margin-bottom: 15px; border-bottom: 1px solid var(--border-color); padding-bottom: 10px; }
+        .content-section h3 { font-size: clamp(16px, 3.5vw, 18px); margin-top: 20px; margin-bottom: 10px; color: var(--text-main); }
+        .content-section p { font-size: clamp(14px, 3vw, 15px); color: var(--text-muted); margin-bottom: 15px; }
         
-        .faq-item { margin-bottom: 15px; }
-        .faq-item h4 { color: var(--accent-yellow); font-size: 14px; margin-bottom: 5px; }
+        .faq-item { margin-bottom: 20px; }
+        .faq-item h4 { color: var(--accent-yellow); font-size: 16px; margin-bottom: 5px; }
         .faq-item p { margin-bottom: 0; }
 
-        /* Related Tools Section (NEW TAB LINKS) */
+        /* Related Tools Section */
         .related-tools-section {
             background-color: var(--card-bg);
-            padding: 20px;
+            padding: 30px;
             border-radius: 12px;
             border: 1px solid var(--border-color);
             width: 100%;
         }
-        .related-tools-section h2 { text-align: center; font-size: clamp(16px, 4.5vw, 18px); margin-bottom: 15px; color: var(--text-main); }
-        .tools-grid { display: flex; flex-direction: column; gap: 10px; }
+        .related-tools-section h2 { text-align: center; font-size: clamp(18px, 4vw, 20px); margin-bottom: 20px; color: var(--text-main); }
+        
+        /* Grid layout for tools (1 column on mobile, 2 columns on desktop) */
+        .tools-grid { 
+            display: grid; 
+            grid-template-columns: 1fr; 
+            gap: 15px; 
+        }
         
         .tool-card { 
             display: flex; 
             align-items: center; 
             background-color: var(--bg-color); 
             border: 1px solid var(--border-color); 
-            padding: 12px; 
+            padding: 15px; 
             border-radius: 8px; 
             text-decoration: none; 
             transition: 0.3s; 
         }
-        .tool-card:hover { border-color: var(--accent-yellow); transform: translateY(-2px); }
-        .tool-icon { font-size: 20px; margin-right: 12px; background-color: var(--card-bg); padding: 8px; border-radius: 50%; display: flex; justify-content: center; align-items: center; }
-        .tool-info h3 { font-size: 15px; color: var(--accent-yellow); margin: 0 0 3px 0; }
-        .tool-info p { font-size: 12px; color: var(--text-muted); margin: 0; }
+        .tool-card:hover { border-color: var(--accent-yellow); transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+        .tool-icon { font-size: 24px; margin-right: 15px; background-color: var(--card-bg); padding: 10px; border-radius: 50%; display: flex; justify-content: center; align-items: center; }
+        .tool-info h3 { font-size: 16px; color: var(--accent-yellow); margin: 0 0 5px 0; }
+        .tool-info p { font-size: 13px; color: var(--text-muted); margin: 0; }
 
         /* Footer */
-        footer { padding: 20px; font-size: 12px; color: var(--text-muted); text-align: center; width: 100%; border-top: 1px solid var(--border-color); margin-top: 20px; display: flex; flex-direction: column; gap: 8px; }
-        footer a { color: var(--accent-yellow); text-decoration: none; margin: 0 5px; }
+        footer { padding: 30px 20px; font-size: 13px; color: var(--text-muted); text-align: center; width: 100%; border-top: 1px solid var(--border-color); margin-top: 20px; display: flex; flex-direction: column; gap: 10px; }
+        footer a { color: var(--accent-yellow); text-decoration: none; margin: 0 10px; }
 
+        /* --- DESKTOP SPECIFIC FIXES --- */
         @media (min-width: 768px) {
             .ad-placeholder { min-height: 90px; }
             footer { flex-direction: row; justify-content: center; }
             
-            /* Add a slight border radius to the main container on desktop */
-            .main-container {
-                border-radius: 16px;
-                margin: 30px 0;
-                border: 1px solid var(--border-color);
+            /* Make related tools 2 columns on desktop */
+            .tools-grid {
+                grid-template-columns: 1fr 1fr;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- Main Wrapper (Keeps everything centered on desktop) -->
+    <!-- Main Wrapper -->
     <div class="main-container">
 
         <!-- Header Logo -->
@@ -218,7 +218,6 @@
 
         <!-- ADSTERRA CODE: TOP BANNER -->
         <div class="ad-placeholder">
-            <!-- Yahan Adsterra ka Top Banner Code Paste Karein -->
             Adsterra Top Banner Ad
         </div>
 
@@ -315,7 +314,6 @@
 
         <!-- ADSTERRA CODE: BOTTOM BANNER -->
         <div class="ad-placeholder">
-            <!-- Yahan Adsterra ka Bottom Banner Code Paste Karein -->
             Adsterra Bottom Banner Ad
         </div>
 
@@ -362,7 +360,7 @@
             resultDiv.style.backgroundColor = 'rgba(244, 211, 94, 0.1)';
             resultDiv.style.borderColor = '#f4d35e';
             resultDiv.style.color = '#f4d35e';
-            resultDiv.innerHTML = `Your total sleep debt is <br><span style="font-size: 24px; font-weight: bold;">${totalDebt} hours</span><br> over ${days} days.`;
+            resultDiv.innerHTML = `Your total sleep debt is <br><span style="font-size: 28px; font-weight: bold;">${totalDebt} hours</span><br> over ${days} days.`;
         }
     </script>
 
