@@ -6,16 +6,16 @@
     
     <!-- SEO: Meta Tags -->
     <title>Sleep Debt Calculator | How Much Sleep Do I Owe? (Free Tool)</title>
-    <meta name="description" content="Always tired? Use our Sleep Debt Calculator to find out exactly how many hours of sleep you owe your body. Learn how to calculate sleep deficit and recover fast.">
-    <meta name="keywords" content="sleep debt calculator, how to calculate sleep debt, sleep deficit calculator, why am i always tired, how to catch up on lost sleep">
+    <meta name="description" content="Always tired? Use our free Sleep Debt Calculator to find out exactly how many hours of sleep you owe your body. Learn how to calculate sleep deficit and recover fast.">
+    <meta name="keywords" content="sleep debt calculator, how to calculate sleep debt, sleep deficit calculator, why am i always tired, how to catch up on lost sleep, sleep deprivation effects">
     <meta name="robots" content="index, follow">
     <link rel="icon" type="image/png" href="favicon.png">
 
     <style>
-        /* --- PREMIUM DARK THEME CSS --- */
+        /* --- CLEAN DARK THEME CSS --- */
         :root {
             --bg-color: #0b1021; 
-            --card-bg: rgba(21, 30, 54, 0.85); /* Semi-transparent for glass effect */
+            --card-bg: rgba(21, 30, 54, 0.85); 
             --text-main: #ffffff;
             --text-muted: #a0aec0;
             --accent-yellow: #f4d35e;
@@ -28,8 +28,7 @@
 
         body {
             background-color: var(--bg-color);
-            /* Premium radial gradient background */
-            background-image: radial-gradient(circle at 50% 0%, #17213b 0%, #0b1021 60%);
+            background-image: radial-gradient(circle at 50% 10%, #17213b 0%, #0b1021 60%);
             color: var(--text-main);
             display: flex;
             flex-direction: column;
@@ -41,300 +40,130 @@
 
         .main-container {
             width: 100%;
-            max-width: 800px;
-            padding: 20px;
+            max-width: 650px;
+            padding: 40px 20px;
             display: flex;
             flex-direction: column;
             gap: 25px;
-        }
-
-        /* --- PREMIUM STICKY NAVBAR --- */
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 20px;
-            background: rgba(11, 16, 33, 0.9);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border-color);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            width: 100%;
-            flex-wrap: wrap;
-            gap: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-        }
-
-        .navbar .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-        }
-        .navbar .logo-text { font-size: clamp(20px, 4vw, 24px); font-weight: 700; color: var(--text-main); letter-spacing: 0.5px; }
-        .navbar .moon { color: var(--accent-yellow); font-size: clamp(24px, 5vw, 28px); filter: drop-shadow(0 0 8px rgba(244, 211, 94, 0.5)); }
-
-        .nav-links {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
             align-items: center;
         }
 
-        .nav-links a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            padding: 5px 10px;
-            border-radius: 5px;
-        }
+        /* Logo */
+        .logo-container { text-align: center; margin-bottom: 20px; display: flex; justify-content: center; align-items: center; gap: 10px; }
+        .logo-text { font-size: clamp(24px, 6vw, 32px); font-weight: 700; letter-spacing: 0.5px; }
+        .moon { color: var(--accent-yellow); font-size: clamp(28px, 7vw, 36px); filter: drop-shadow(0 0 10px rgba(244, 211, 94, 0.4)); }
 
-        .nav-links a:hover, .nav-links a.active {
-            color: var(--accent-yellow);
-            background: var(--glow-color);
-        }
+        /* Ad Placeholders */
+        .ad-container { width: 100%; display: flex; justify-content: center; align-items: center; min-height: 60px; overflow: hidden; margin: 10px 0; }
 
-        /* --- AD PLACEHOLDERS --- */
-        .ad-placeholder {
-            width: 100%;
-            min-height: 60px;
-            background-color: rgba(21, 30, 54, 0.4);
-            border: 1px dashed var(--border-color);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-muted);
-            font-size: 12px;
-            text-align: center;
-            border-radius: 8px;
-            overflow: hidden; 
-        }
+        /* Main Headings */
+        h1 { font-size: clamp(22px, 5vw, 26px); text-align: center; margin-bottom: 5px; font-weight: 700; }
+        .subtitle { text-align: center; font-size: clamp(14px, 4vw, 15px); color: var(--text-muted); margin-bottom: 15px; }
 
-        /* --- MAIN TOOL HEADINGS --- */
-        h1 { font-size: clamp(24px, 5vw, 32px); text-align: center; margin-bottom: 5px; font-weight: 700; background: -webkit-linear-gradient(#fff, #a0aec0); -webkit-background-clip: text; -webkit-text-fill-color: transparent;}
-        .subtitle { text-align: center; font-size: clamp(14px, 3vw, 16px); color: var(--text-muted); margin-bottom: 15px; }
+        /* Calculator Box */
+        .calculator-box { background: var(--card-bg); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.05); border-top: 1px solid rgba(255, 255, 255, 0.1); border-radius: 16px; padding: 30px; box-shadow: 0 15px 35px rgba(0,0,0,0.4); width: 100%; }
 
-        /* --- PREMIUM CALCULATOR BOX --- */
-        .calculator-box {
-            background: var(--card-bg);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            padding: 35px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.4), inset 0 0 0 1px rgba(255,255,255,0.02);
-            width: 100%;
-        }
-
-        .input-group {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: rgba(11, 16, 33, 0.6);
-            border: 1px solid var(--border-color);
-            border-radius: 10px;
-            padding: 16px 20px;
-            margin-bottom: 18px;
-            width: 100%;
-            transition: all 0.3s ease;
-        }
-
-        .input-group:focus-within {
-            border-color: var(--accent-yellow);
-            box-shadow: 0 0 15px var(--glow-color);
-        }
-
+        .input-group { display: flex; justify-content: space-between; align-items: center; background-color: rgba(11, 16, 33, 0.6); border: 1px solid var(--border-color); border-radius: 10px; padding: 15px 20px; margin-bottom: 15px; transition: all 0.3s ease; }
+        .input-group:focus-within { border-color: var(--accent-yellow); box-shadow: 0 0 15px var(--glow-color); }
         .input-group label { font-size: 15px; color: var(--text-muted); flex: 1; font-weight: 500;}
-        
-        .input-group input {
-            background: transparent;
-            border: none;
-            color: var(--accent-yellow);
-            font-size: 20px;
-            font-weight: 700;
-            text-align: right;
-            width: 80px;
-            outline: none;
-        }
+        .input-group input { background: transparent; border: none; color: var(--accent-yellow); font-size: 20px; font-weight: 700; text-align: right; width: 80px; outline: none; }
         .input-group input::placeholder { color: #4a5568; font-weight: 400; font-size: 16px;}
 
-        .btn {
-            width: 100%;
-            background: var(--accent-gradient);
-            color: #0b1021;
-            border: none;
-            padding: 18px;
-            border-radius: 10px;
-            font-size: clamp(16px, 4vw, 18px);
-            font-weight: 800;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 8px;
-            box-shadow: 0 8px 20px rgba(244, 211, 94, 0.25);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        .btn:hover { 
-            transform: translateY(-2px);
-            box-shadow: 0 12px 25px rgba(244, 211, 94, 0.4);
-        }
-        .btn:active { transform: translateY(0); }
+        .btn { width: 100%; background: var(--accent-gradient); color: #0b1021; border: none; padding: 16px; border-radius: 10px; font-size: 16px; font-weight: 800; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 8px 20px rgba(244, 211, 94, 0.25); margin-top: 10px; text-transform: uppercase; }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 12px 25px rgba(244, 211, 94, 0.4); }
 
-        #result {
-            margin-top: 25px;
-            padding: 20px;
-            background-color: rgba(244, 211, 94, 0.08);
-            border: 1px solid var(--accent-yellow);
-            border-radius: 10px;
-            font-size: 16px;
-            color: var(--text-main);
-            text-align: center;
-            display: none;
-            word-wrap: break-word;
-            animation: fadeIn 0.5s ease;
-        }
+        #result { margin-top: 20px; padding: 20px; background-color: rgba(244, 211, 94, 0.08); border: 1px solid var(--accent-yellow); border-radius: 10px; font-size: 16px; color: var(--text-main); text-align: center; display: none; animation: fadeIn 0.5s ease; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
         
-        /* --- SEO CONTENT & FAQ --- */
-        .content-section {
-            background-color: var(--card-bg);
-            backdrop-filter: blur(10px);
-            padding: 35px;
-            border-radius: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            width: 100%;
-        }
-        .content-section h2 { color: var(--accent-yellow); font-size: clamp(18px, 4vw, 22px); margin-bottom: 15px; border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 10px; }
-        .content-section h3 { font-size: clamp(16px, 3.5vw, 18px); margin-top: 20px; margin-bottom: 10px; color: var(--text-main); }
-        .content-section p { font-size: clamp(14px, 3vw, 15px); color: var(--text-muted); margin-bottom: 15px; }
+        /* SEO Content */
+        .content-section { background-color: var(--card-bg); padding: 30px; border-radius: 16px; border: 1px solid rgba(255, 255, 255, 0.05); width: 100%; }
+        .content-section h2 { color: var(--accent-yellow); font-size: 20px; margin-bottom: 15px; border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 10px; }
+        .content-section h3 { font-size: 16px; margin-top: 20px; margin-bottom: 10px; color: var(--text-main); }
+        .content-section p { font-size: 14px; color: var(--text-muted); margin-bottom: 15px; text-align: justify;}
         
-        .faq-item { margin-bottom: 20px; }
-        .faq-item h4 { color: var(--accent-yellow); font-size: 16px; margin-bottom: 5px; }
+        .faq-item { margin-bottom: 15px; }
+        .faq-item h4 { color: var(--accent-yellow); font-size: 15px; margin-bottom: 5px; }
         .faq-item p { margin-bottom: 0; }
 
-        /* --- PREMIUM RELATED TOOLS --- */
-        .related-tools-section {
-            background-color: var(--card-bg);
-            backdrop-filter: blur(10px);
-            padding: 35px;
-            border-radius: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            width: 100%;
-        }
-        .related-tools-section h2 { text-align: center; font-size: clamp(18px, 4vw, 20px); margin-bottom: 25px; color: var(--text-main); }
-        
-        .tools-grid { display: grid; grid-template-columns: 1fr; gap: 15px; }
-        
-        .tool-card { 
-            display: flex; 
-            align-items: center; 
-            background-color: rgba(11, 16, 33, 0.5); 
-            border: 1px solid var(--border-color); 
-            padding: 18px; 
-            border-radius: 12px; 
-            text-decoration: none; 
-            transition: all 0.3s ease; 
-        }
-        .tool-card:hover { 
-            border-color: var(--accent-yellow); 
-            transform: translateY(-4px); 
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3), 0 0 15px var(--glow-color); 
-            background-color: rgba(21, 30, 54, 0.8);
-        }
-        .tool-icon { font-size: 28px; margin-right: 15px; background-color: rgba(244, 211, 94, 0.1); padding: 12px; border-radius: 12px; display: flex; justify-content: center; align-items: center; }
-        .tool-info h3 { font-size: 17px; color: var(--accent-yellow); margin: 0 0 5px 0; font-weight: 700;}
-        .tool-info p { font-size: 13px; color: var(--text-muted); margin: 0; }
+        /* Related Tools */
+        .related-tools-section { width: 100%; margin-top: 10px; }
+        .related-tools-section h3 { text-align: center; font-size: 16px; color: var(--text-muted); margin-bottom: 15px; font-weight: 400;}
+        .tools-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
+        .tool-card { display: flex; align-items: center; background-color: var(--card-bg); border: 1px solid var(--border-color); padding: 15px; border-radius: 12px; text-decoration: none; transition: all 0.3s ease; }
+        .tool-card:hover { border-color: var(--accent-yellow); transform: translateY(-2px); }
+        .tool-icon { font-size: 24px; margin-right: 15px; background-color: rgba(244, 211, 94, 0.1); padding: 10px; border-radius: 10px; }
+        .tool-info h4 { font-size: 15px; color: var(--accent-yellow); margin: 0 0 3px 0; }
+        .tool-info p { font-size: 12px; color: var(--text-muted); margin: 0; }
 
-        /* --- PREMIUM FOOTER --- */
-        footer { 
-            padding: 40px 20px; 
-            font-size: 13px; 
-            color: var(--text-muted); 
-            text-align: center; 
-            width: 100%; 
-            border-top: 1px solid rgba(255, 255, 255, 0.05); 
-            margin-top: 30px; 
-            display: flex; 
-            flex-direction: column; 
-            gap: 15px; 
-            background: rgba(11, 16, 33, 0.8);
-        }
-        
-        .footer-links { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 12px; }
-        .footer-links a { color: var(--text-muted); text-decoration: none; font-weight: 500; transition: 0.3s; }
-        .footer-links a:hover { color: var(--accent-yellow); }
-        .footer-links span { color: var(--text-muted); opacity: 0.3; font-size: 12px; }
+        /* Footer */
+        footer { padding: 30px 20px; font-size: 13px; color: var(--text-muted); text-align: center; width: 100%; margin-top: auto; display: flex; flex-direction: column; gap: 12px; }
+        .footer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; align-items: center; }
+        .footer-links a { color: var(--accent-yellow); text-decoration: none; transition: 0.3s; font-weight: 500;}
+        .footer-links a:hover { color: #ffffff; text-decoration: underline; }
+        .footer-links span { color: var(--text-muted); opacity: 0.5; font-size: 11px;}
 
-        /* --- RESPONSIVE FIXES --- */
-        @media (max-width: 600px) {
-            .navbar { justify-content: center; text-align: center; padding: 15px 10px;}
-            .nav-links { justify-content: center; width: 100%; gap: 8px; }
-            .nav-links a { font-size: 13px; padding: 5px 8px; }
-            .calculator-box, .content-section, .related-tools-section { padding: 20px; }
-        }
+        /* --- RESPONSIVE AD CONTROL (CSS) --- */
+        .desktop-ad { display: none; }
+        .mobile-ad { display: flex; justify-content: center; width: 100%; }
+
         @media (min-width: 768px) {
-            .ad-placeholder { min-height: 90px; }
             .tools-grid { grid-template-columns: 1fr 1fr; }
+            .footer-links { gap: 20px; }
+            .desktop-ad { display: flex; justify-content: center; width: 100%; }
+            .mobile-ad { display: none; }
         }
     </style>
 </head>
 <body>
 
-    <!-- PREMIUM STICKY NAVBAR -->
-    <header class="navbar">
-        <a href="index.html" class="logo-container">
-            <span class="moon">🌙</span>
-            <span class="logo-text">Sleep Calculator</span>
-        </a>
-        <nav class="nav-links">
-            <a href="index.html" class="active">Home</a>
-            <a href="sleep-cycle.html">Sleep Cycle</a>
-            <a href="caffeine.html">Caffeine</a>
-            <a href="nap.html">Nap Time</a>
-            <a href="about.html">About</a>
-            <a href="contact.html">Contact</a>
-        </nav>
-    </header>
-
     <div class="main-container">
 
-        <!-- TOP BANNER AD SLOT -->
-        <div class="ad-placeholder">
-            <!-- YAHAN SIRF BANNER KA CODE PASTE KAREIN -->
-            Adsterra Top Banner Ad
+        <div class="logo-container">
+            <span class="moon">🌙</span>
+            <span class="logo-text">Sleep Debt</span>
+            <span class="moon" style="font-size: 16px; margin-left: 5px;">✨</span>
         </div>
 
-        <!-- MAIN CALCULATOR -->
+        <!-- TOP BANNER AD -->
+        <div class="ad-container">
+            <div class="desktop-ad">
+                <script>
+                  atOptions = { 'key' : 'ef4f7b291c17b1009e33c2dd1269593c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+                </script>
+                <script type="text/javascript" src="https://bauval.org/22/ef4f7b291c17b1009e33c2dd1269593c"></script>
+            </div>
+            <div class="mobile-ad">
+                <script type="text/javascript">
+                  atOptions = { 'key' : 'e58f96be627c4f39aa8b22755f020bce', 'format' : 'iframe', 'height' : 50, 'width' : 320, 'params' : {} };
+                </script>
+                <script type="text/javascript" src="https://bauval.org/22/e58f96be627c4f39aa8b22755f020bce"></script>
+            </div>
+        </div>
+
         <h1>Calculate Your Total Sleep Debt</h1>
-        <p class="subtitle">Feeling exhausted? Find out exactly how many hours of sleep you owe your body.</p>
+        <p class="subtitle">Find out exactly how many hours of sleep you owe your body.</p>
 
         <div class="calculator-box">
             <div class="input-group">
-                <label for="idealSleep">Ideal Sleep (Hours/Night)</label>
+                <label for="idealSleep">Ideal Sleep (Hrs)</label>
                 <input type="number" id="idealSleep" value="8" min="1" max="24">
             </div>
-
             <div class="input-group">
-                <label for="actualSleep">Actual Sleep (Hours/Night)</label>
+                <label for="actualSleep">Actual Sleep (Hrs)</label>
                 <input type="number" id="actualSleep" placeholder="e.g. 6" min="0" max="24">
             </div>
-
             <div class="input-group">
                 <label for="days">Number of Days</label>
                 <input type="number" id="days" placeholder="e.g. 7" min="1">
             </div>
-
-            <button class="btn" onclick="calculateDebt()">Calculate Sleep Debt 🧮</button>
-
+            <button class="btn" onclick="calculateDebt()">Calculate Now 🧮</button>
             <div id="result"></div>
+        </div>
+
+        <!-- MIDDLE NATIVE BANNER AD -->
+        <div class="ad-container" style="min-height: 100px; margin: 10px 0;">
+            <script async="async" data-cfasync="false" src="https://bauval.org/21/3ed04116e4f609f3aca33e7142cf98f5"></script>
+            <div id="container-3ed04116e4f609f3aca33e7142cf98f5"></div>
         </div>
 
         <!-- SEO CONTENT -->
@@ -347,6 +176,14 @@
             <p>The best way is to gradually add 1-2 extra hours of sleep per night and take short 20-minute power naps during the day. Check out our related tools below to plan your perfect sleep schedule.</p>
         </div>
 
+                <!-- MIDDLE 300x250 BANNER AD -->
+        <div class="ad-container" style="min-height: 250px; margin: 10px 0;">
+            <script type="text/javascript">
+              atOptions = { 'key' : '2fabe4675181edafae77f4c3b398cf8d', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} };
+            </script>
+            <script type="text/javascript" src="https://bauval.org/22/2fabe4675181edafae77f4c3b398cf8d"></script>
+        </div>
+
         <!-- FAQ SECTION -->
         <div class="content-section">
             <h2>Frequently Asked Questions</h2>
@@ -356,7 +193,7 @@
             </div>
             <div class="faq-item">
                 <h4>Can I catch up on lost sleep on the weekend?</h4>
-                <p>Sleeping in on weekends can help recover some energy, but it disrupts your circadian rhythm. It is better to maintain a consistent schedule and use our <a href="sleep-cycle.html" target="_blank" style="color:var(--accent-yellow); text-decoration: none;">Sleep Cycle Calculator</a> to set a proper bedtime.</p>
+                <p>Sleeping in on weekends can help recover some energy, but it disrupts your circadian rhythm. It is better to maintain a consistent schedule and use our <a href="sleep-cycle.html" target="_blank" style="color:var(--accent-yellow);">Sleep Cycle Calculator</a> to set a proper bedtime.</p>
             </div>
             <div class="faq-item">
                 <h4>How much sleep debt is too much?</h4>
@@ -364,57 +201,66 @@
             </div>
         </div>
 
-        <!-- PREMIUM RELATED TOOLS -->
+        <!-- RELATED TOOLS -->
         <div class="related-tools-section">
-            <h2>Explore Other Sleep Tools</h2>
+            <h3>Explore Other Tools</h3>
             <div class="tools-grid">
                 <a href="sleep-cycle.html" target="_blank" rel="noopener noreferrer" class="tool-card">
                     <div class="tool-icon">⏰</div>
                     <div class="tool-info">
-                        <h3>Sleep Cycle Calculator</h3>
-                        <p>Calculate best bedtime and wake-up time.</p>
+                        <h4>Sleep Cycle</h4>
+                        <p>Best bedtime & wake-up time.</p>
                     </div>
                 </a>
                 <a href="caffeine.html" target="_blank" rel="noopener noreferrer" class="tool-card">
                     <div class="tool-icon">☕</div>
                     <div class="tool-info">
-                        <h3>Caffeine Half-Life Calculator</h3>
-                        <p>Will your evening coffee ruin your sleep tonight?</p>
+                        <h4>Caffeine Tracker</h4>
+                        <p>Will coffee ruin your sleep?</p>
                     </div>
                 </a>
                 <a href="nap.html" target="_blank" rel="noopener noreferrer" class="tool-card">
                     <div class="tool-icon">😴</div>
                     <div class="tool-info">
-                        <h3>Best Nap Time Calculator</h3>
-                        <p>Find the perfect power nap duration for energy.</p>
+                        <h4>Nap Time</h4>
+                        <p>Perfect power nap duration.</p>
                     </div>
                 </a>
             </div>
         </div>
 
-        <!-- BOTTOM BANNER AD SLOT -->
-        <div class="ad-placeholder">
-            <!-- YAHAN SIRF BANNER KA CODE PASTE KAREIN -->
-            Adsterra Bottom Banner Ad
+        <!-- BOTTOM BANNER AD -->
+        <div class="ad-container">
+            <div class="desktop-ad">
+                <script>
+                  atOptions = { 'key' : 'ef4f7b291c17b1009e33c2dd1269593c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+                </script>
+                <script type="text/javascript" src="https://bauval.org/22/ef4f7b291c17b1009e33c2dd1269593c"></script>
+            </div>
+            <div class="mobile-ad">
+                <script type="text/javascript">
+                  atOptions = { 'key' : 'e58f96be627c4f39aa8b22755f020bce', 'format' : 'iframe', 'height' : 50, 'width' : 320, 'params' : {} };
+                </script>
+                <script type="text/javascript" src="https://bauval.org/22/e58f96be627c4f39aa8b22755f020bce"></script>
+            </div>
         </div>
 
-        <!-- PREMIUM FOOTER -->
-        <footer>
-            <p>© 2026 SleepDebtCalculator.online. All rights reserved.</p>
-            <div class="footer-links">
-                <a href="index.html">Home</a>
-                <span>|</span>
-                <a href="about.html">About Us</a>
-                <span>|</span>
-                <a href="privacy.html">Privacy Policy</a>
-                <span>|</span>
-                <a href="terms.html">Terms of Service</a>
-                <span>|</span>
-                <a href="contact.html">Contact Us</a>
-            </div>
-        </footer>
-
     </div> <!-- End Main Container -->
+
+    <!-- FOOTER -->
+    <footer>
+        <p>© 2026 SleepDebtCalculator.online. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="index.html">Home</a> <span>|</span>
+            <a href="sleep-cycle.html">Sleep Cycle</a> <span>|</span>
+            <a href="caffeine.html">Caffeine</a> <span>|</span>
+            <a href="nap.html">Nap Time</a> <span>|</span>
+            <a href="about.html">About Us</a> <span>|</span>
+            <a href="privacy.html">Privacy Policy</a> <span>|</span>
+            <a href="terms.html">Terms of Service</a> <span>|</span>
+            <a href="contact.html">Contact Us</a>
+        </div>
+    </footer>
 
     <!-- JAVASCRIPT LOGIC -->
     <script>
@@ -438,28 +284,21 @@
                 resultDiv.style.backgroundColor = 'rgba(40, 167, 69, 0.1)';
                 resultDiv.style.borderColor = '#28a745';
                 resultDiv.style.color = '#28a745';
-                resultDiv.innerHTML = 'Great! You have no sleep debt. Keep it up! 🎉';
+                resultDiv.innerHTML = 'Great! You have no sleep debt. 🎉';
                 return;
             }
 
             let totalDebt = (ideal - actual) * days;
-
             resultDiv.style.display = 'block';
             resultDiv.style.backgroundColor = 'rgba(244, 211, 94, 0.1)';
             resultDiv.style.borderColor = '#f4d35e';
             resultDiv.style.color = '#f4d35e';
-            resultDiv.innerHTML = `Your total sleep debt is <br><span style="font-size: 32px; font-weight: 800;">${totalDebt} hours</span><br> over ${days} days.`;
+            resultDiv.innerHTML = `Total Sleep Debt: <br><span style="font-size: 32px; font-weight: 800; color:#fff;">${totalDebt} hours</span><br> over ${days} days.`;
         }
     </script>
 
-    <!-- ============================================== -->
-    <!-- ADSTERRA BACKGROUND SCRIPTS (POPUNDER & SOCIAL BAR) -->
-    <!-- ============================================== -->
-    
-    <!-- Social Bar Script -->
+    <!-- BACKGROUND SCRIPTS (POPUNDER & SOCIAL BAR) -->
     <script data-cfasync="false" src="https://bauval.org/14/c2e8b6a0744b11045176ac8027b166fe"></script>
-    
-    <!-- Popunder Script -->
     <script data-cfasync="false" src="https://abscloud.org/1/7b543158f36ec26f083d375b2a6547ec"></script>
 
 </body>
