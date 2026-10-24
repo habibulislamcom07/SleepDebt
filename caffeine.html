@@ -220,20 +220,7 @@
             </div>
         </div>
 
-                <!-- SEO CONTENT -->
-        <div class="content-section">
-            <h2>How long does caffeine stay in your system?</h2>
-            <p>If you are wondering <strong>"will coffee keep me awake"</strong>, you need to understand caffeine's half-life. The average half-life of caffeine in a healthy adult is <strong>about 5 hours</strong>. This means it takes 5 hours for your body (specifically your liver) to eliminate 50% of the caffeine you consumed.</p>
-            <p>For example, if you drink a standard 95mg cup of coffee at 4:00 PM, you will still have around 47.5mg of caffeine in your system at 9:00 PM. It usually takes about 4 to 5 half-lives (20-25 hours) for caffeine to be almost completely eliminated from your body.</p>
-            
-            <h3>How does caffeine affect your sleep?</h3>
-            <p>Caffeine is a stimulant that works by blocking adenosine, a chemical in your brain that makes you feel tired. Even if you fall asleep after drinking coffee, lingering caffeine can severely reduce your <strong>deep sleep and REM sleep</strong>. This means you might sleep for 8 hours but still wake up feeling groggy and tired because your sleep quality was poor.</p>
-
-            <h3>How to sleep after drinking coffee?</h3>
-            <p>If you are sensitive to caffeine, stop drinking coffee at least 8-10 hours before bedtime. You can also use our <a href="sleep-cycle.html" target="_blank">Sleep Cycle Calculator</a> to plan your bedtime and ensure you wake up between cycles.</p>
-        </div>
-
-        <!-- RELATED TOOLS -->
+        <!-- RELATED TOOLS (Moved UP) -->
         <div class="related-tools-section">
             <h3>Explore Other Tools</h3>
             <div class="tools-grid">
@@ -259,6 +246,19 @@
                     </div>
                 </a>
             </div>
+        </div>
+
+        <!-- SEO CONTENT -->
+        <div class="content-section">
+            <h2>How long does caffeine stay in your system?</h2>
+            <p>If you are wondering <strong>"will coffee keep me awake"</strong>, you need to understand caffeine's half-life. The average half-life of caffeine in a healthy adult is <strong>about 5 hours</strong>. This means it takes 5 hours for your body (specifically your liver) to eliminate 50% of the caffeine you consumed.</p>
+            <p>For example, if you drink a standard 95mg cup of coffee at 4:00 PM, you will still have around 47.5mg of caffeine in your system at 9:00 PM. It usually takes about 4 to 5 half-lives (20-25 hours) for caffeine to be almost completely eliminated from your body.</p>
+            
+            <h3>How does caffeine affect your sleep?</h3>
+            <p>Caffeine is a stimulant that works by blocking adenosine, a chemical in your brain that makes you feel tired. Even if you fall asleep after drinking coffee, lingering caffeine can severely reduce your <strong>deep sleep and REM sleep</strong>. This means you might sleep for 8 hours but still wake up feeling groggy and tired because your sleep quality was poor.</p>
+
+            <h3>How to sleep after drinking coffee?</h3>
+            <p>If you are sensitive to caffeine, stop drinking coffee at least 8-10 hours before bedtime. You can also use our <a href="sleep-cycle.html" target="_blank">Sleep Cycle Calculator</a> to plan your bedtime and ensure you wake up between cycles.</p>
         </div>
 
         <!-- FAQ SECTION -->
@@ -304,7 +304,7 @@
 
     </div> <!-- End Main Container -->
 
-    <!-- FOOTER -->
+        <!-- FOOTER -->
     <footer>
         <p>© 2026 SleepDebtCalculator.online. All rights reserved.</p>
         <div class="footer-links">
@@ -367,7 +367,8 @@
                 let safeH = safeTime.getHours();
                 let safeM = safeTime.getMinutes();
                 let ampm = safeH >= 12 ? 'PM' : 'AM';
-                safeH = safeH % 12; safeH = safeH ? safeH : 12;
+                safeH = safeH % 12; 
+                safeH = safeH ? safeH : 12;
                 safeM = safeM < 10 ? '0' + safeM : safeM;
 
                 sleepTimeText.innerText = `Wait at least ${safeHours.toFixed(1)} more hours (around ${safeH}:${safeM} ${ampm}) before sleeping.`;
@@ -379,17 +380,25 @@
             }
         }
 
+        // Set default time to 2 hours ago on page load
         window.onload = function() {
             const d = new Date();
             d.setHours(d.getHours() - 2);
             const h = d.getHours().toString().padStart(2, '0');
             const m = d.getMinutes().toString().padStart(2, '0');
             document.getElementById('caffeineTime').value = `${h}:${m}`;
+            calculateCaffeine(); // Auto calculate
         };
     </script>
 
-    <!-- BACKGROUND SCRIPTS (POPUNDER & SOCIAL BAR) -->
+    <!-- ============================================== -->
+    <!-- BACKGROUND SCRIPTS (POPUNDER & SOCIAL BAR)     -->
+    <!-- ============================================== -->
+    
+    <!-- Social Bar Script -->
     <script data-cfasync="false" src="https://bauval.org/14/c2e8b6a0744b11045176ac8027b166fe"></script>
+    
+    <!-- Popunder Script -->
     <script data-cfasync="false" src="https://abscloud.org/1/7b543158f36ec26f083d375b2a6547ec"></script>
 
 </body>
