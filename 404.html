@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>404 - Page Not Found | Sleep Debt Calculator</title>
+    <meta name="robots" content="noindex, follow">
+
+    <style>
+        /* --- SAME DARK THEME CSS --- */
+        :root {
+            --bg-color: #0b1021; 
+            --card-bg: #151e36;  
+            --text-main: #ffffff;
+            --text-muted: #a0aec0;
+            --accent-yellow: #f4d35e;
+            --border-color: #2a3b5c;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+
+        body { background-color: var(--bg-color); color: var(--text-main); display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 20px; text-align: center; }
+
+        .container {
+            background-color: var(--card-bg);
+            padding: 50px 30px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .moon { color: var(--accent-yellow); font-size: 60px; margin-bottom: 20px; display: inline-block; animation: float 3s ease-in-out infinite; }
+        @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-15px); } 100% { transform: translateY(0px); } }
+
+        h1 { font-size: 60px; color: var(--accent-yellow); margin-bottom: 10px; }
+        h2 { font-size: 24px; margin-bottom: 20px; }
+        p { font-size: 16px; color: var(--text-muted); margin-bottom: 30px; }
+
+        .ad-placeholder { width: 100%; min-height: 90px; background-color: var(--bg-color); border: 1px dashed var(--border-color); display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: 12px; margin-bottom: 30px; border-radius: 8px; }
+
+        .btn { background-color: var(--accent-yellow); color: var(--bg-color); border: none; padding: 15px 30px; border-radius: 8px; font-size: 18px; font-weight: bold; cursor: pointer; text-decoration: none; display: inline-block; transition: 0.3s; }
+        .btn:hover { background-color: #e0c04b; transform: scale(1.05); }
+
+        footer { margin-top: 40px; font-size: 12px; color: var(--text-muted); }
+        footer a { color: var(--accent-yellow); text-decoration: none; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="moon">🌙</div>
+        
+        <h1>404</h1>
+        <h2>Oops! Page Not Found</h2>
+        <p>Looks like you've wandered off into deep sleep. The page you are looking for doesn't exist or has been moved.</p>
+
+        <!-- Adsterra Banner for 404 Page -->
+        <div class="ad-placeholder">
+            <!-- Adsterra Code Here -->
+            Adsterra Banner Ad
+        </div>
+
+        <a href="index.html" class="btn">Wake Up & Go Home 🏠</a>
+
+        <footer>
+            <p>© 2026 SleepDebtCalculator.online | <a href="privacy.html">Privacy Policy</a></p>
+        </footer>
+    </div>
+
+</body>
+</html>
