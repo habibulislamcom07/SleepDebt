@@ -7,7 +7,7 @@
     <!-- SEO: Meta Tags -->
     <title>About Us - Sleep Debt Calculator</title>
     <meta name="description" content="Learn about SleepDebtCalculator.online. Our mission is to help you fix your sleep schedule, overcome sleep deprivation, and improve your health with free, science-backed tools.">
-    <meta name="keywords" content="about sleep debt calculator, sleep health tools, fix sleep schedule, why sleep is important">
+    <meta name="keywords" content="about sleep debt calculator, sleep health tools, fix sleep schedule, why sleep is important, sleep deprivation effects">
     <meta name="robots" content="noindex, follow">
 
     <style>
@@ -38,24 +38,64 @@
         /* Main Content Section */
         .content-section { background-color: var(--card-bg); padding: 40px; border-radius: 12px; border: 1px solid var(--border-color); width: 100%; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
         
-        .content-section h1 { color: var(--accent-yellow); font-size: 28px; margin-bottom: 20px; border-bottom: 1px solid var(--border-color); padding-bottom: 10px; text-align: center; }
+        .content-section h1 { color: var(--accent-yellow); font-size: 32px; margin-bottom: 20px; border-bottom: 1px solid var(--border-color); padding-bottom: 10px; text-align: center; }
         .content-section h2 { color: var(--text-main); font-size: 22px; margin-top: 35px; margin-bottom: 15px; }
         .content-section h3 { color: var(--text-main); font-size: 18px; margin-top: 25px; margin-bottom: 10px; }
-        .content-section p { font-size: 15px; color: var(--text-muted); margin-bottom: 15px; }
+        .content-section p { font-size: 15px; color: var(--text-muted); margin-bottom: 15px; text-align: justify; }
         .content-section ul { margin-left: 20px; color: var(--text-muted); font-size: 15px; margin-bottom: 15px; }
         .content-section li { margin-bottom: 8px; }
-        .content-section a { color: var(--accent-yellow); text-decoration: none; }
+        .content-section a { color: var(--accent-yellow); text-decoration: none; font-weight: bold; }
         .content-section a:hover { text-decoration: underline; }
 
         /* Back Button */
         .btn { background-color: var(--accent-yellow); color: var(--bg-color); border: none; padding: 12px 25px; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; text-decoration: none; display: inline-block; margin-bottom: 20px; transition: 0.3s; }
         .btn:hover { background-color: #e0c04b; }
 
-        /* Footer */
-        footer { padding: 30px 20px; font-size: 13px; color: var(--text-muted); text-align: center; width: 100%; border-top: 1px solid var(--border-color); margin-top: 20px; display: flex; flex-direction: column; gap: 10px; }
-        footer a { color: var(--accent-yellow); text-decoration: none; margin: 0 10px; }
+        /* --- NAYA FOOTER CSS --- */
+        footer { 
+            padding: 30px 20px; 
+            font-size: 13px; 
+            color: var(--text-muted); 
+            text-align: center; 
+            width: 100%; 
+            border-top: 1px solid var(--border-color); 
+            margin-top: 20px; 
+            display: flex; 
+            flex-direction: column; 
+            gap: 12px; 
+        }
+        
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
 
-        @media (max-width: 600px) { .content-section { padding: 25px; } }
+        .footer-links a { 
+            color: var(--accent-yellow); 
+            text-decoration: none; 
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+
+        .footer-links span {
+            color: var(--text-muted);
+            opacity: 0.5;
+            font-size: 12px;
+        }
+
+        @media (max-width: 600px) { 
+            .content-section { padding: 25px; } 
+            .content-section h1 { font-size: 26px; }
+            .content-section p { text-align: left; }
+        }
     </style>
 </head>
 <body>
@@ -77,61 +117,68 @@
             
             <h1>About Us</h1>
             
-            <p>Welcome to <strong>SleepDebtCalculator.online</strong>, your ultimate digital companion for achieving better sleep and a healthier life.</p>
+            <p>Welcome to <strong>SleepDebtCalculator.online</strong>, your ultimate digital companion for achieving better sleep and a healthier life. We are a dedicated team of sleep enthusiasts, developers, and health-conscious individuals who believe that good health starts with a good night's rest.</p>
 
-            <h2>Our Mission</h2>
-            <p>In today's fast-paced, always-connected world, sleep is often the first thing we sacrifice. We stay up late working, scrolling through social media, or watching one more episode, not realizing the massive toll it takes on our physical and mental health.</p>
-            <p>Our mission is simple: <strong>To help you understand your sleep patterns, overcome sleep deprivation, and fix your sleep schedule using science-backed, free tools.</strong> We believe that quality sleep is a fundamental right, not a luxury.</p>
+            <h2>Our Mission: Ending the Sleep Deprivation Epidemic</h2>
+            <p>In today's fast-paced, always-connected world, sleep is often the first thing we sacrifice. We stay up late working, scrolling through social media, or watching "just one more episode," not realizing the massive toll it takes on our physical and mental health. We live in a culture that glorifies "hustle" and often dismisses sleep as a luxury.</p>
+            <p>Our mission is simple: <strong>To help you understand your sleep patterns, overcome sleep deprivation, and fix your sleep schedule using science-backed, free tools.</strong> We want to make sleep health accessible to everyone, regardless of their location or budget.</p>
 
-            <h2>Why Sleep Debt Matters</h2>
-            <p>You might have heard the term "Sleep Debt." Just like financial debt, if you don't get the required hours of sleep (usually 7-9 hours for adults), your body builds a deficit. This sleep debt accumulates over time and leads to:</p>
+            <h2>Why Sleep Debt Matters More Than You Think</h2>
+            <p>You might have heard the term "Sleep Debt." Just like financial debt, if you don't get the required hours of sleep (usually 7-9 hours for adults), your body builds a deficit. This sleep debt accumulates over time and leads to severe consequences. It is not just about feeling tired; chronic sleep deprivation is linked to:</p>
             <ul>
-                <li>Chronic fatigue and low energy.</li>
-                <li>Poor focus, memory, and cognitive function.</li>
-                <li>Weakened immune system.</li>
-                <li>Increased risk of anxiety, depression, and heart disease.</li>
+                <li><strong>Cognitive Decline:</strong> Poor focus, memory loss, and decreased problem-solving skills.</li>
+                <li><strong>Weakened Immunity:</strong> Increased susceptibility to colds, flu, and other infections.</li>
+                <li><strong>Mental Health Issues:</strong> Higher risks of anxiety, depression, and mood swings.</li>
+                <li><strong>Physical Health Risks:</strong> Increased risk of heart disease, diabetes, and weight gain.</li>
             </ul>
-            <p>We built this platform to give you a reality check. With our <a href="index.html">Sleep Debt Calculator</a>, you can see exactly how many hours of rest you owe your body.</p>
+            <p>We built this platform to give you a reality check. With our <a href="index.html">Sleep Debt Calculator</a>, you can instantly see exactly how many hours of rest you owe your body and take actionable steps to recover.</p>
 
             <h2>The Science Behind Our Tools</h2>
-            <p>We don't guess; we calculate. Our tools are based on established sleep science and chronobiology:</p>
+            <p>We don't guess; we calculate. Our tools are based on established sleep science, chronobiology, and the latest research in sleep medicine.</p>
             
             <h3>1. The 90-Minute Sleep Cycle</h3>
-            <p>Human sleep is not a continuous state. It goes through cycles of roughly 90 minutes (moving from light sleep to deep sleep, and then REM sleep). Waking up in the middle of deep sleep causes "Sleep Inertia" (grogginess). Our <a href="sleep-cycle.html">Sleep Cycle Calculator</a> works backward from your wake-up time to ensure your alarm rings between cycles, leaving you refreshed.</p>
+            <p>Human sleep is not a continuous state. It goes through cycles of roughly 90 minutes (moving from light sleep to deep sleep, and then REM sleep). Waking up in the middle of deep sleep causes "Sleep Inertia" (that terrible groggy feeling). Our <a href="sleep-cycle.html">Sleep Cycle Calculator</a> works backward from your wake-up time to ensure your alarm rings between cycles, leaving you refreshed and energized.</p>
 
-            <h3>2. Caffeine Half-Life</h3>
-            <p>Caffeine is a stimulant that blocks sleep-inducing chemicals in your brain. It takes about 5 hours for your body to eliminate half the caffeine you consume. Our <a href="caffeine.html">Caffeine Calculator</a> helps you figure out if your evening coffee will still be in your system at bedtime.</p>
+            <h3>2. The Caffeine Half-Life</h3>
+            <p>Caffeine is a stimulant that blocks sleep-inducing chemicals in your brain. It takes about 5 hours for your body to eliminate just half the caffeine you consume. Our <a href="caffeine.html">Caffeine Calculator</a> helps you figure out if your evening coffee will still be circulating in your system at bedtime, ruining your deep sleep.</p>
 
-            <h3>3. Power Napping</h3>
-            <p>A 20-minute nap can boost alertness without the grogginess of deep sleep, while a 90-minute nap can complete a full cycle. Our <a href="nap.html">Nap Time Calculator</a> helps you plan the perfect nap.</p>
+            <h3>3. The Art of Power Napping</h3>
+            <p>A 20-minute nap can boost alertness without the grogginess of deep sleep, while a 90-minute nap can complete a full cycle and boost creativity. Our <a href="nap.html">Nap Time Calculator</a> helps you plan the perfect nap duration so you wake up on the right side of the bed.</p>
 
-            <h2>Why Choose Us?</h2>
+            <h2>Why Choose SleepDebtCalculator.online?</h2>
             <ul>
-                <li><strong>100% Free:</strong> All our tools are completely free to use, with no hidden paywalls.</li>
-                <li><strong>No Registration Required:</strong> We respect your time. Just open the tool and get your answer instantly.</li>
-                <li><strong>Privacy First:</strong> Your data is never saved on our servers. All calculations happen locally in your browser.</li>
-                <li><strong>Mobile Friendly:</strong> Designed to work flawlessly on your phone, tablet, or desktop.</li>
+                <li><strong>100% Free:</strong> All our tools are completely free to use, with no hidden paywalls, subscriptions, or required sign-ups.</li>
+                <li><strong>Privacy First:</strong> Your data is never saved on our servers. All calculations happen locally in your browser. We don't even ask for your email.</li>
+                <li><strong>Mobile & Desktop Friendly:</strong> Designed to work flawlessly on your phone, tablet, or computer.</li>
+                <li><strong>Lightning Fast:</strong> Built with lightweight HTML, CSS, and JavaScript. No heavy frameworks, just instant results.</li>
             </ul>
 
             <h2>Get in Touch</h2>
-            <p>We are constantly working to add new tools and improve the user experience. If you have any feedback, suggestions, or found a bug, we would love to hear from you. Please visit our <a href="contact.html">Contact Us</a> page or email us directly at <strong>contact@sleepdebtcalculator.online</strong>.</p>
+            <p>We are constantly working to add new tools and improve the user experience. If you have any feedback, suggestions, or found a bug, we would love to hear from you. Your feedback helps us make this platform better for everyone.</p>
+            <p>Please visit our <a href="contact.html">Contact Us</a> page or email us directly at <strong>contact@sleepdebtcalculator.online</strong>.</p>
             
-            <p style="text-align: center; margin-top: 30px; font-style: italic;">"Sleep is the golden chain that ties health and our bodies together." – Thomas Dekker</p>
+            <p style="text-align: center; margin-top: 40px; font-style: italic; color: var(--accent-yellow);">"Sleep is the golden chain that ties health and our bodies together." – Thomas Dekker</p>
         </div>
 
         <!-- Adsterra Bottom Banner -->
         <div class="ad-placeholder">Adsterra Bottom Banner Ad</div>
 
-        <!-- Footer -->
+        <!-- NAYA FOOTER START -->
         <footer>
             <p>© 2026 SleepDebtCalculator.online. All rights reserved.</p>
-            <div>
-                <a href="index.html">Home</a> | 
-                <a href="privacy.html">Privacy Policy</a> | 
-                <a href="terms.html">Terms of Service</a> | 
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <span>|</span>
+                <a href="about.html">About Us</a>
+                <span>|</span>
+                <a href="privacy.html">Privacy Policy</a>
+                <span>|</span>
+                <a href="terms.html">Terms of Service</a>
+                <span>|</span>
                 <a href="contact.html">Contact Us</a>
             </div>
         </footer>
+        <!-- NAYA FOOTER END -->
     </div>
 
 </body>
