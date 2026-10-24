@@ -1,1516 +1,386 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
-  <!-- ============================================================
-       PHASE 1/8 — SEO HEAD, SCHEMA & MONETAG SETUP
-       File: index.html
-       Brand: Sleep Debt Calculator | Domain: sleepdebtcalculator.online
-       ============================================================ -->
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO: Long-Tail Keywords & Meta Tags -->
+    <title>Sleep Debt Calculator | How much sleep do I owe?</title>
+    <meta name="description" content="Use our free Sleep Debt Calculator to find out exactly how many hours of sleep you owe your body. Learn how to calculate sleep debt, its effects, and how to recover.">
+    <meta name="keywords" content="sleep debt calculator, how to calculate sleep debt, sleep deficit calculator, sleep calculator, how much sleep do i need, sleep deprivation effects, recover from sleep debt">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://sleepdebtcalculator.online/">
 
-  <!-- Primary SEO Meta -->
-  <title>Sleep Debt Calculator | Fix Your Sleep Deficit &amp; Recover Faster</title>
-  <meta name="description" content="Calculate your exact sleep debt based on scientific 8-hour guidelines. Learn how to recover from sleep deprivation, improve sleep cycles, and fix your schedule." />
-  <meta name="keywords" content="sleep debt calculator, how to calculate sleep debt, sleep deprivation recovery, sleep cycle calculator, how much sleep do i need, fix sleep schedule" />
-  <meta name="author" content="Sleep Health Research Team" />
-  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-  <meta name="theme-color" content="#4f46e5" />
-  
-  <!-- Canonical -->
-  <link rel="canonical" href="https://sleepdebtcalculator.online/" />
-
-  <!-- Open Graph -->
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="Sleep Debt Calculator" />
-  <meta property="og:title" content="Sleep Debt Calculator | Fix Your Sleep Deficit" />
-  <meta property="og:description" content="Calculate your exact sleep debt. Scientifically backed tools to help you recover from sleep deprivation." />
-  <meta property="og:url" content="https://sleepdebtcalculator.online/" />
-  <meta property="og:image" content="https://sleepdebtcalculator.online/assets/og/home.png" />
-
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Sleep Debt Calculator | Sleep Health Hub" />
-  <meta name="twitter:description" content="Calculate your sleep debt and find tools to recover faster." />
-  <meta name="twitter:image" content="https://sleepdebtcalculator.online/assets/og/home.png" />
-
-  <!-- Favicon -->
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%231e1b4b'/%3E%3Cpath d='M50 20 A30 30 0 1 0 80 50 A25 25 0 0 1 50 20 Z' fill='%23818cf8'/%3E%3C/svg%3E" />
-  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png" />
-
-  <!-- Fonts & Tailwind -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            // Sleep Theme: Calming Indigos and Slate
-            brand: { 50: '#eef2ff', 100: '#e0e7ff', 200: '#c7d2fe', 300: '#a5b4fc', 400: '#818cf8', 500: '#6366f1', 600: '#4f46e5', 700: '#4338ca', 800: '#3730a3', 900: '#312e81' },
-            ink: { 700: '#334155', 800: '#1e293b', 900: '#0f172a', 950: '#080f1e' }
-          },
-          fontFamily: {
-            display: ['"Plus Jakarta Sans"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-            sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif']
-          },
-          boxShadow: {
-            glow: '0 0 0 1px rgba(99,102,241,0.16), 0 18px 45px -18px rgba(99,102,241,0.55)',
-            card: '0 1px 2px rgba(15,23,42,0.04), 0 12px 32px -12px rgba(15,23,42,0.16)'
-          }
+    <style>
+        /* --- CSS STYLES --- */
+        :root {
+            --bg-color: #0b1021;
+            --card-bg: #121a2f;
+            --text-main: #ffffff;
+            --text-muted: #a0b3c6;
+            --accent-yellow: #f4d35e;
+            --border-color: #2a3b5c;
         }
-      }
-    };
-  </script>
 
-  <style>
-    body { font-family: 'Inter', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
-    .font-display { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
-    .text-gradient { background: linear-gradient(100deg, #6366f1 0%, #818cf8 40%, #4f46e5 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
-    .hero-mesh { background: radial-gradient(900px 420px at 12% -10%, rgba(99,102,241,0.25), transparent 62%), radial-gradient(700px 380px at 92% 0%, rgba(129,140,248,0.15), transparent 60%), linear-gradient(180deg, #0f172a 0%, #1e1b4b 62%, #0f172a 100%); }
-    
-    .nav-link { position: relative; }
-    .nav-link::after { content: ''; position: absolute; left: 0; bottom: -6px; height: 2px; width: 0; background: linear-gradient(90deg, #6366f1, #818cf8); border-radius: 2px; transition: width .3s ease; }
-    .nav-link:hover::after { width: 100%; }
-    
-    .bento-tile { transition: transform .28s cubic-bezier(.2,.8,.2,1), box-shadow .28s ease, border-color .28s ease; }
-    .bento-tile:hover { transform: translateY(-4px); box-shadow: 0 22px 48px -22px rgba(15,23,42,0.32); border-color: rgba(99,102,241,0.45); }
-  </style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
 
-  <!-- ============================================================
-       MONETAG SDK INTEGRATION
-       ============================================================ -->
-  <!-- REPLACE WITH YOUR ACTUAL MONETAG ZONE & SDK IDs -->
-  <script src="//libtl.com/sdk.js" data-zone="YOUR_ZONE_ID" data-sdk="YOUR_SDK_ID"></script>
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
 
-  <!-- ================= JSON-LD Schema ================= -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebSite",
-        "@id": "https://sleepdebtcalculator.online/#website",
-        "url": "https://sleepdebtcalculator.online/",
-        "name": "Sleep Debt Calculator",
-        "description": "Scientific sleep debt calculators and recovery tools.",
-        "inLanguage": "en",
-        "publisher": { "@id": "https://sleepdebtcalculator.online/#organization" }
-      },
-      {
-        "@type": "Organization",
-        "@id": "https://sleepdebtcalculator.online/#organization",
-        "name": "Sleep Debt Calculator",
-        "url": "https://sleepdebtcalculator.online",
-        "email": "contact@sleepdebtcalculator.online",
-        "description": "Independent health publisher focused on sleep science, sleep debt recovery, and circadian rhythm tools."
-      },
-      {
-        "@type": "WebPage",
-        "@id": "https://sleepdebtcalculator.online/#webpage",
-        "url": "https://sleepdebtcalculator.online/",
-        "name": "Sleep Debt Calculator | Fix Your Sleep Deficit",
-        "isPartOf": { "@id": "https://sleepdebtcalculator.online/#website" },
-        "about": { "@id": "https://sleepdebtcalculator.online/#organization" },
-        "datePublished": "2024-05-01",
-        "dateModified": "2026-10-20",
-        "inLanguage": "en"
-      }
-    ]
-  }
-  </script>
+        /* Logo Header */
+        .logo-container {
+            text-align: center;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+        .logo-text { font-size: 26px; font-weight: bold; }
+        .moon { color: var(--accent-yellow); font-size: 32px; }
+        .stars { color: var(--text-muted); font-size: 14px; }
+
+        /* Adsterra Placeholders */
+        .ad-placeholder {
+            width: 100%;
+            max-width: 728px;
+            height: 90px;
+            background-color: var(--card-bg);
+            border: 1px dashed var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            font-size: 12px;
+            margin: 15px 0;
+            text-align: center;
+        }
+
+        /* Main Container */
+        .main-container {
+            width: 95%;
+            max-width: 600px;
+            padding: 10px;
+        }
+
+        h1 { font-size: 22px; text-align: center; margin-bottom: 5px; }
+        .subtitle { text-align: center; font-size: 14px; color: var(--text-muted); margin-bottom: 25px; }
+
+        /* Calculator Box */
+        .calculator-box {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        .input-group {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+
+        .input-group label { font-size: 15px; color: var(--text-muted); }
+        
+        .input-group input {
+            background: transparent;
+            border: none;
+            color: var(--text-main);
+            font-size: 18px;
+            font-weight: bold;
+            text-align: right;
+            width: 80px;
+            outline: none;
+        }
+
+        .btn {
+            width: 100%;
+            background-color: var(--accent-yellow);
+            color: var(--bg-color);
+            border: none;
+            padding: 16px;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+        .btn:hover { background-color: #e0c04b; }
+
+        #result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: rgba(244, 211, 94, 0.1);
+            border: 1px solid var(--accent-yellow);
+            border-radius: 8px;
+            font-size: 16px;
+            color: var(--accent-yellow);
+            text-align: center;
+            display: none;
+        }
+        
+        /* SEO Content Styling */
+        .content-section {
+            margin-top: 30px;
+            background-color: var(--card-bg);
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+        .content-section h2 { color: var(--accent-yellow); font-size: 20px; margin-bottom: 15px; border-bottom: 1px solid var(--border-color); padding-bottom: 10px;}
+        .content-section h3 { font-size: 16px; margin-top: 20px; margin-bottom: 10px; color: var(--text-main); }
+        .content-section p { font-size: 14px; color: var(--text-muted); margin-bottom: 15px; }
+        
+        /* FAQ */
+        .faq-item { margin-bottom: 15px; }
+        .faq-item h4 { color: var(--accent-yellow); font-size: 15px; margin-bottom: 5px; }
+
+        /* Related Tools Section */
+        .related-tools-section {
+            margin-top: 30px;
+            background-color: var(--card-bg);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+        .related-tools-section h2 {
+            text-align: center;
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: var(--text-main);
+        }
+        .tools-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .tool-card {
+            display: flex;
+            align-items: center;
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            padding: 15px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        .tool-card:hover {
+            border-color: var(--accent-yellow);
+            transform: translateY(-2px);
+        }
+        .tool-icon {
+            font-size: 24px;
+            margin-right: 15px;
+            background-color: var(--card-bg);
+            padding: 10px;
+            border-radius: 50%;
+        }
+        .tool-info h3 {
+            font-size: 15px;
+            color: var(--accent-yellow);
+            margin: 0 0 4px 0;
+        }
+        .tool-info p {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin: 0;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 40px;
+            padding: 20px;
+            font-size: 13px;
+            color: var(--text-muted);
+            text-align: center;
+            width: 100%;
+            border-top: 1px solid var(--border-color);
+        }
+        footer a { color: var(--accent-yellow); text-decoration: none; margin: 0 8px; }
+    </style>
 </head>
+<body>
 
-<!-- ============================================================
-     PHASE 2/8 — BODY OPEN + SKIP LINK + PREMIUM NAVBAR
-     ============================================================ -->
-
-<body class="bg-slate-50 text-ink-900 font-sans antialiased selection:bg-brand-500 selection:text-white">
-
-  <!-- Skip link (Accessibility) -->
-  <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:rounded-lg focus:bg-brand-600 focus:px-4 focus:py-2 focus:text-white focus:font-semibold">
-    Skip to main content
-  </a>
-
-  <!-- ============================================================
-       PREMIUM NAVBAR
-       ============================================================ -->
-  <header id="site-header" class="sticky top-0 z-50 border-b border-slate-200/70 bg-white/85 backdrop-blur-xl supports-[backdrop-filter]:bg-white/70">
-    <div class="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
-
-      <!-- Brand Logo -->
-      <a href="/" class="group flex items-center gap-2.5" aria-label="Sleep Debt Calculator Home">
-        <span class="relative grid h-10 w-10 place-items-center rounded-xl bg-brand-900 shadow-card ring-1 ring-white/10 transition-transform duration-300 group-hover:scale-105">
-          <!-- Custom Moon Icon -->
-          <svg viewBox="0 0 24 24" class="h-6 w-6 text-brand-300" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-          </svg>
-        </span>
-        <span class="leading-tight">
-          <span class="block font-display text-lg font-extrabold tracking-tight text-ink-900">
-            Sleep<span class="text-gradient">Debt</span>
-          </span>
-          <span class="hidden text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-500 sm:block">
-            Recovery Tools
-          </span>
-        </span>
-      </a>
-
-      <!-- Desktop Navigation -->
-      <nav class="hidden items-center gap-7 lg:flex" aria-label="Primary">
-        <a href="/" class="nav-link text-sm font-semibold text-brand-600" aria-current="page">Home</a>
-        <a href="#tools" class="nav-link text-sm font-semibold text-slate-700 transition-colors hover:text-brand-600">All Tools</a>
-        <a href="/guides.html" class="nav-link text-sm font-semibold text-slate-700 transition-colors hover:text-brand-600">Sleep Guides</a>
-        <a href="/about.html" class="nav-link text-sm font-semibold text-slate-700 transition-colors hover:text-brand-600">About</a>
-      </nav>
-
-      <!-- Right Actions -->
-      <div class="flex items-center gap-2.5">
-        <a href="/contact.html" class="hidden rounded-lg px-3 py-2 text-sm font-semibold text-slate-700 transition-colors hover:bg-slate-100 hover:text-ink-900 md:inline-flex">
-          Contact
-        </a>
-        
-        <!-- CTA Button -->
-        <a href="#calculator" class="cta-shine inline-flex items-center gap-2 rounded-xl bg-brand-600 px-4 py-2.5 text-sm font-bold text-white shadow-card transition-all duration-300 hover:bg-brand-500 hover:shadow-glow focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2">
-          <svg class="h-4 w-4 text-brand-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10"></circle>
-            <polyline points="12 6 12 12 16 14"></polyline>
-          </svg>
-          <span class="hidden sm:inline">Calculate Debt</span>
-          <span class="sm:hidden">Calc</span>
-        </a>
-
-        <!-- Mobile Menu Toggle Button -->
-        <button id="navToggle" type="button"
-                class="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-slate-200 bg-white text-ink-900 transition-colors hover:bg-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 lg:hidden"
-                aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobileMenu">
-          <svg id="navIconOpen" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
-            <path d="M4 7h16M4 12h16M4 17h16" />
-          </svg>
-          <svg id="navIconClose" class="hidden h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
-            <path d="M6 6l12 12M18 6L6 18" />
-          </svg>
-        </button>
-      </div>
+    <!-- Header Logo -->
+    <div class="logo-container">
+        <span class="stars">✨</span>
+        <span class="moon">🌙</span>
+        <span class="logo-text">Sleep Debt Calculator</span>
+        <span class="stars">✨</span>
     </div>
 
-    <!-- Mobile Menu Panel -->
-    <div id="mobileMenu" class="hidden border-t border-slate-200 bg-white lg:hidden">
-      <nav class="mx-auto max-w-7xl space-y-1 px-4 py-4 sm:px-6" aria-label="Mobile">
-        <a href="/" class="block rounded-lg bg-brand-50 px-3 py-2.5 text-sm font-semibold text-brand-700" aria-current="page">Home</a>
-        <a href="#tools" class="block rounded-lg px-3 py-2.5 text-sm font-semibold text-slate-700 hover:bg-slate-100 hover:text-brand-600">All Tools</a>
-        <a href="/guides.html" class="block rounded-lg px-3 py-2.5 text-sm font-semibold text-slate-700 hover:bg-slate-100 hover:text-brand-600">Sleep Guides</a>
-        <a href="/about.html" class="block rounded-lg px-3 py-2.5 text-sm font-semibold text-slate-700 hover:bg-slate-100 hover:text-brand-600">About</a>
-        <a href="/contact.html" class="block rounded-lg px-3 py-2.5 text-sm font-semibold text-slate-700 hover:bg-slate-100 hover:text-brand-600">Contact</a>
-
-        <!-- Legal Links (Mobile only) -->
-        <div class="mt-2 border-t border-slate-200 pt-2">
-          <p class="px-3 pb-1 pt-1 text-[10px] font-bold uppercase tracking-[0.14em] text-slate-400">Legal</p>
-          <a href="/privacy.html" class="block rounded-lg px-3 py-2.5 text-sm font-semibold text-slate-700 hover:bg-slate-100 hover:text-brand-600">Privacy Policy</a>
-          <a href="/terms.html" class="block rounded-lg px-3 py-2.5 text-sm font-semibold text-slate-700 hover:bg-slate-100 hover:text-brand-600">Terms of Service</a>
-          <a href="/disclaimer.html" class="block rounded-lg px-3 py-2.5 text-sm font-semibold text-slate-700 hover:bg-slate-100 hover:text-brand-600">Medical Disclaimer</a>
-        </div>
-
-        <a href="mailto:contact@sleepdebtcalculator.online" class="mt-3 block rounded-lg bg-ink-900 px-3 py-2.5 text-center text-sm font-bold text-white">contact@sleepdebtcalculator.online</a>
-      </nav>
+    <!-- ADSTERRA CODE: TOP BANNER -->
+    <div class="ad-placeholder">
+        <!-- Yahan Adsterra ka 728x90 ya 320x50 Banner Code Paste Karein -->
+        Adsterra Top Banner Ad
     </div>
-  </header>
 
-    <!-- ============================================================
-     PHASE 3/8 — MAIN OPEN + HERO + CORE SLEEP CALCULATOR
-     ============================================================ -->
+    <div class="main-container">
+        <h1>How much sleep do you owe your body?</h1>
+        <p class="subtitle">Calculate your sleep deficit over the past few days.</p>
 
-  <main id="main-content">
-
-    <!-- Hero Section (Dark & Calming) -->
-    <section class="hero-mesh relative overflow-hidden pb-32 pt-16 sm:pb-40 sm:pt-24">
-      <!-- Decorative Background -->
-      <div class="pointer-events-none absolute inset-0 bg-grid-slate [background-size:46px_46px] opacity-[0.15]" aria-hidden="true"></div>
-      <div class="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-brand-500/20 blur-3xl" aria-hidden="true"></div>
-      <div class="pointer-events-none absolute -left-24 bottom-0 h-72 w-72 rounded-full bg-brand-400/10 blur-3xl" aria-hidden="true"></div>
-
-      <div class="relative mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
-        
-        <!-- Trust Badge -->
-        <span class="inline-flex items-center gap-2 rounded-full border border-brand-400/30 bg-brand-500/10 px-3.5 py-1.5 text-[11px] font-bold uppercase tracking-[0.14em] text-brand-300">
-          <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4" /><circle cx="12" cy="12" r="10" /></svg>
-          Scientific &amp; Free Tool
-        </span>
-
-        <!-- H1 -->
-        <h1 class="mt-5 font-display text-4xl font-extrabold leading-[1.1] tracking-tight text-white sm:text-5xl lg:text-[3.5rem]">
-          How much sleep are you <span class="text-gradient">actually</span> missing?
-        </h1>
-
-        <!-- Subtext -->
-        <p class="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-slate-300 sm:text-lg">
-          Calculate your exact sleep debt based on the past 7 days. Learn how long it will take to recover your energy, focus, and health.
-        </p>
-
-      </div>
-    </section>
-<!-- ============================================================
-     PREMIUM CTA CARD (Replaces the Calculator on Homepage)
-     ============================================================ -->
-
-<section class="relative z-10 mx-auto -mt-24 max-w-4xl px-4 sm:-mt-32 sm:px-6 lg:px-8">
-  
-  <div class="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-2xl">
-    <div class="grid lg:grid-cols-2">
-      
-      <!-- Left Side: Value Proposition -->
-      <div class="p-8 sm:p-12 flex flex-col justify-center border-b border-slate-200 lg:border-b-0 lg:border-r">
-        <span class="inline-flex items-center gap-2 rounded-full bg-brand-50 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-brand-700 w-max mb-4">
-          Most Popular Tool
-        </span>
-        <h2 class="font-display text-3xl font-extrabold text-ink-900 leading-tight">
-          Calculate Your Exact Sleep Debt in 30 Seconds.
-        </h2>
-        <p class="mt-4 text-[15px] leading-relaxed text-slate-600">
-          Don't guess if you're tired. Enter your last 7 days of sleep to discover your exact deficit, your average sleep per night, and a scientifically backed recovery plan.
-        </p>
-        
-        <ul class="mt-6 space-y-3">
-          <li class="flex items-center gap-3 text-sm font-medium text-slate-700">
-            <svg class="h-5 w-5 text-emerald-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-            Based on National Sleep Foundation data
-          </li>
-          <li class="flex items-center gap-3 text-sm font-medium text-slate-700">
-            <svg class="h-5 w-5 text-emerald-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-            Includes custom recovery timeline
-          </li>
-          <li class="flex items-center gap-3 text-sm font-medium text-slate-700">
-            <svg class="h-5 w-5 text-emerald-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-            100% Free & Private (No sign-up)
-          </li>
-        </ul>
-      </div>
-
-      <!-- Right Side: Visual Action / Button -->
-      <div class="bg-brand-900 p-8 sm:p-12 flex flex-col items-center justify-center text-center relative overflow-hidden">
-        <!-- Background Glow -->
-        <div class="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-brand-500/20 blur-3xl" aria-hidden="true"></div>
-        
-        <span class="grid h-20 w-20 place-items-center rounded-full bg-white/10 ring-4 ring-white/5 mb-6">
-          <svg class="h-10 w-10 text-brand-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-        </span>
-        
-        <h3 class="font-display text-xl font-bold text-white mb-2">Ready to find out?</h3>
-        <p class="text-sm text-brand-200 mb-6">It takes less than a minute.</p>
-        
-        <!-- Main CTA Button to actual tool -->
-        <a href="/sleep-debt-calculator.html" class="group inline-flex w-full items-center justify-center gap-2 rounded-xl bg-brand-500 px-6 py-4 text-base font-bold text-white transition-all hover:bg-brand-400 hover:shadow-glow">
-          Open Sleep Calculator
-          <svg class="h-5 w-5 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </a>
-        
-        <p class="mt-4 text-[11px] font-medium text-brand-300/60 flex items-center gap-1.5">
-          <svg class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
-          Secure & Private
-        </p>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- Monetag Native Ad Placeholder (Below CTA) -->
-  <div class="mt-6 flex justify-center">
-    <div class="flex min-h-[90px] w-full max-w-3xl items-center justify-center rounded-xl bg-slate-100 border-2 border-dashed border-slate-300 px-4 py-6 text-center">
-      <span class="font-mono text-[11px] font-bold uppercase tracking-[0.2em] text-slate-400">Monetag Ad Space — 728x90 / Responsive</span>
-    </div>
-  </div>
-
-</section>
-    
-    <!-- Main Calculator Interface -->
-    <section id="calculator" class="relative z-10 mx-auto -mt-24 max-w-5xl px-4 sm:-mt-32 sm:px-6 lg:px-8">
-      
-      <div class="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-2xl">
-        
-        <div class="grid lg:grid-cols-12">
-          
-          <!-- Left Side: Inputs (7 Days) -->
-          <div class="p-6 sm:p-10 lg:col-span-7 border-b border-slate-200 lg:border-b-0 lg:border-r">
-            <h2 class="font-display text-xl font-bold text-ink-900 mb-2">Log Your Last 7 Days</h2>
-            <p class="text-[13px] text-slate-500 mb-6">Enter the total hours you slept each night. Be as accurate as possible.</p>
-            
-            <form id="sleepDebtForm">
-              
-              <!-- Target Sleep -->
-              <div class="mb-6 flex items-center justify-between rounded-xl bg-brand-50 p-4 border border-brand-100">
-                <div>
-                  <label for="targetSleep" class="block text-sm font-bold text-brand-900">Your Daily Sleep Goal</label>
-                  <p class="text-[11px] text-brand-700 mt-0.5">Experts recommend 7–9 hours for adults.</p>
-                </div>
-                <div class="relative w-24">
-                  <input type="number" id="targetSleep" value="8" step="0.5" min="4" max="12" class="block w-full rounded-lg border border-brand-200 bg-white py-2 pl-3 pr-8 text-center text-lg font-bold text-brand-900 focus:border-brand-500 focus:ring-brand-500">
-                  <span class="absolute right-3 top-1/2 -translate-y-1/2 text-sm font-bold text-slate-500">h</span>
-                </div>
-              </div>
-
-              <!-- 7 Day Grid -->
-              <div class="grid grid-cols-2 gap-3 sm:grid-cols-4 md:grid-cols-7">
-                <!-- Day 1 -->
-                <div>
-                  <label for="day1" class="block text-center text-[10px] font-bold uppercase tracking-wider text-slate-500 mb-1.5">Mon</label>
-                  <input type="number" id="day1" placeholder="7.5" step="0.5" min="0" max="24" class="day-input block w-full rounded-lg border border-slate-300 bg-slate-50 py-2.5 text-center text-sm font-bold text-ink-900 focus:border-brand-500 focus:ring-brand-500">
-                </div>
-                <!-- Day 2 -->
-                <div>
-                  <label for="day2" class="block text-center text-[10px] font-bold uppercase tracking-wider text-slate-500 mb-1.5">Tue</label>
-                  <input type="number" id="day2" placeholder="6" step="0.5" min="0" max="24" class="day-input block w-full rounded-lg border border-slate-300 bg-slate-50 py-2.5 text-center text-sm font-bold text-ink-900 focus:border-brand-500 focus:ring-brand-500">
-                </div>
-                <!-- Day 3 -->
-                <div>
-                  <label for="day3" class="block text-center text-[10px] font-bold uppercase tracking-wider text-slate-500 mb-1.5">Wed</label>
-                  <input type="number" id="day3" placeholder="8" step="0.5" min="0" max="24" class="day-input block w-full rounded-lg border border-slate-300 bg-slate-50 py-2.5 text-center text-sm font-bold text-ink-900 focus:border-brand-500 focus:ring-brand-500">
-                </div>
-                <!-- Day 4 -->
-                <div>
-                  <label for="day4" class="block text-center text-[10px] font-bold uppercase tracking-wider text-slate-500 mb-1.5">Thu</label>
-                  <input type="number" id="day4" placeholder="5.5" step="0.5" min="0" max="24" class="day-input block w-full rounded-lg border border-slate-300 bg-slate-50 py-2.5 text-center text-sm font-bold text-ink-900 focus:border-brand-500 focus:ring-brand-500">
-                </div>
-                <!-- Day 5 -->
-                <div>
-                  <label for="day5" class="block text-center text-[10px] font-bold uppercase tracking-wider text-slate-500 mb-1.5">Fri</label>
-                  <input type="number" id="day5" placeholder="7" step="0.5" min="0" max="24" class="day-input block w-full rounded-lg border border-slate-300 bg-slate-50 py-2.5 text-center text-sm font-bold text-ink-900 focus:border-brand-500 focus:ring-brand-500">
-                </div>
-                <!-- Day 6 -->
-                <div>
-                  <label for="day6" class="block text-center text-[10px] font-bold uppercase tracking-wider text-slate-500 mb-1.5">Sat</label>
-                  <input type="number" id="day6" placeholder="9" step="0.5" min="0" max="24" class="day-input block w-full rounded-lg border border-slate-300 bg-slate-50 py-2.5 text-center text-sm font-bold text-ink-900 focus:border-brand-500 focus:ring-brand-500">
-                </div>
-                <!-- Day 7 -->
-                <div>
-                  <label for="day7" class="block text-center text-[10px] font-bold uppercase tracking-wider text-slate-500 mb-1.5">Sun</label>
-                  <input type="number" id="day7" placeholder="8" step="0.5" min="0" max="24" class="day-input block w-full rounded-lg border border-slate-300 bg-slate-50 py-2.5 text-center text-sm font-bold text-ink-900 focus:border-brand-500 focus:ring-brand-500">
-                </div>
-              </div>
-
-              <!-- Calculate Button -->
-              <button type="submit" class="mt-6 w-full rounded-xl bg-brand-600 px-6 py-4 text-base font-bold text-white shadow-glow transition-all hover:bg-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2">
-                Calculate My Sleep Debt
-              </button>
-
-              <!-- Trust Note -->
-              <p class="mt-3 text-center text-[11px] text-slate-400">
-                <svg class="inline h-3 w-3 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
-                Your data is processed locally and never saved on our servers.
-              </p>
-            </form>
-          </div>
-
-          <!-- Right Side: Results -->
-          <div class="bg-ink-900 p-6 sm:p-10 lg:col-span-5 flex flex-col justify-between relative overflow-hidden">
-            
-            <!-- Decorative Background -->
-            <div class="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-brand-500/20 blur-3xl" aria-hidden="true"></div>
-
-            <div class="relative">
-              <div class="flex items-center justify-between mb-6">
-                <h2 class="font-display text-xl font-bold text-white">Your Sleep Debt</h2>
-                <span class="rounded bg-white/10 px-2 py-1 font-mono text-[10px] font-bold text-slate-300">Live</span>
-              </div>
-
-              <!-- Big Result -->
-              <div class="text-center py-4">
-                <p id="resultText" class="font-display text-5xl font-extrabold text-white">0 <span class="text-2xl text-brand-300">hrs</span></p>
-                <p id="resultStatus" class="mt-2 text-sm font-bold uppercase tracking-wider text-brand-300">Enter your sleep data</p>
-              </div>
-
-              <!-- Metrics Grid -->
-              <div class="mt-6 grid grid-cols-2 gap-3">
-                <div class="rounded-xl bg-white/5 p-4 ring-1 ring-white/10 text-center">
-
-      <!-- ============================================================
-     PHASE 4/8 — THE 20-TOOL DIRECTORY GRID (Categorized)
-     ============================================================ -->
-
-<!-- Section Header -->
-<section id="tools" class="relative bg-slate-50 py-16 sm:py-24 border-t border-slate-200">
-  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    
-    <header class="mx-auto mb-16 max-w-2xl text-center">
-      <p class="text-[11px] font-bold uppercase tracking-[0.18em] text-brand-600">Full Directory</p>
-      <h2 class="mt-2 font-display text-3xl font-extrabold tracking-tight text-ink-900 sm:text-4xl">
-        All Sleep Health Tools
-      </h2>
-      <div class="mx-auto mt-4 h-1 w-20 rounded-full bg-gradient-to-r from-brand-600 to-brand-400"></div>
-      <p class="mt-4 text-sm leading-relaxed text-slate-600">
-        Explore our complete suite of 20 science-backed calculators. From calculating deep sleep debt to optimizing your circadian rhythm, find the exact tool you need.
-      </p>
-    </header>
-
-    <!-- ============================
-         CATEGORY 1: CORE SLEEP DEBT
-         ============================ -->
-    <div class="mb-12">
-      <div class="mb-5 flex items-center gap-3">
-        <span class="grid h-8 w-8 place-items-center rounded-lg bg-brand-100 text-brand-700">
-          <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
-        </span>
-        <h3 class="font-display text-xl font-bold text-ink-900">Core Sleep Debt &amp; Recovery</h3>
-      </div>
-      
-      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        <!-- 1 -->
-        <a href="/sleep-debt-calculator.html" class="bento-tile group flex flex-col justify-between rounded-2xl border border-brand-200 bg-white p-5 shadow-sm hover:border-brand-400">
-          <div>
-            <div class="flex items-center justify-between">
-              <span class="grid h-9 w-9 place-items-center rounded-lg bg-brand-50 text-brand-600"><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></span>
-              <span class="rounded bg-brand-50 px-2 py-1 text-[9px] font-bold uppercase tracking-wider text-brand-700 ring-1 ring-brand-200">Most Used</span>
+        <!-- Main Calculator Tool -->
+        <div class="calculator-box">
+            <div class="input-group">
+                <label for="idealSleep">Ideal Sleep (Hours/Night)</label>
+                <input type="number" id="idealSleep" value="8" min="1" max="24">
             </div>
-            <h4 class="mt-3 font-display text-sm font-bold text-ink-900 group-hover:text-brand-600">Sleep Debt Calculator</h4>
-            <p class="mt-1 text-[12px] text-slate-500 leading-relaxed">Calculate your exact deficit over 7 days and find out how long recovery will take.</p>
-          </div>
-          <div class="mt-4 flex items-center justify-between border-t border-slate-100 pt-3">
-            <span class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Open Tool</span>
-            <svg class="h-3.5 w-3.5 text-brand-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </div>
-        </a>
 
-        <!-- 2 -->
-        <a href="/weekend-recovery-calculator.html" class="bento-tile group flex flex-col justify-between rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-          <div>
-            <span class="grid h-9 w-9 place-items-center rounded-lg bg-slate-50 text-slate-600"><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2"><path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg></span>
-            <h4 class="mt-3 font-display text-sm font-bold text-ink-900 group-hover:text-brand-600">Weekend Sleep Recovery</h4>
-            <p class="mt-1 text-[12px] text-slate-500 leading-relaxed">Does sleeping in on Saturday actually fix your debt? Calculate the real impact.</p>
-          </div>
-          <div class="mt-4 flex items-center justify-between border-t border-slate-100 pt-3">
-            <span class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Open Tool</span>
-            <svg class="h-3.5 w-3.5 text-brand-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </div>
-        </a>
-
-        <!-- 3 -->
-        <a href="/sleep-efficiency-calculator.html" class="bento-tile group flex flex-col justify-between rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-          <div>
-            <span class="grid h-9 w-9 place-items-center rounded-lg bg-slate-50 text-slate-600"><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg></span>
-            <h4 class="mt-3 font-display text-sm font-bold text-ink-900 group-hover:text-brand-600">Sleep Efficiency Calculator</h4>
-            <p class="mt-1 text-[12px] text-slate-500 leading-relaxed">Find out what percentage of your time in bed is actually spent sleeping.</p>
-          </div>
-          <div class="mt-4 flex items-center justify-between border-t border-slate-100 pt-3">
-            <span class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Open Tool</span>
-            <svg class="h-3.5 w-3.5 text-brand-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </div>
-        </a>
-
-        <!-- 4 -->
-        <a href="/social-jetlag-calculator.html" class="bento-tile group flex flex-col justify-between rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-          <div>
-            <span class="grid h-9 w-9 place-items-center rounded-lg bg-slate-50 text-slate-600"><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg></span>
-            <h4 class="mt-3 font-display text-sm font-bold text-ink-900 group-hover:text-brand-600">Social Jetlag Calculator</h4>
-            <p class="mt-1 text-[12px] text-slate-500 leading-relaxed">Measure the gap between your weekday and weekend sleep schedule.</p>
-          </div>
-          <div class="mt-4 flex items-center justify-between border-t border-slate-100 pt-3">
-            <span class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Open Tool</span>
-            <svg class="h-3.5 w-3.5 text-brand-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </div>
-        </a>
-
-        <!-- 5 -->
-        <a href="/sleep-deprivation-impact-calculator.html" class="bento-tile group flex flex-col justify-between rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-          <div>
-            <span class="grid h-9 w-9 place-items-center rounded-lg bg-slate-50 text-slate-600"><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg></span>
-            <h4 class="mt-3 font-display text-sm font-bold text-ink-900 group-hover:text-brand-600">Sleep Deprivation Impact</h4>
-            <p class="mt-1 text-[12px] text-slate-500 leading-relaxed">See how your lack of sleep translates to impaired focus and reaction time.</p>
-          </div>
-          <div class="mt-4 flex items-center justify-between border-t border-slate-100 pt-3">
-            <span class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Open Tool</span>
-            <svg class="h-3.5 w-3.5 text-brand-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </div>
-        </a>
-      </div>
-    </div>
-
-    <!-- Monetag Ad Space (Between Categories) -->
-    <div class="my-10 flex justify-center not-prose">
-      <div class="flex min-h-[250px] w-full max-w-3xl items-center justify-center rounded-xl bg-slate-100 border-2 border-dashed border-slate-300 px-4 py-6 text-center">
-        <span class="font-mono text-[11px] font-bold uppercase tracking-[0.2em] text-slate-400">Monetag Ad Space — In-Article Rectangle</span>
-      </div>
-    </div>
-
-    <!-- ============================
-         CATEGORY 2: SLEEP CYCLES & TIMING
-         ============================ -->
-    <div class="mb-12">
-      <div class="mb-5 flex items-center gap-3">
-        <span class="grid h-8 w-8 place-items-center rounded-lg bg-indigo-100 text-indigo-700">
-          <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-        </span>
-        <h3 class="font-display text-xl font-bold text-ink-900">Sleep Cycles &amp; Timing</h3>
-      </div>
-      
-      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        <!-- 6 -->
-        <a href="/bedtime-calculator.html" class="bento-tile group flex flex-col justify-between rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-          <div>
-            <span class="grid h-9 w-9 place-items-center rounded-lg bg-indigo-50 text-indigo-600"><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2"><path d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg></span>
-            <h4 class="mt-3 font-display text-sm font-bold text-ink-900 group-hover:text-brand-600">Bedtime Calculator</h4>
-            <p class="mt-1 text-[12px] text-slate-500 leading-relaxed">Find the perfect time to go to sleep based on 90-minute REM cycles.</p>
-          </div>
-          <div class="mt-4 flex items-center justify-between border-t border-slate-100 pt-3">
-            <span class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Open Tool</span>
-            <svg class="h-3.5 w-3.5 text-brand-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </div>
-        </a>
-        <!-- 7 -->
-        <a href="/nap-calculator.html" class="bento-tile group flex flex-col justify-between rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-          <div>
-            <span class="grid h-9 w-9 place-items-center rounded-lg bg-indigo-50 text-indigo-600"><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2"><path d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg></span>
-            <h4 class="mt-3 font-display text-sm font-bold text-ink-900 group-hover:text-brand-600">Power Nap Calculator</h4>
-            <p class="mt-1 text-[12px] text-slate-500 leading-relaxed">Avoid sleep inertia. Calculate the exact time to wake up from a nap.</p>
-          </div>
-          <div class="mt-4 flex items-center justify-between border-t border-slate-100 pt-3">
-            <span class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Open Tool</span>
-            <svg class="h-3.5 w-3.5 text-brand-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </div>
-        </a>
-        <!-- 8 -->
-        <a href="/circadian-rhythm-calculator.html" class="bento-tile group flex flex-col justify-between rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-          <div>
-            <span class="grid h-9 w-9 place-items-center rounded-lg bg-indigo-50 text-indigo-600"><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2"><path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg></span>
-            <h4 class="mt-3 font-display text-sm font-bold text-ink-900 group-hover:text-brand-600">Circadian Rhythm Test</h4>
-            <p class="mt-1 text-[12px] text-slate-500 leading-relaxed">Are you a morning lark or a night owl? Find your biological chronotype.</p>
-          </div>
-          <div class="mt-4 flex items-center justify-between border-t border-slate-100 pt-3">
-            <span class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Open Tool</span>
-            <svg class="h-3.5 w-3.5 text-brand-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </div>
-        </a>
-        <!-- 9 -->
-        <a href="/jet-lag-calculator.html" class="bento-tile group flex flex-col justify-between rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-          <div>
-            <span class="grid h-9 w-9 place-items-center rounded-lg bg-indigo-50 text-indigo-600"><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2"><path d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></span>
-            <h4 class="mt-3 font-display text-sm font-bold text-ink-900 group-hover:text-brand-600">Jet Lag Recovery Planner</h4>
-            <p class="mt-1 text-[12px] text-slate-500 leading-relaxed">Calculate how many days it will take to adjust to a new time zone.</p>
-          </div>
-          <div class="mt-4 flex items-center justify-between border-t border-slate-100 pt-3">
-            <span class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Open Tool</span>
-            <svg class="h-3.5 w-3.5 text-brand-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </div>
-        </a>
-        <!-- 10 -->
-        <a href="/dream-recall-calculator.html" class="bento-tile group flex flex-col justify-between rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-          <div>
-            <span class="grid h-9 w-9 place-items-center rounded-lg bg-indigo-50 text-indigo-600"><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg></span>
-            <h4 class="mt-3 font-display text-sm font-bold text-ink-900 group-hover:text-brand-600">Dream Recall Timing</h4>
-            <p class="mt-1 text-[12px] text-slate-500 leading-relaxed">Waking up at the wrong time erases your dreams. Find the best wake time.</p>
-          </div>
-          <div class="mt-4 flex items-center justify-between border-t border-slate-100 pt-3">
-            <span class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Open Tool</span>
-            <svg class="h-3.5 w-3.5 text-brand-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </div>
-        </a>
-      </div>
-    </div>
-
-    <!-- ============================
-         CATEGORY 3: LIFESTYLE & ENVIRONMENT
-         ============================ -->
-    <div class="mb-12">
-      <div class="mb-5 flex items-center gap-3">
-        <span class="grid h-8 w-8 place-items-center rounded-lg bg-sky-100 text-sky-700">
-          <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
-        </span>
-        <h3 class="font-display text-xl font-bold text-ink-900">Lifestyle &amp; Environment</h3>
-      </div>
-      
-      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        <!-- 11 -->
-        <a href="/caffeine-calculator.html" class="bento-tile group flex flex-col justify-between rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-          <div>
-            <span class="grid h-9 w-9 place-items-center rounded-lg bg-sky-50 text-sky-600"><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-3h3c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-2 9h-2v-5h2v5z"/></svg></span>
-            <h4 class="mt-3 font-display text-sm font-bold text-ink-900 group-hover:text-brand-600">Caffeine Half-Life</h4>
-            <p class="mt-1 text-[12px] text-slate-500 leading-relaxed">Is your afternoon coffee keeping you awake? Calculate the remaining caffeine.</p>
-          </div>
-          <div class="mt-4 flex items-center justify-between border-t border-slate-100 pt-3">
-            <span class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Open Tool</span>
-            <svg class="h-3.5 w-3.5 text-brand-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </div>
-        </a>
-        <!-- 12 -->
-        <a href="/melatonin-calculator.html" class="bento-tile group flex flex-col justify-between rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-          <div>
-            <span class="grid h-9 w-9 place-items-center rounded-lg bg-sky-50 text-sky-600"><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2"><path d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg></span>
-            <h4 class="mt-3 font-display text-sm font-bold text-ink-900 group-hover:text-brand-600">Melatonin Dosage</h4>
-            <p class="mt-1 text-[12px] text-slate-500 leading-relaxed">Find the safe starting dosage of melatonin based on your age and weight.</p>
-          </div>
-          <div class="mt-4 flex items-center justify-between border-t border-slate-100 pt-3">
-            <span class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Open Tool</span>
-            <svg class="h-3.5 w-3.5 text-brand-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </div>
-        </a>
-        <!-- 13 -->
-        <a href="/weighted-blanket-calculator.html" class="bento-tile group flex flex-col justify-between rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-          <div>
-            <span class="grid h-9 w-9 place-items-center rounded-lg bg-sky-50 text-sky-600"><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2"><path d="M4 6h16M4 10h16M4 14h16M4 18h16"/></svg></span>
-            <h4 class="mt-3 font-display text-sm font-bold text-ink-900 group-hover:text-brand-600">Weighted Blanket Weight</h4>
-            <p class="mt-1 text-[12px] text-slate-500 leading-relaxed">Calculate the ideal weight for a weighted blanket (usually 10% of body weight).</p>
-          </div>
-          <div class="mt-4 flex items-center justify-between border-t border-slate-100 pt-3">
-            <span class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Open Tool</span>
-            <svg class="h-3.5 w-3.5 text-brand-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </div>
-        </a>
-
-        <!-- 14 -->
-        <a href="/screen-time-calculator.html" class="bento-tile group flex flex-col justify-between rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-          <div>
-            <span class="grid h-9 w-9 place-items-center rounded-lg bg-sky-50 text-sky-600"><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2"><path d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg></span>
-            <h4 class="mt-3 font-display text-sm font-bold text-ink-900 group-hover:text-brand-600">Screen Time Impact</h4>
-            <p class="mt-1 text-[12px] text-slate-500 leading-relaxed">How does blue light before bed delay your melatonin production?</p>
-          </div>
-          <div class="mt-4 flex items-center justify-between border-t border-slate-100 pt-3">
-            <span class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Open Tool</span>
-            <svg class="h-3.5 w-3.5 text-brand-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </div>
-        </a>
-
-        <!-- 15 -->
-        <a href="/sleep-temperature-calculator.html" class="bento-tile group flex flex-col justify-between rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-          <div>
-            <span class="grid h-9 w-9 place-items-center rounded-lg bg-sky-50 text-sky-600"><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg></span>
-            <h4 class="mt-3 font-display text-sm font-bold text-ink-900 group-hover:text-brand-600">Ideal Room Temperature</h4>
-            <p class="mt-1 text-[12px] text-slate-500 leading-relaxed">Find the perfect thermostat setting for deep sleep based on your age.</p>
-          </div>
-          <div class="mt-4 flex items-center justify-between border-t border-slate-100 pt-3">
-            <span class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Open Tool</span>
-            <svg class="h-3.5 w-3.5 text-brand-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </div>
-        </a>
-      </div>
-    </div>
-
-    <!-- ============================
-         CATEGORY 4: SPECIAL GROUPS
-         ============================ -->
-    <div>
-      <div class="mb-5 flex items-center gap-3">
-        <span class="grid h-8 w-8 place-items-center rounded-lg bg-emerald-100 text-emerald-700">
-          <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
-        </span>
-        <h3 class="font-display text-xl font-bold text-ink-900">Special Groups &amp; Health</h3>
-      </div>
-      
-      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        <!-- 16 -->
-        <a href="/sleep-by-age-calculator.html" class="bento-tile group flex flex-col justify-between rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-          <div>
-            <span class="grid h-9 w-9 place-items-center rounded-lg bg-emerald-50 text-emerald-600"><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2"><path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg></span>
-            <h4 class="mt-3 font-display text-sm font-bold text-ink-900 group-hover:text-brand-600">Sleep by Age Tool</h4>
-            <p class="mt-1 text-[12px] text-slate-500 leading-relaxed">See how many hours you need based on your specific age group.</p>
-          </div>
-          <div class="mt-4 flex items-center justify-between border-t border-slate-100 pt-3">
-            <span class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Open Tool</span>
-            <svg class="h-3.5 w-3.5 text-brand-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </div>
-        </a>
-
-        <!-- 17 -->
-        <a href="/shift-worker-calculator.html" class="bento-tile group flex flex-col justify-between rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-          <div>
-            <span class="grid h-9 w-9 place-items-center rounded-lg bg-emerald-50 text-emerald-600"><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2"><path d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg></span>
-            <h4 class="mt-3 font-display text-sm font-bold text-ink-900 group-hover:text-brand-600">Shift Worker Planner</h4>
-            <p class="mt-1 text-[12px] text-slate-500 leading-relaxed">Build a customized sleep schedule for night shifts and rotating rosters.</p>
-          </div>
-          <div class="mt-4 flex items-center justify-between border-t border-slate-100 pt-3">
-            <span class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Open Tool</span>
-            <svg class="h-3.5 w-3.5 text-brand-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </div>
-        </a>
-
-        <!-- 18 -->
-        <a href="/baby-sleep-calculator.html" class="bento-tile group flex flex-col justify-between rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-          <div>
-            <span class="grid h-9 w-9 place-items-center rounded-lg bg-emerald-50 text-emerald-600"><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2"><path d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></span>
-            <h4 class="mt-3 font-display text-sm font-bold text-ink-900 group-hover:text-brand-600">Baby Wake Window</h4>
-            <p class="mt-1 text-[12px] text-slate-500 leading-relaxed">Calculate the correct wake window for babies and toddlers to prevent meltdowns.</p>
-          </div>
-          <div class="mt-4 flex items-center justify-between border-t border-slate-100 pt-3">
-            <span class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Open Tool</span>
-            <svg class="h-3.5 w-3.5 text-brand-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </div>
-        </a>
-
-        <!-- 19 -->
-        <a href="/apnea-risk-calculator.html" class="bento-tile group flex flex-col justify-between rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-          <div>
-            <span class="grid h-9 w-9 place-items-center rounded-lg bg-emerald-50 text-emerald-600"><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg></span>
-            <h4 class="mt-3 font-display text-sm font-bold text-ink-900 group-hover:text-brand-600">Apnea Risk (STOP-BANG)</h4>
-            <p class="mt-1 text-[12px] text-slate-500 leading-relaxed">A quick screening tool to assess your risk for sleep apnea.</p>
-          </div>
-          <div class="mt-4 flex items-center justify-between border-t border-slate-100 pt-3">
-            <span class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Open Tool</span>
-            <svg class="h-3.5 w-3.5 text-brand-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </div>
-        </a>
-
-        <!-- 20 -->
-        <a href="/insomnia-calculator.html" class="bento-tile group flex flex-col justify-between rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-          <div>
-            <span class="grid h-9 w-9 place-items-center rounded-lg bg-emerald-50 text-emerald-600"><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2"><path d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></span>
-            <h4 class="mt-3 font-display text-sm font-bold text-ink-900 group-hover:text-brand-600">Insomnia Severity Index</h4>
-            <p class="mt-1 text-[12px] text-slate-500 leading-relaxed">A clinically validated questionnaire to measure the severity of your insomnia.</p>
-          </div>
-          <div class="mt-4 flex items-center justify-between border-t border-slate-100 pt-3">
-            <span class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Open Tool</span>
-            <svg class="h-3.5 w-3.5 text-brand-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </div>
-        </a>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- ============================================================
-     PHASE 5/8 — DEEP SEO CONTENT (E-E-A-T BOOSTER)
-     ============================================================ -->
-
-<section class="relative border-t border-slate-200 bg-white py-16 sm:py-24">
-  <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-    
-    <header class="mb-10 text-center">
-      <p class="text-[11px] font-bold uppercase tracking-[0.18em] text-brand-600">Sleep Science</p>
-      <h2 class="mt-2 font-display text-3xl font-extrabold tracking-tight text-ink-900 sm:text-4xl">
-        What is Sleep Debt &amp; Why It Matters
-      </h2>
-      <div class="mx-auto mt-4 h-1 w-20 rounded-full bg-gradient-to-r from-brand-600 to-brand-400"></div>
-    </header>
-
-    <article class="article-prose prose prose-slate max-w-none prose-p:text-[16px] prose-p:leading-[1.8] prose-p:text-slate-700 prose-strong:text-ink-900 prose-headings:font-display prose-headings:font-bold">
-      
-      <p class="text-lg leading-relaxed text-slate-700 font-medium">
-        Sleep is not just "downtime." It is an active, biologically necessary process where your brain clears out toxins, consolidates memories, and your body repairs tissue. When you consistently get less sleep than your body requires, you begin to accumulate a "sleep debt."
-      </p>
-      <p>
-        Unlike financial debt, sleep debt is not a perfect analogy, but the consequences are very real. The scientific community refers to this as <strong>homeostatic sleep pressure</strong>. The longer you stay awake, the more a chemical called adenosine builds up in your brain, creating an overwhelming urge to sleep. Caffeine temporarily blocks these receptors, but it doesn't erase the debt.
-      </p>
-
-      <h3 class="text-xl font-bold text-ink-900 mt-8">The Two Types of Sleep Debt</h3>
-      <p>
-        Sleep debt is generally categorized into two types:
-      </p>
-      <ul>
-        <li><strong>Acute Sleep Debt:</strong> This is short-term. For example, pulling an all-nighter to finish a project or getting 4 hours of sleep for two nights in a row. Your body can usually bounce back from acute debt relatively quickly with a few nights of good sleep.</li>
-        <li><strong>Chronic Sleep Debt:</strong> This is the silent killer. It happens when you consistently sleep 5-6 hours a night for weeks, months, or even years. You may feel "used to it," but your body is slowly breaking down. Chronic sleep debt is linked to high blood pressure, a weakened immune system, weight gain, and severe cognitive decline.</li>
-      </ul>
-
-      <h3 class="text-xl font-bold text-ink-900 mt-8">The Weekend Recovery Myth</h3>
-      <p>
-        Many people believe they can "catch up" on sleep by sleeping until noon on Saturday and Sunday. While a long weekend sleep-in can temporarily reduce the feeling of sleepiness, <strong>it does not undo the metabolic and cognitive damage of chronic sleep deprivation.</strong>
-      </p>
-      <p>
-        Worse, drastically shifting your sleep schedule on the weekends creates a phenomenon known as <strong>Social Jetlag</strong> (which you can calculate using Tool #4 above). This confuses your circadian rhythm, making it even harder to fall asleep on Sunday night, leading to a vicious cycle of Monday morning fatigue.
-      </p>
-
-      <!-- Monetag Ad Placement -->
-      <div class="my-10 not-prose px-4 sm:px-6 lg:px-0">
-        <div class="flex min-h-[250px] items-center justify-center rounded-xl bg-slate-100 border-2 border-dashed border-slate-300 px-4 py-6 text-center">
-          <span class="font-mono text-[11px] font-bold uppercase tracking-[0.2em] text-slate-400">Monetag Ad Space — In-Article Rectangle</span>
-        </div>
-      </div>
-
-      <h3 class="text-xl font-bold text-ink-900 mt-2">How to Actually Recover from Sleep Debt</h3>
-      <p>
-        If you have accumulated a significant sleep debt, here is the scientifically backed way to recover:
-      </p>
-      <ol>
-        <li><strong>Calculate Your Deficit:</strong> Use our <a href="/sleep-debt-calculator.html" class="text-brand-600 font-semibold hover:underline">Main Sleep Debt Calculator</a> to see exactly how many hours you are missing.</li>
-        <li><strong>Add 1-2 Hours Per Night:</strong> Do not try to fix a 20-hour debt in one night. Go to bed 1 to 2 hours earlier than usual for a week. This allows your body to recover slowly without disrupting your circadian rhythm.</li>
-        <li><strong>Take Strategic Naps:</strong> A 20-minute power nap (Tool #7) can boost alertness without making you groggy. If you are severely deprived, a 90-minute nap can complete a full sleep cycle.</li>
-        <li><strong>Fix Your Environment:</strong> Ensure your room is completely dark, cool (around 65°F / 18°C), and quiet. Use our <a href="/sleep-temperature-calculator.html" class="text-brand-600 font-semibold hover:underline">Temperature Calculator</a> to find your ideal setting.</li>
-      </ol>
-
-      <h3 class="text-xl font-bold text-ink-900 mt-8">When to See a Doctor</h3>
-      <p>
-        If you are getting 8 hours of sleep in bed but still wake up exhausted, or if you snore heavily and wake up gasping, you may have a sleep disorder like <strong>Sleep Apnea</strong> or <strong>Insomnia</strong>. Use our screening tools (Tools #19 and #20) to assess your risk. If your scores are high, it is highly recommended to consult a healthcare professional or a sleep specialist.
-      </p>
-    </article>
-
-    <!-- E-E-A-T Trust Box -->
-    <div class="mt-12 rounded-2xl bg-brand-50 p-6 sm:p-8 border border-brand-100">
-      <div class="flex flex-col sm:flex-row items-start gap-5">
-        <span class="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-white text-brand-600 shadow-sm ring-1 ring-brand-200">
-          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-        </span>
-        <div>
-          <h4 class="font-display text-base font-bold text-ink-900">Health &amp; Medical Disclaimer</h4>
-          <p class="mt-2 text-[13px] leading-relaxed text-slate-600">
-            The calculators and content on SleepDebtCalculator.online are for educational and informational purposes only. They are based on guidelines from the National Sleep Foundation and peer-reviewed sleep science. This site is not a substitute for professional medical advice, diagnosis, or treatment. Always seek the advice of your physician or another qualified health provider with any questions you may have regarding a medical condition or sleep disorder.
-          </p>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- ============================================================
-     PHASE 6/8 — FAQS + JSON-LD SCHEMA
-     ============================================================ -->
-
-<!-- FAQ Schema for Google Rich Snippets -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "@id": "https://sleepdebtcalculator.online/#faq",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What exactly is sleep debt?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Sleep debt is the cumulative effect of not getting enough sleep over time. If you need 8 hours of sleep but only get 6 hours for three nights, you have accumulated 6 hours of sleep debt. This deficit impacts cognitive function, immune health, and mood."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can I catch up on sleep debt on the weekend?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "While sleeping in on the weekend can temporarily reduce feelings of fatigue, it does not fully reverse the metabolic and cognitive effects of chronic sleep deprivation. Furthermore, drastically shifting your sleep schedule on weekends can cause 'social jetlag,' making it harder to wake up on Monday."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How long does it take to recover from sleep debt?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The time it takes to recover depends on how much debt you have accumulated. For acute sleep debt (e.g., a few late nights), you can usually recover in a few days by getting an extra 1-2 hours of sleep per night. For chronic sleep debt, it can take several weeks of consistent, high-quality sleep to fully recover."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Does sleep debt cause weight gain?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, research strongly links sleep deprivation to weight gain. When you lack sleep, your body produces more ghrelin (the hunger hormone) and less leptin (the satiety hormone). Additionally, sleep deprivation increases cortisol levels, which can lead to increased fat storage and muscle breakdown."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is napping good for sleep debt?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Strategic napping can help pay down sleep debt. A 20-minute power nap can improve alertness without causing grogginess. However, long or late-afternoon naps can interfere with your ability to fall asleep at night. Use our Nap Calculator to find the best napping duration."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is the best time to go to sleep?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The best time to sleep is determined by your wake-up time and your body's natural 90-minute sleep cycles. Ideally, you should aim to wake up at the end of a sleep cycle, rather than in the middle of deep sleep, to avoid sleep inertia (grogginess). Our Bedtime Calculator helps you find the exact time to go to bed."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How does caffeine affect sleep debt?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Caffeine is a stimulant that blocks adenosine receptors in the brain, temporarily masking the feeling of sleep debt. However, caffeine has a half-life of 5-6 hours. If you drink coffee at 3 PM, half of that caffeine may still be in your system at 9 PM, making it harder to fall into deep, restorative sleep, thereby worsening your debt."
-      }
-    }
-  ]
-}
-</script>
-
-<!-- FAQ Section -->
-<section id="faqs" class="border-t border-slate-200 bg-slate-50 py-16 sm:py-24">
-  <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-
-    <header class="mb-10 text-center">
-      <p class="text-[11px] font-bold uppercase tracking-[0.18em] text-brand-600">Frequently Asked Questions</p>
-      <h2 class="mt-2 font-display text-3xl font-extrabold tracking-tight text-ink-900 sm:text-4xl">
-        Sleep Debt FAQs
-      </h2>
-      <div class="mx-auto mt-4 h-1 w-20 rounded-full bg-gradient-to-r from-brand-600 to-brand-400"></div>
-    </header>
-
-    <div class="space-y-3">
-      <!-- FAQ 1 -->
-      <details class="group rounded-xl border border-slate-200 bg-white shadow-card transition-all duration-300 hover:border-brand-300 open:border-brand-400 open:shadow-glow">
-        <summary class="flex items-start justify-between gap-4 px-5 py-4 sm:px-6 sm:py-5">
-          <span class="flex items-start gap-3.5">
-            <span class="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-md bg-brand-50 font-mono text-[10px] font-bold text-brand-700">01</span>
-            <span class="font-display text-[15px] font-bold leading-snug text-ink-900 sm:text-base">What exactly is sleep debt?</span>
-          </span>
-          <svg class="faq-icon mt-0.5 h-5 w-5 shrink-0 text-brand-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14" /></svg>
-        </summary>
-        <div class="border-t border-slate-100 px-5 pb-5 pt-4 sm:px-6 sm:pb-6">
-          <p class="text-[14.5px] leading-relaxed text-slate-600">
-            Sleep debt is the cumulative effect of not getting enough sleep over time. If you need 8 hours of sleep but only get 6 hours for three nights, you have accumulated 6 hours of sleep debt. This deficit impacts cognitive function, immune health, and mood.
-          </p>
-        </div>
-      </details>
-
-      <!-- FAQ 2 -->
-      <details class="group rounded-xl border border-slate-200 bg-white shadow-card transition-all duration-300 hover:border-brand-300 open:border-brand-400 open:shadow-glow">
-        <summary class="flex items-start justify-between gap-4 px-5 py-4 sm:px-6 sm:py-5">
-          <span class="flex items-start gap-3.5">
-            <span class="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-md bg-brand-50 font-mono text-[10px] font-bold text-brand-700">02</span>
-            <span class="font-display text-[15px] font-bold leading-snug text-ink-900 sm:text-base">Can I catch up on sleep debt on the weekend?</span>
-          </span>
-          <svg class="faq-icon mt-0.5 h-5 w-5 shrink-0 text-brand-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14" /></svg>
-        </summary>
-        <div class="border-t border-slate-100 px-5 pb-5 pt-4 sm:px-6 sm:pb-6">
-          <p class="text-[14.5px] leading-relaxed text-slate-600">
-            While sleeping in on the weekend can temporarily reduce feelings of fatigue, it does not fully reverse the metabolic and cognitive effects of chronic sleep deprivation. Furthermore, drastically shifting your sleep schedule on weekends can cause <strong>social jetlag</strong>, making it harder to wake up on Monday.
-          </p>
-        </div>
-      </details>
-
-      <!-- FAQ 3 -->
-      <details class="group rounded-xl border border-slate-200 bg-white shadow-card transition-all duration-300 hover:border-brand-300 open:border-brand-400 open:shadow-glow">
-        <summary class="flex items-start justify-between gap-4 px-5 py-4 sm:px-6 sm:py-5">
-          <span class="flex items-start gap-3.5">
-            <span class="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-md bg-brand-50 font-mono text-[10px] font-bold text-brand-700">03</span>
-            <span class="font-display text-[15px] font-bold leading-snug text-ink-900 sm:text-base">How long does it take to recover from sleep debt?</span>
-          </span>
-          <svg class="faq-icon mt-0.5 h-5 w-5 shrink-0 text-brand-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14" /></svg>
-        </summary>
-        <div class="border-t border-slate-100 px-5 pb-5 pt-4 sm:px-6 sm:pb-6">
-          <p class="text-[14.5px] leading-relaxed text-slate-600">
-            The time it takes to recover depends on how much debt you have accumulated. For acute sleep debt (e.g., a few late nights), you can usually recover in a few days by getting an extra 1-2 hours of sleep per night. For chronic sleep debt, it can take several weeks of consistent, high-quality sleep to fully recover.
-          </p>
-        </div>
-      </details>
-
-      <!-- FAQ 4 -->
-      <details class="group rounded-xl border border-slate-200 bg-white shadow-card transition-all duration-300 hover:border-brand-300 open:border-brand-400 open:shadow-glow">
-        <summary class="flex items-start justify-between gap-4 px-5 py-4 sm:px-6 sm:py-5">
-          <span class="flex items-start gap-3.5">
-            <span class="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-md bg-brand-50 font-mono text-[10px] font-bold text-brand-700">04</span>
-            <span class="font-display text-[15px] font-bold leading-snug text-ink-900 sm:text-base">Does sleep debt cause weight gain?</span>
-          </span>
-          <svg class="faq-icon mt-0.5 h-5 w-5 shrink-0 text-brand-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14" /></svg>
-        </summary>
-        <div class="border-t border-slate-100 px-5 pb-5 pt-4 sm:px-6 sm:pb-6">
-          <p class="text-[14.5px] leading-relaxed text-slate-600">
-            <strong class="text-ink-900">Yes.</strong> Research strongly links sleep deprivation to weight gain. When you lack sleep, your body produces more ghrelin (the hunger hormone) and less leptin (the satiety hormone). Additionally, sleep deprivation increases cortisol levels, which can lead to increased fat storage and muscle breakdown.
-          </p>
-        </div>
-      </details>
-
-      <!-- FAQ 5 -->
-      <details class="group rounded-xl border border-slate-200 bg-white shadow-card transition-all duration-300 hover:border-brand-300 open:border-brand-400 open:shadow-glow">
-        <summary class="flex items-start justify-between gap-4 px-5 py-4 sm:px-6 sm:py-5">
-          <span class="flex items-start gap-3.5">
-            <span class="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-md bg-brand-50 font-mono text-[10px] font-bold text-brand-700">05</span>
-            <span class="font-display text-[15px] font-bold leading-snug text-ink-900 sm:text-base">Is napping good for sleep debt?</span>
-          </span>
-          <svg class="faq-icon mt-0.5 h-5 w-5 shrink-0 text-brand-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14" /></svg>
-        </summary>
-        <div class="border-t border-slate-100 px-5 pb-5 pt-4 sm:px-6 sm:pb-6">
-          <p class="text-[14.5px] leading-relaxed text-slate-600">
-            Strategic napping can help pay down sleep debt. A 20-minute power nap can improve alertness without causing grogginess. However, long or late-afternoon naps can interfere with your ability to fall asleep at night. Use our <a href="/nap-calculator.html" class="text-brand-600 font-semibold hover:underline">Nap Calculator</a> to find the best napping duration.
-          </p>
-        </div>
-      </details>
-
-      <!-- FAQ 6 -->
-      <details class="group rounded-xl border border-slate-200 bg-white shadow-card transition-all duration-300 hover:border-brand-300 open:border-brand-400 open:shadow-glow">
-        <summary class="flex items-start justify-between gap-4 px-5 py-4 sm:px-6 sm:py-5">
-          <span class="flex items-start gap-3.5">
-            <span class="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-md bg-brand-50 font-mono text-[10px] font-bold text-brand-700">06</span>
-            <span class="font-display text-[15px] font-bold leading-snug text-ink-900 sm:text-base">What is the best time to go to sleep?</span>
-          </span>
-          <svg class="faq-icon mt-0.5 h-5 w-5 shrink-0 text-brand-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14" /></svg>
-        </summary>
-        <div class="border-t border-slate-100 px-5 pb-5 pt-4 sm:px-6 sm:pb-6">
-          <p class="text-[14.5px] leading-relaxed text-slate-600">
-            The best time to sleep is determined by your wake-up time and your body's natural 90-minute sleep cycles. Ideally, you should aim to wake up at the end of a sleep cycle, rather than in the middle of deep sleep, to avoid sleep inertia (grogginess). Our <a href="/bedtime-calculator.html" class="text-brand-600 font-semibold hover:underline">Bedtime Calculator</a> helps you find the exact time to go to bed.
-          </p>
-        </div>
-      </details>
-
-      <!-- FAQ 7 -->
-      <details class="group rounded-xl border border-slate-200 bg-white shadow-card transition-all duration-300 hover:border-brand-300 open:border-brand-400 open:shadow-glow">
-        <summary class="flex items-start justify-between gap-4 px-5 py-4 sm:px-6 sm:py-5">
-          <span class="flex items-start gap-3.5">
-            <span class="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-md bg-brand-50 font-mono text-[10px] font-bold text-brand-700">07</span>
-            <span class="font-display text-[15px] font-bold leading-snug text-ink-900 sm:text-base">How does caffeine affect sleep debt?</span>
-          </span>
-          <svg class="faq-icon mt-0.5 h-5 w-5 shrink-0 text-brand-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14" /></svg>
-        </summary>
-        <div class="border-t border-slate-100 px-5 pb-5 pt-4 sm:px-6 sm:pb-6">
-          <p class="text-[14.5px] leading-relaxed text-slate-600">
-            Caffeine is a stimulant that blocks adenosine receptors in the brain, temporarily masking the feeling of sleep debt. However, caffeine has a half-life of 5-6 hours. If you drink coffee at 3 PM, half of that caffeine may still be in your system at 9 PM, making it harder to fall into deep, restorative sleep, thereby worsening your debt.
-          </p>
-        </div>
-      </details>
-    </div>
-
-    <!-- Continue Prompt -->
-    <div class="mt-10 rounded-2xl border border-brand-200 bg-brand-50 p-5 text-center sm:p-6">
-      <p class="text-[11px] font-bold uppercase tracking-[0.14em] text-brand-700">Still have a question?</p>
-      <p class="mt-2 text-sm leading-relaxed text-slate-700">
-        Email <a href="mailto:contact@sleepdebtcalculator.online" class="font-semibold text-brand-700 underline underline-offset-2 hover:text-brand-800">contact@sleepdebtcalculator.online</a> — we reply within two business days.
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================
-     PHASE 7/8 — AUTHOR TRUST BOX + MONETAG INTEGRATION + RELATED
-     ============================================================ -->
-
-<!-- Author / Reviewer Box (E-E-A-T) -->
-<section class="border-t border-slate-200 bg-white py-12 sm:py-16">
-  <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-    <div class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-card">
-      <div class="border-b border-slate-200 bg-gradient-to-br from-ink-900 to-ink-800 px-6 py-4 sm:px-8">
-        <div class="flex items-center gap-2.5">
-          <span class="grid h-7 w-7 place-items-center rounded-md bg-brand-500 text-white">
-            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4" /><circle cx="12" cy="12" r="10" /></svg>
-          </span>
-          <p class="font-display text-[11px] font-bold uppercase tracking-[0.16em] text-brand-300">About Our Team</p>
-        </div>
-      </div>
-      <div class="px-6 py-6 sm:px-8 sm:py-8">
-        <div class="flex flex-col sm:flex-row items-start gap-6">
-          <span class="grid h-16 w-16 shrink-0 place-items-center rounded-2xl bg-gradient-to-br from-brand-600 to-brand-800 text-white shadow-glow sm:h-20 sm:w-20">
-            <svg class="h-8 w-8 sm:h-10 sm:w-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-          </span>
-          <div>
-            <h3 class="font-display text-xl font-extrabold text-ink-900">Sleep Health Research Team</h3>
-            <p class="mt-1 text-sm font-semibold text-brand-700">Data Science &amp; Medical Review</p>
-            <p class="mt-3 text-[14px] leading-relaxed text-slate-600">
-              Our calculators are built on formulas derived from the <strong>National Sleep Foundation (NSF)</strong>, the <strong>American Academy of Sleep Medicine (AASM)</strong>, and peer-reviewed circadian rhythm research. Every tool is tested for accuracy and reviewed by our editorial team to ensure it provides clinically relevant, safe estimations.
-            </p>
-            <p class="mt-2 text-[14px] leading-relaxed text-slate-600">
-              We are an independent publisher. We do not sell your health data, and our tools are always free to use.
-            </p>
-            <div class="mt-4 flex flex-wrap gap-2">
-              <a href="/about.html" class="inline-flex items-center gap-1.5 text-xs font-bold text-brand-700 hover:underline">Read our methodology &rarr;</a>
+            <div class="input-group">
+                <label for="actualSleep">Actual Sleep (Hours/Night)</label>
+                <input type="number" id="actualSleep" placeholder="e.g. 6" min="0" max="24">
             </div>
-          </div>
+
+            <div class="input-group">
+                <label for="days">Number of Days</label>
+                <input type="number" id="days" placeholder="e.g. 7" min="1">
+            </div>
+
+            <button class="btn" onclick="calculateDebt()">Calculate Sleep Debt 🌙</button>
+
+            <div id="result"></div>
         </div>
-      </div>
+
+        <!-- SEO Rich Content for Google Ranking -->
+        <div class="content-section">
+            <h2>What is Sleep Debt and How to Calculate It?</h2>
+            <p>Sleep debt, also known as sleep deficit, is the cumulative effect of not getting enough sleep over a period of time. If you need 8 hours of sleep but only get 6 hours for three days, you have built up a sleep debt of 6 hours. Our <strong>sleep debt calculator</strong> helps you understand exactly how much rest you need to catch up on to feel your best.</p>
+            
+            <h3>Why is it important to track your sleep deficit?</h3>
+            <p>Chronic sleep deprivation can lead to serious health issues, including weakened immunity, memory problems, weight gain, and increased risk of heart disease. By using our free tool, you can quantify your lost sleep and take steps to recover from sleep debt before it impacts your health.</p>
+
+            <h3>How to recover from sleep debt?</h3>
+            <p>The best way to recover is to gradually add 1-2 extra hours of sleep per night until your debt is cleared. Taking short 20-minute power naps can also help, but avoid long naps close to bedtime as they can disrupt your circadian rhythm.</p>
+        </div>
+
+        <!-- FAQ Section (Long-Tail Keywords) -->
+        <div class="content-section">
+            <h2>Frequently Asked Questions</h2>
+            
+            <div class="faq-item">
+                <h4>How do I calculate my total sleep debt?</h4>
+                <p>To calculate your sleep debt, subtract the number of hours you actually slept from the number of hours your body needs. Then, multiply that difference by the number of days. Our online sleep deficit calculator does this math for you instantly.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h4>Can I repay sleep debt on the weekend?</h4>
+                <p>While sleeping in on the weekend can help recover some energy, it is difficult to fully repay a large sleep debt in just two days. It is better to establish a consistent sleep schedule to prevent debt from accumulating.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h4>How many hours of sleep do I actually need?</h4>
+                <p>Most healthy adults need between 7 to 9 hours of sleep per night. Teenagers and children require even more. You can set your specific 'Ideal Sleep' hours in the calculator above to get an accurate result.</p>
+            </div>
+        </div>
+
+        <!-- Related Tools Section (New Tab Links) -->
+        <div class="related-tools-section">
+            <h2>Explore Other Sleep Tools</h2>
+            <div class="tools-grid">
+                
+                <a href="sleep-cycle.html" target="_blank" rel="noopener noreferrer" class="tool-card">
+                    <div class="tool-icon">⏰</div>
+                    <div class="tool-info">
+                        <h3>Sleep Cycle Calculator</h3>
+                        <p>Calculate best bedtime and wake-up time.</p>
+                    </div>
+                </a>
+
+                <a href="wake-up.html" target="_blank" rel="noopener noreferrer" class="tool-card">
+                    <div class="tool-icon">🌅</div>
+                    <div class="tool-info">
+                        <h3>Morning Wake-Up Calculator</h3>
+                        <p>If you sleep now, what time should you wake up?</p>
+                    </div>
+                </a>
+
+                <a href="caffeine.html" target="_blank" rel="noopener noreferrer" class="tool-card">
+                    <div class="tool-icon">☕</div>
+                    <div class="tool-info">
+                        <h3>Caffeine Half-Life Calculator</h3>
+                        <p>Will your coffee keep you awake tonight?</p>
+                    </div>
+                </a>
+
+                <a href="nap.html" target="_blank" rel="noopener noreferrer" class="tool-card">
+                    <div class="tool-icon">😴</div>
+                    <div class="tool-info">
+                        <h3>Best Nap Time Calculator</h3>
+                        <p>Find the perfect power nap duration for energy.</p>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+
+        <!-- ADSTERRA CODE: BOTTOM BANNER -->
+        <div class="ad-placeholder" style="margin-top: 30px;">
+            <!-- Yahan Adsterra ka Bottom Banner Code Paste Karein -->
+            Adsterra Bottom Banner Ad
+        </div>
+
     </div>
-  </div>
-</section>
 
-<!-- Related Guides (Internal Linking for SEO) -->
-<section class="border-t border-slate-200 bg-slate-50 py-16 sm:py-20">
-  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    
-    <div class="mb-10 flex items-end justify-between">
-      <div>
-        <p class="text-[11px] font-bold uppercase tracking-[0.18em] text-brand-600">Recommended Reading</p>
-        <h2 class="mt-2 font-display text-2xl font-extrabold tracking-tight text-ink-900 sm:text-3xl">Sleep Science Guides</h2>
-      </div>
-      <a href="/guides.html" class="hidden sm:inline-flex items-center gap-1.5 text-sm font-bold text-brand-600 hover:text-brand-700">
-        View all guides
-        <svg class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></svg>
-      </a>
-    </div>
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 SleepDebtCalculator.online. All rights reserved.</p>
+        <p style="margin-top: 10px;">
+            <a href="privacy.html">Privacy Policy</a> | 
+            <a href="contact.html">Contact Us</a> |
+            <a href="about.html">About Us</a>
+        </p>
+    </footer>
 
-    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-      
-      <!-- Guide 1 -->
-      <a href="/guides/how-to-recover-from-sleep-debt.html" class="bento-tile group flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-card">
-        <div class="relative aspect-[16/9] overflow-hidden bg-gradient-to-br from-brand-500 to-brand-700">
-          <div class="absolute inset-0 bg-grid-slate [background-size:22px_22px] opacity-20" aria-hidden="true"></div>
-          <svg class="absolute inset-x-0 bottom-3 mx-auto h-12 w-12 text-white/80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-        </div>
-        <div class="flex flex-1 flex-col p-5">
-          <span class="text-[10px] font-bold uppercase tracking-wider text-brand-600">Recovery</span>
-          <h3 class="mt-1.5 font-display text-base font-bold leading-snug text-ink-900 group-hover:text-brand-700">How to Recover from Sleep Debt (Scientifically)</h3>
-          <div class="mt-4 flex items-center justify-between border-t border-slate-100 pt-3 mt-auto">
-            <span class="text-[10px] font-bold uppercase tracking-[0.12em] text-slate-500">Read Guide</span>
-            <svg class="h-3.5 w-3.5 text-brand-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </div>
-        </div>
-      </a>
-
-      <!-- Guide 2 -->
-      <a href="/guides/why-you-wake-up-tired.html" class="bento-tile group flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-card">
-        <div class="relative aspect-[16/9] overflow-hidden bg-gradient-to-br from-indigo-600 to-indigo-800">
-          <div class="absolute inset-0 bg-grid-slate [background-size:22px_22px] opacity-20" aria-hidden="true"></div>
-          <svg class="absolute inset-x-0 bottom-3 mx-auto h-12 w-12 text-white/80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-        </div>
-        <div class="flex flex-1 flex-col p-5">
-          <span class="text-[10px] font-bold uppercase tracking-wider text-indigo-600">Sleep Quality</span>
-          <h3 class="mt-1.5 font-display text-base font-bold leading-snug text-ink-900 group-hover:text-brand-700">Why You Wake Up Tired (Even After 8 Hours)</h3>
-          <div class="mt-4 flex items-center justify-between border-t border-slate-100 pt-3 mt-auto">
-            <span class="text-[10px] font-bold uppercase tracking-[0.12em] text-slate-500">Read Guide</span>
-            <svg class="h-3.5 w-3.5 text-brand-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </div>
-        </div>
-      </a>
-
-      <!-- Guide 3 -->
-      <a href="/guides/caffeine-and-sleep.html" class="bento-tile group flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-card">
-        <div class="relative aspect-[16/9] overflow-hidden bg-gradient-to-br from-sky-600 to-sky-800">
-          <div class="absolute inset-0 bg-grid-slate [background-size:22px_22px] opacity-20" aria-hidden="true"></div>
-          <svg class="absolute inset-x-0 bottom-3 mx-auto h-12 w-12 text-white/80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-3h3c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-2 9h-2v-5h2v5z"/></svg>
-        </div>
-        <div class="flex flex-1 flex-col p-5">
-          <span class="text-[10px] font-bold uppercase tracking-wider text-sky-600">Habits</span>
-          <h3 class="mt-1.5 font-display text-base font-bold leading-snug text-ink-900 group-hover:text-brand-700">The Real Impact of Caffeine on Deep Sleep</h3>
-          <div class="mt-4 flex items-center justify-between border-t border-slate-100 pt-3 mt-auto">
-            <span class="text-[10px] font-bold uppercase tracking-[0.12em] text-slate-500">Read Guide</span>
-            <svg class="h-3.5 w-3.5 text-brand-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </div>
-        </div>
-      </a>
-
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================
-     MONETAG SCRIPT PLACEMENTS
-     ============================================================ -->
-
-<!-- 1. Monetag In-Page Push (Bottom Right Corner) -->
-<!-- Ye ad page ke corner mein chhota sa dikhega, layout kharab nahi karega -->
-<script>
-  (function(d,z,s){
-    s.src='https://'+'//'+z+'.com/sd.js';
-    d.body.appendChild(s)
-  })(document,'YOUR_IN_PAGE_PUSH_ZONE_ID',document.createElement('script'));
-</script>
-
-<!-- 2. Monetag Vignette / Interstitial (Optional) -->
-<!-- Ye full screen ad hai. Ise trigger karne ke liye JS logic chahiye hota hai, 
-     par Monetag dashboard se automatic frequency set ki ja sakti hai. -->
-<script>
-  (function(d,z,s){
-    s.src='https://'+'//'+z+'.com/sd.js';
-    d.body.appendChild(s)
-  })(document,'YOUR_VIGNETTE_ZONE_ID',document.createElement('script'));
-</script>
-
-<!-- NOTE: Apne Monetag Dashboard se "Zone ID" copy karke 
-     "YOUR_IN_PAGE_PUSH_ZONE_ID" aur "YOUR_VIGNETTE_ZONE_ID" ki jagah paste karein. 
-     Banner ads ke liye humne pehle hi <div> placeholders banaye hain, unhe apne 
-     Monetag Multitag zone se replace karein. -->
-
-      <!-- ============================================================
-       PHASE 8/8 — FINAL JAVASCRIPT + PREMIUM FOOTER + CLOSING TAGS
-       ============================================================ -->
-
-  <!-- ============================================================
-       FINAL JAVASCRIPT (CALCULATOR & UI LOGIC)
-       ============================================================ -->
-  <script>
-    (function () {
-      'use strict';
-
-      /* ============================================================
-         1. MOBILE MENU TOGGLE
-         ============================================================ */
-      (function initMobileMenu() {
-        var toggle = document.getElementById('navToggle');
-        var menu = document.getElementById('mobileMenu');
-        var iconOpen = document.getElementById('navIconOpen');
-        var iconClose = document.getElementById('navIconClose');
-        if (!toggle || !menu) return;
-
-        toggle.addEventListener('click', function () {
-          var isOpen = !menu.classList.contains('hidden');
-          menu.classList.toggle('hidden', isOpen);
-          iconOpen.classList.toggle('hidden', !isOpen);
-          iconClose.classList.toggle('hidden', isOpen);
-          toggle.setAttribute('aria-expanded', String(!isOpen));
-        });
-
-        menu.querySelectorAll('a').forEach(function (link) {
-          link.addEventListener('click', function () {
-            menu.classList.add('hidden');
-            iconOpen.classList.remove('hidden');
-            iconClose.classList.add('hidden');
-            toggle.setAttribute('aria-expanded', 'false');
-          });
-        });
-      })();
-
-      /* ============================================================
-         2. SLEEP DEBT CALCULATOR LOGIC
-         ============================================================ */
-      (function initSleepCalculator() {
-        var form = document.getElementById('sleepDebtForm');
-        if (!form) return;
-
-        var targetInput = document.getElementById('targetSleep');
-        var dayInputs = document.querySelectorAll('.day-input');
-        
-        // Outputs
-        var resultText = document.getElementById('resultText');
-        var resultStatus = document.getElementById('resultStatus');
-        var outAvg = document.getElementById('outAvg');
-        var outRecovery = document.getElementById('outRecovery');
-        var insightBox = document.getElementById('insightBox');
-        var insightText = document.getElementById('insightText');
-
-        // Action Buttons
-        var copyBtn = document.getElementById('copyBtn');
-        var shareBtn = document.getElementById('shareBtn');
-        var saveBtn = document.getElementById('saveBtn');
-
+    <!-- JavaScript Calculator Logic -->
+    <script>
         function calculateDebt() {
-          var target = parseFloat(targetInput.value) || 8;
-          var totalActual = 0;
-          var filledDays = 0;
+            let ideal = parseFloat(document.getElementById('idealSleep').value);
+            let actual = parseFloat(document.getElementById('actualSleep').value);
+            let days = parseFloat(document.getElementById('days').value);
+            let resultDiv = document.getElementById('result');
 
-          dayInputs.forEach(function(input) {
-            var val = parseFloat(input.value);
-            if (!isNaN(val) && val >= 0) {
-              totalActual += val;
-              filledDays++;
+            if (isNaN(actual) || isNaN(days) || actual < 0 || days <= 0) {
+                resultDiv.style.display = 'block';
+                resultDiv.style.backgroundColor = 'rgba(255, 77, 77, 0.1)';
+                resultDiv.style.borderColor = '#ff4d4d';
+                resultDiv.style.color = '#ff4d4d';
+                resultDiv.innerHTML = 'Please enter valid numbers.';
+                return;
             }
-          });
 
-          if (filledDays === 0) {
-            // Reset state if empty
-            resultText.innerHTML = `0 <span class="text-2xl text-brand-300">hrs</span>`;
-            resultStatus.textContent = "Enter your sleep data";
-            resultStatus.className = "mt-2 text-sm font-bold uppercase tracking-wider text-brand-300";
-            outAvg.innerHTML = `-- <span class="text-xs">hrs/night</span>`;
-            outRecovery.innerHTML = `-- <span class="text-xs">days</span>`;
-            insightBox.classList.add('hidden');
-            return;
-          }
-
-          // Math
-          var targetTotal = target * filledDays;
-          var debt = targetTotal - totalActual;
-          var avg = totalActual / filledDays;
-          var recoveryDays = Math.ceil(debt); // Assuming +1 hour per night to recover
-
-          // Update Base UI
-          outAvg.innerHTML = `${avg.toFixed(1)} <span class="text-xs">hrs/night</span>`;
-
-          if (debt <= 0) {
-            // No debt (Surplus)
-            var surplus = Math.abs(debt);
-            resultText.innerHTML = `0 <span class="text-2xl text-brand-300">hrs</span>`;
-            resultStatus.textContent = "Zero Sleep Debt";
-            resultStatus.className = "mt-2 text-sm font-bold uppercase tracking-wider text-emerald-400";
-            outRecovery.innerHTML = `0 <span class="text-xs">days</span>`;
-            insightBox.classList.remove('hidden');
-            insightBox.className = "mt-4 rounded-xl border border-emerald-500/30 bg-emerald-500/10 p-4";
-            insightText.innerHTML = `Excellent! You have a sleep surplus of <strong>${surplus.toFixed(1)} hours</strong>. Keep up your current routine.`;
-          } else {
-            // Debt exists
-            resultText.innerHTML = `${debt.toFixed(1)} <span class="text-2xl text-brand-300">hrs</span>`;
-            outRecovery.innerHTML = `${recoveryDays} <span class="text-xs">days</span>`;
-            insightBox.classList.remove('hidden');
-            insightBox.className = "mt-4 rounded-xl border border-brand-500/30 bg-brand-500/10 p-4";
-
-            if (debt <= 5) {
-              // Mild
-              resultStatus.textContent = "Mild Sleep Debt";
-              resultStatus.className = "mt-2 text-sm font-bold uppercase tracking-wider text-yellow-400";
-              insightText.innerHTML = `You have a mild sleep debt. Try going to bed <strong>1 hour earlier</strong> for the next ${recoveryDays} days to fully recover.`;
-            } else if (debt <= 10) {
-              // Moderate
-              resultStatus.textContent = "Moderate Sleep Debt";
-              resultStatus.className = "mt-2 text-sm font-bold uppercase tracking-wider text-orange-400";
-              insightText.innerHTML = `You have a moderate sleep debt. This can affect focus and mood. Prioritize sleep and add <strong>1-2 hours</strong> for the next ${recoveryDays} days.`;
-            } else {
-              // Severe
-              resultStatus.textContent = "Severe Sleep Debt";
-              resultStatus.className = "mt-2 text-sm font-bold uppercase tracking-wider text-rose-400";
-              insightText.innerHTML = `You have a severe sleep debt. Your cognitive function and immune system are likely compromised. Focus on deep recovery and consider speaking to a doctor.`;
+            if (actual >= ideal) {
+                resultDiv.style.display = 'block';
+                resultDiv.style.backgroundColor = 'rgba(40, 167, 69, 0.1)';
+                resultDiv.style.borderColor = '#28a745';
+                resultDiv.style.color = '#28a745';
+                resultDiv.innerHTML = 'Great! You have no sleep debt. Keep it up! 🎉';
+                return;
             }
-          }
 
-          // Attach data for Save/Share/Copy
-          var shareText = `My Sleep Debt is ${debt > 0 ? debt.toFixed(1) + ' hours' : '0 hours (Surplus!)'} based on the last ${filledDays} days. Calculated at SleepDebtCalculator.online`;
-          copyBtn.setAttribute('data-result', shareText);
-          shareBtn.setAttribute('data-result', shareText);
-          saveBtn.setAttribute('data-result', shareText);
+            let totalDebt = (ideal - actual) * days;
+
+            resultDiv.style.display = 'block';
+            resultDiv.style.backgroundColor = 'rgba(244, 211, 94, 0.1)';
+            resultDiv.style.borderColor = '#f4d35e';
+            resultDiv.style.color = '#f4d35e';
+            resultDiv.innerHTML = `Your total sleep debt is <br><span style="font-size: 28px; font-weight: bold;">${totalDebt} hours</span><br> over ${days} days.`;
         }
-
-        // Event Listeners for live calculation
-        targetInput.addEventListener('input', calculateDebt);
-        dayInputs.forEach(function(input) {
-          input.addEventListener('input', calculateDebt);
-        });
-        
-        form.addEventListener('submit', function(e) {
-          e.preventDefault();
-          calculateDebt();
-        });
-
-        calculateDebt(); // Initial run
-
-        /* ============================================================
-           3. ACTION BUTTONS (Copy / Share / Save)
-           ============================================================ */
-        copyBtn.addEventListener('click', function() {
-          var text = this.getAttribute('data-result');
-          if(!text) return;
-          navigator.clipboard.writeText(text).then(function() {
-            var originalHTML = copyBtn.innerHTML;
-            copyBtn.innerHTML = '<svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg> Copied!';
-            setTimeout(function() { copyBtn.innerHTML = originalHTML; }, 2000);
-          });
-        });
-
-        shareBtn.addEventListener('click', function() {
-          var text = this.getAttribute('data-result');
-          if(!text) return;
-          if (navigator.share) {
-            navigator.share({ title: 'My Sleep Debt Result', text: text, url: window.location.href }).catch(console.error);
-          } else {
-            navigator.clipboard.writeText(text);
-            alert('Result copied to clipboard!');
-          }
-        });
-
-        saveBtn.addEventListener('click', function() {
-          var text = this.getAttribute('data-result');
-          if(!text) return;
-          try {
-            localStorage.setItem('bm_saved_sleep_debt', JSON.stringify({ result: text, timestamp: new Date().toISOString() }));
-            var originalHTML = saveBtn.innerHTML;
-            saveBtn.innerHTML = '<svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg> Saved!';
-            setTimeout(function() { saveBtn.innerHTML = originalHTML; }, 2000);
-          } catch (e) {
-            alert('Could not save to browser storage.');
-          }
-        });
-      })();
-
-      /* ============================================================
-         4. SMOOTH SCROLL
-         ============================================================ */
-      (function initSmoothScroll() {
-        var headerOffset = 88;
-        document.querySelectorAll('a[href^="#"]').forEach(function (link) {
-          var targetId = link.getAttribute('href');
-          if (!targetId || targetId === '#') return;
-          link.addEventListener('click', function (e) {
-            var target = document.querySelector(targetId);
-            if (!target) return;
-            e.preventDefault();
-            var top = target.getBoundingClientRect().top + window.pageYOffset - headerOffset;
-            window.scrollTo({ top: top, behavior: 'smooth' });
-            if (history.pushState) history.pushState(null, '', targetId);
-          });
-        });
-      })();
-    })();
-  </script>
-
-  <!-- Year auto-fill -->
-  <script>
-    (function () {
-      var el = document.getElementById('yearNow');
-      if (el) el.textContent = new Date().getFullYear();
-    })();
-  </script>
-
-  <!-- ============================================================
-       PREMIUM FOOTER
-       ============================================================ -->
-  <footer class="relative overflow-hidden border-t border-ink-800 bg-ink-950 text-slate-400">
-
-    <!-- Top Gradient Border Line -->
-    <div class="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-brand-500/60 to-transparent" aria-hidden="true"></div>
-    <div class="pointer-events-none absolute -right-32 -top-32 h-72 w-72 rounded-full bg-brand-500/10 blur-3xl" aria-hidden="true"></div>
-
-    <div class="relative mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-16 lg:px-8">
-
-      <!-- Top Grid -->
-      <div class="grid gap-10 md:grid-cols-12 md:gap-8">
-
-        <!-- Column 1: Brand & Contact -->
-        <div class="md:col-span-4">
-          <a href="/" class="group flex items-center gap-2.5" aria-label="Sleep Debt Calculator Home">
-            <span class="grid h-10 w-10 place-items-center rounded-xl bg-white/5 ring-1 ring-white/10 transition-transform duration-300 group-hover:scale-105">
-              <svg viewBox="0 0 24 24" class="h-6 w-6 text-brand-300" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-              </svg>
-            </span>
-            <span class="leading-tight">
-              <span class="block font-display text-lg font-extrabold tracking-tight text-white">
-                Sleep<span class="text-gradient">Debt</span>
-              </span>
-              <span class="block text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-500">
-                Recovery Tools
-              </span>
-            </span>
-          </a>
-
-          <p class="mt-5 max-w-sm text-[13.5px] leading-relaxed text-slate-400">
-            Scientific sleep debt calculators and recovery tools. Built to help you understand your sleep deficit, optimize your circadian rhythm, and improve your health.
-          </p>
-
-          <div class="mt-6 space-y-2">
-            <a href="mailto:contact@sleepdebtcalculator.online" class="group flex items-center gap-2.5 text-sm font-semibold text-slate-300 transition-colors hover:text-brand-300">
-              <span class="grid h-8 w-8 place-items-center rounded-lg bg-white/5 ring-1 ring-white/10 transition-colors group-hover:bg-brand-500/20 group-hover:ring-brand-400/40">
-                <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z" /><path d="M4 7l8 6 8-6" /></svg>
-              </span>
-              contact@sleepdebtcalculator.online
-            </a>
-          </div>
-        </div>
-
-        <!-- Column 2: Tools -->
-        <div class="md:col-span-3">
-          <h3 class="font-display text-[11px] font-bold uppercase tracking-[0.16em] text-white">Top Tools</h3>
-          <ul class="mt-4 space-y-2.5 text-[13.5px]">
-            <li><a href="/sleep-debt-calculator.html" class="font-semibold text-brand-400 transition-colors hover:text-brand-300" aria-current="page">Sleep Debt Calculator</a></li>
-            <li><a href="/bedtime-calculator.html" class="transition-colors hover:text-brand-300">Bedtime Calculator</a></li>
-            <li><a href="/caffeine-calculator.html" class="transition-colors hover:text-brand-300">Caffeine Half-Life</a></li>
-            <li><a href="/nap-calculator.html" class="transition-colors hover:text-brand-300">Power Nap Calculator</a></li>
-            <li><a href="#tools" class="font-semibold text-brand-400 transition-colors hover:text-brand-300">View All 20 Tools →</a></li>
-          </ul>
-        </div>
-
-        <!-- Column 3: Company -->
-        <div class="md:col-span-2">
-          <h3 class="font-display text-[11px] font-bold uppercase tracking-[0.16em] text-white">Company</h3>
-          <ul class="mt-4 space-y-2.5 text-[13.5px]">
-            <li><a href="/about.html" class="transition-colors hover:text-brand-300">About Us</a></li>
-            <li><a href="/guides.html" class="transition-colors hover:text-brand-300">Sleep Guides</a></li>
-            <li><a href="/contact.html" class="transition-colors hover:text-brand-300">Contact</a></li>
-            <li><a href="/sitemap.xml" class="transition-colors hover:text-brand-300">Sitemap</a></li>
-          </ul>
-        </div>
-
-        <!-- Column 4: Legal -->
-        <div class="md:col-span-3">
-          <h3 class="font-display text-[11px] font-bold uppercase tracking-[0.16em] text-white">Legal &amp; Medical</h3>
-          <ul class="mt-4 space-y-2.5 text-[13.5px]">
-            <li><a href="/privacy.html" class="transition-colors hover:text-brand-300">Privacy Policy</a></li>
-            <li><a href="/terms.html" class="transition-colors hover:text-brand-300">Terms of Service</a></li>
-            <li><a href="/disclaimer.html" class="transition-colors hover:text-brand-300">Medical Disclaimer</a></li>
-            <li><a href="/cookie-policy.html" class="transition-colors hover:text-brand-300">Cookie Policy</a></li>
-          </ul>
-
-          <!-- Medical Warning Box -->
-          <div class="mt-5 rounded-xl border border-rose-500/20 bg-rose-500/10 p-3.5">
-            <p class="text-[10px] font-bold uppercase tracking-[0.14em] text-rose-300">Medical Notice</p>
-            <p class="mt-1.5 text-[11.5px] leading-relaxed text-slate-400">
-              This site provides educational tools, not medical advice. If you suspect you have a sleep disorder, please consult a healthcare professional.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Bottom Bar -->
-      <div class="mt-10 flex flex-col items-start justify-between gap-4 border-t border-white/10 pt-8 md:flex-row md:items-center">
-        <p class="text-[12px] text-slate-500">
-          &copy; <span id="yearNow">2026</span> Sleep Debt Calculator. All rights reserved. Operated from <span class="text-slate-400">sleepdebtcalculator.online</span>.
-        </p>
-        <p class="text-[11px] text-slate-500">
-          Built for better sleep. General information only — see our <a href="/disclaimer.html" class="font-semibold text-brand-400 underline decoration-brand-500/40 underline-offset-2 hover:text-brand-300">Medical Disclaimer</a>.
-        </p>
-      </div>
-    </div>
-  </footer>
+    </script>
 
 </body>
-</html>      
+</html>
