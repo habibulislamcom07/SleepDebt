@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    
+    <!-- SEO: Meta Tags -->
+    <title>Medical Disclaimer - Sleep Debt Calculator</title>
+    <meta name="description" content="Medical Disclaimer for SleepDebtCalculator.online. Our tools are for informational purposes only and do not constitute medical advice.">
+    <meta name="robots" content="noindex, follow">
+
+    <style>
+        /* --- FULL SCREEN DARK THEME --- */
+        :root {
+            --bg-color: #0b1021; 
+            --card-bg: rgba(21, 30, 54, 0.6);  
+            --text-main: #ffffff;
+            --text-muted: #a0aec0;
+            --accent-yellow: #f4d35e;
+            --border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+
+        body { 
+            background-color: var(--bg-color); 
+            background-image: radial-gradient(circle at 50% 0%, #17213b 0%, #0b1021 50%);
+            background-attachment: fixed;
+            color: var(--text-main); 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            min-height: 100vh; 
+            line-height: 1.8; 
+            overflow-x: hidden; 
+        }
+
+        .main-container { 
+            width: 100%; 
+            max-width: 900px; 
+            padding: 20px 15px; 
+            display: flex; 
+            flex-direction: column; 
+            gap: 20px; 
+            align-items: center;
+        }
+
+        /* Logo Header */
+        .logo-container { text-align: center; margin-bottom: 15px; display: flex; justify-content: center; align-items: center; gap: 10px; }
+        .logo-text { font-size: 28px; font-weight: 800; letter-spacing: 0.5px; }
+        .moon { color: var(--accent-yellow); font-size: 36px; filter: drop-shadow(0 0 15px rgba(244, 211, 94, 0.5)); }
+
+        /* Ad Placeholders */
+        .ad-container { width: 100%; display: flex; justify-content: center; align-items: center; min-height: 60px; overflow: hidden; margin: 5px 0; }
+
+        /* Main Content Section */
+        .content-section { 
+            background: var(--card-bg); 
+            backdrop-filter: blur(12px);
+            padding: 30px; 
+            border-radius: 16px; 
+            border: 1px solid var(--border-color); 
+            width: 100%; 
+        }
+        
+        .content-section h1 { color: var(--accent-yellow); font-size: 32px; margin-bottom: 10px; border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 15px; text-align: center; }
+        .content-section .last-updated { text-align: center; color: var(--text-muted); font-size: 14px; margin-bottom: 30px; }
+        
+        .content-section h2 { color: var(--text-main); font-size: 22px; margin-top: 35px; margin-bottom: 15px; }
+        .content-section p { font-size: 16px; color: var(--text-muted); margin-bottom: 15px; text-align: justify;}
+        .content-section ul { margin-left: 20px; color: var(--text-muted); font-size: 16px; margin-bottom: 15px; }
+        .content-section li { margin-bottom: 10px; }
+        .content-section a { color: var(--accent-yellow); text-decoration: none; font-weight: bold; }
+        .content-section a:hover { text-decoration: underline; }
+
+        /* Warning Box */
+        .warning-box {
+            background-color: rgba(255, 77, 77, 0.1);
+            border-left: 4px solid #ff4d4d;
+            padding: 15px 20px;
+            margin-bottom: 25px;
+            border-radius: 4px;
+        }
+        .warning-box p { color: #ffcccc; margin-bottom: 0; font-weight: 500;}
+
+        /* Back Button */
+        .btn { background-color: var(--accent-yellow); color: var(--bg-color); border: none; padding: 12px 25px; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; text-decoration: none; display: inline-block; margin-bottom: 20px; transition: 0.3s; }
+        .btn:hover { background-color: #e0c04b; }
+
+        /* Footer */
+        footer { padding: 30px 15px; font-size: 13px; color: var(--text-muted); text-align: center; width: 100%; margin-top: auto; display: flex; flex-direction: column; gap: 15px; background: rgba(11, 16, 33, 0.95); border-top: 1px solid var(--border-color); }
+        .footer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; align-items: center; }
+        .footer-links a { color: var(--accent-yellow); text-decoration: none; transition: 0.3s; font-weight: 600;}
+        .footer-links a:hover { color: #ffffff; text-decoration: underline; }
+        .footer-links span { color: var(--text-muted); opacity: 0.4; font-size: 12px;}
+
+        /* --- DESKTOP RESPONSIVE --- */
+        .desktop-ad { display: none; }
+        .mobile-ad { display: flex; justify-content: center; width: 100%; }
+
+        @media (min-width: 768px) {
+            .main-container { padding: 40px 20px; gap: 30px; }
+            .logo-text { font-size: 42px; }
+            .moon { font-size: 50px; }
+            .content-section { padding: 50px; border-radius: 20px; }
+            .content-section h1 { font-size: 40px; }
+            .content-section h2 { font-size: 26px; }
+            .content-section p, .content-section ul { font-size: 17px; }
+            .desktop-ad { display: flex; justify-content: center; width: 100%; }
+            .mobile-ad { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-container">
+
+        <!-- Header Logo -->
+        <div class="logo-container">
+            <span class="moon">🌙</span>
+            <span class="logo-text">Sleep Calculator</span>
+            <span style="font-size: 20px; color: var(--accent-yellow);">✨</span>
+        </div>
+
+        <!-- TOP BANNER AD -->
+        <div class="ad-container">
+            <div class="desktop-ad">
+                <script>
+                  atOptions = { 'key' : 'ef4f7b291c17b1009e33c2dd1269593c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+                </script>
+                <script type="text/javascript" src="https://bauval.org/22/ef4f7b291c17b1009e33c2dd1269593c"></script>
+            </div>
+            <div class="mobile-ad">
+                <script type="text/javascript">
+                  atOptions = { 'key' : 'e58f96be627c4f39aa8b22755f020bce', 'format' : 'iframe', 'height' : 50, 'width' : 320, 'params' : {} };
+                </script>
+                <script type="text/javascript" src="https://bauval.org/22/e58f96be627c4f39aa8b22755f020bce"></script>
+            </div>
+        </div>
+
+        <!-- MAIN CONTENT -->
+        <div class="content-section">
+            <div style="text-align: left; margin-bottom: 20px;">
+                <a href="index.html" class="btn">← Back to Home</a>
+            </div>
+            
+            <h1>Medical Disclaimer</h1>
+            <p class="last-updated">Last updated: October 2026</p>
+            
+            <div class="warning-box">
+                <p><strong>IMPORTANT:</strong> The information and tools on SleepDebtCalculator.online are for educational and informational purposes only and are NOT a substitute for professional medical advice, diagnosis, or treatment.</p>
+            </div>
+
+            <p>Welcome to <strong>SleepDebtCalculator.online</strong>. The content, calculators, and tools provided on this website are designed to help you understand your sleep patterns and make informed lifestyle choices. However, they are not intended to replace the advice of a qualified healthcare professional.</p>
+
+            <h2>1. No Doctor-Patient Relationship</h2>
+            <p>Your use of this website and its tools does not create a doctor-patient relationship between you and SleepDebtCalculator.online or any of its creators. We are not medical professionals, and we do not provide medical advice, diagnosis, or treatment plans.</p>
+
+            <h2>2. Always Consult a Professional</h2>
+            <p>If you are experiencing symptoms of a sleep disorder (such as chronic insomnia, sleep apnea, or narcolepsy), or if you have any concerns about your physical or mental health, please consult a qualified healthcare provider immediately. Never disregard professional medical advice or delay seeking it because of something you have read on this website.</p>
+
+            <h2>3. Accuracy of Calculations</h2>
+            <p>Our sleep calculators (including Sleep Debt, Sleep Cycle, Caffeine, and Nap Time) are based on general scientific principles, such as average sleep cycles and caffeine half-lives. However, sleep needs vary from person to person. The results provided by our tools are estimates and should be used as a general guide only, not as medical data.</p>
+
+            <h2>4. Emergency Situations</h2>
+            <p>If you think you may have a medical emergency, call your doctor, go to the nearest emergency department, or call your local emergency number immediately. This website is not designed for emergency situations.</p>
+
+            <h2>5. External Links</h2>
+            <p>This website may contain links to external websites or advertisements. We do not endorse or take responsibility for the accuracy of health-related information provided on third-party websites.</p>
+
+            <h2>6. Limitation of Liability</h2>
+            <p>By using this website, you agree that SleepDebtCalculator.online and its creators shall not be held liable for any direct, indirect, incidental, or consequential damages arising from your use of our tools or reliance on the information provided.</p>
+
+            <h2>7. Contact Us</h2>
+            <p>If you have any questions about this Medical Disclaimer, please contact us at:</p>
+            <p><strong>Email:</strong> contact@sleepdebtcalculator.online</p>
+        </div>
+
+        <!-- BOTTOM BANNER AD -->
+        <div class="ad-container">
+            <div class="desktop-ad">
+                <script>
+                  atOptions = { 'key' : 'ef4f7b291c17b1009e33c2dd1269593c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+                </script>
+                <script type="text/javascript" src="https://bauval.org/22/ef4f7b291c17b1009e33c2dd1269593c"></script>
+            </div>
+            <div class="mobile-ad">
+                <script type="text/javascript">
+                  atOptions = { 'key' : 'e58f96be627c4f39aa8b22755f020bce', 'format' : 'iframe', 'height' : 50, 'width' : 320, 'params' : {} };
+                </script>
+                <script type="text/javascript" src="https://bauval.org/22/e58f96be627c4f39aa8b22755f020bce"></script>
+            </div>
+        </div>
+
+    </div> <!-- End Main Container -->
+
+    <!-- FOOTER (UPDATED WITH DISCLAIMER LINK) -->
+    <footer>
+        <p>© 2026 SleepDebtCalculator.online. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="index.html">Home</a> <span>|</span>
+            <a href="sleep-cycle.html">Sleep Cycle</a> <span>|</span>
+            <a href="caffeine.html">Caffeine</a> <span>|</span>
+            <a href="nap.html">Nap Time</a> <span>|</span>
+            <a href="about.html">About Us</a> <span>|</span>
+            <a href="privacy.html">Privacy Policy</a> <span>|</span>
+            <a href="terms.html">Terms of Service</a> <span>|</span>
+            <a href="disclaimer.html">Disclaimer</a> <span>|</span>
+            <a href="contact.html">Contact Us</a>
+        </div>
+    </footer>
+
+    <!-- BACKGROUND SCRIPTS (POPUNDER & SOCIAL BAR) -->
+    <script data-cfasync="false" src="https://bauval.org/14/c2e8b6a0744b11045176ac8027b166fe"></script>
+    <script data-cfasync="false" src="https://abscloud.org/1/7b543158f36ec26f083d375b2a6547ec"></script>
+
+</body>
+</html>
