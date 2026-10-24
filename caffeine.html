@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    
+    <!-- SEO: Problem Solving & Long-Tail Keywords -->
+    <title>Caffeine Half-Life Calculator | Will Coffee Keep Me Awake?</title>
+    <meta name="description" content="How long does caffeine stay in your system? Use our Caffeine Half-Life Calculator to find out if your evening coffee will ruin your sleep. Safe time to sleep.">
+    <meta name="keywords" content="caffeine calculator, caffeine half life, how long does caffeine stay in your system, will coffee keep me awake, caffeine sleep calculator, how long to wait after coffee to sleep">
+    <meta name="robots" content="index, follow">
+
+    <style>
+        /* --- SAME DARK THEME CSS --- */
+        :root {
+            --bg-color: #090e1f;
+            --card-bg: #11182b;
+            --text-main: #ffffff;
+            --text-muted: #8892b0;
+            --accent-yellow: #f4d35e;
+            --border-color: #23304d;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        
+        body { 
+            background-color: var(--bg-color); 
+            color: var(--text-main); 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            min-height: 100vh; 
+            line-height: 1.6; 
+            overflow-x: hidden; 
+        }
+        
+        .main-container { width: 100%; max-width: 600px; padding: 15px; display: flex; flex-direction: column; gap: 20px; }
+        
+        /* Logo Header */
+        .logo-container { text-align: center; margin-top: 30px; margin-bottom: 10px; display: flex; justify-content: center; align-items: center; gap: 10px; }
+        .logo-text { font-size: clamp(22px, 6vw, 28px); font-weight: 600; letter-spacing: 1px; }
+        .icon { color: var(--accent-yellow); font-size: clamp(28px, 7vw, 34px); }
+        
+        /* Adsterra Placeholders */
+        .ad-placeholder { width: 100%; min-height: 60px; background-color: var(--card-bg); border: 1px dashed var(--border-color); display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: 12px; text-align: center; border-radius: 8px; }
+
+        h1 { font-size: clamp(18px, 5vw, 24px); text-align: center; margin-bottom: 5px; }
+        .subtitle { text-align: center; font-size: clamp(13px, 4vw, 15px); color: var(--text-muted); margin-bottom: 10px; }
+
+        /* Calculator Box */
+        .calculator-box {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            width: 100%;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 15px;
+        }
+
+        .input-group label { font-size: 14px; color: var(--text-muted); margin-bottom: 8px; }
+        
+        .input-group select, .input-group input[type="time"] {
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 12px 15px;
+            border-radius: 8px;
+            font-size: 16px;
+            outline: none;
+            width: 100%;
+        }
+
+        .input-group input[type="time"]::-webkit-calendar-picker-indicator { filter: invert(1); cursor: pointer; }
+        .input-group select option { background-color: var(--bg-color); }
+
+        .btn {
+            width: 100%;
+            background-color: var(--accent-yellow);
+            color: var(--bg-color);
+            border: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: clamp(16px, 4.5vw, 18px);
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn:hover { background-color: #e0c04b; }
+
+        .result-box {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            display: none;
+            text-align: center;
+        }
+
+        .result-box h3 { color: var(--accent-yellow); font-size: 18px; margin-bottom: 10px; }
+        .result-box p { font-size: 14px; color: var(--text-muted); margin-bottom: 15px; }
+        
+        .progress-bar-container {
+            width: 100%;
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            height: 20px;
+            overflow: hidden;
+            margin-bottom: 10px;
+            border: 1px solid var(--border-color);
+        }
+
+        .progress-bar {
+            height: 100%;
+            background-color: var(--accent-yellow);
+            width: 0%;
+            transition: width 1s ease-in-out;
+        }
+
+        .status-text { font-weight: bold; font-size: 16px; }
+        .status-safe { color: #4ade80; }
+        .status-danger { color: #ff4d4d; }
+
+        /* SEO Content & FAQ */
+        .content-section { background-color: var(--card-bg); padding: 20px; border-radius: 12px; border: 1px solid var(--border-color); width: 100%; }
+        .content-section h2 { color: var(--accent-yellow); font-size: clamp(16px, 4.5vw, 20px); margin-bottom: 12px; border-bottom: 1px solid var(--border-color); padding-bottom: 8px; }
+        .content-section h3 { font-size: clamp(14px, 4vw, 16px); margin-top: 15px; margin-bottom: 8px; color: var(--text-main); }
+        .content-section p { font-size: clamp(13px, 3.5vw, 14px); color: var(--text-muted); margin-bottom: 12px; }
+        
+        .faq-item { margin-bottom: 15px; }
+        .faq-item h4 { color: var(--accent-yellow); font-size: 14px; margin-bottom: 5px; }
+        .faq-item p { margin-bottom: 0; }
+
+        /* Related Tools */
+        .related-tools-section { background-color: var(--card-bg); padding: 20px; border-radius: 12px; border: 1px solid var(--border-color); width: 100%; }
+        .related-tools-section h2 { text-align: center; font-size: clamp(16px, 4.5vw, 18px); margin-bottom: 15px; color: var(--text-main); }
+        .tools-grid { display: flex; flex-direction: column; gap: 10px; }
+        .tool-card { display: flex; align-items: center; background-color: var(--bg-color); border: 1px solid var(--border-color); padding: 12px; border-radius: 8px; text-decoration: none; transition: 0.3s; }
+        .tool-card:hover { border-color: var(--accent-yellow); transform: translateY(-2px); }
+        .tool-icon { font-size: 20px; margin-right: 12px; background-color: var(--card-bg); padding: 8px; border-radius: 50%; display: flex; justify-content: center; align-items: center; }
+        .tool-info h3 { font-size: 15px; color: var(--accent-yellow); margin: 0 0 3px 0; }
+        .tool-info p { font-size: 12px; color: var(--text-muted); margin: 0; }
+
+        /* Footer */
+        footer { padding: 20px; font-size: 12px; color: var(--text-muted); text-align: center; width: 100%; border-top: 1px solid var(--border-color); margin-top: 20px; display: flex; flex-direction: column; gap: 8px; }
+        footer a { color: var(--accent-yellow); text-decoration: none; margin: 0 5px; }
+
+        @media (min-width: 768px) { .ad-placeholder { min-height: 90px; } footer { flex-direction: row; justify-content: center; } }
+    </style>
+</head>
+<body>
+
+    <!-- Header Logo -->
+    <div class="logo-container">
+        <span class="icon">☕</span>
+        <span class="logo-text">Caffeine Calculator</span>
+    </div>
+
+    <div class="main-container">
+
+        <!-- ADSTERRA TOP BANNER -->
+        <div class="ad-placeholder">Adsterra Top Banner Ad</div>
+
+        <h1>Will your coffee keep you awake?</h1>
+        <p class="subtitle">Calculate how long caffeine stays in your system.</p>
+
+        <!-- MAIN TOOL -->
+        <div class="calculator-box">
+            <div class="input-group">
+                <label for="caffeineTime">When did you drink your coffee?</label>
+                <input type="time" id="caffeineTime">
+            </div>
+
+            <div class="input-group">
+                <label for="caffeineAmount">How much did you drink?</label>
+                <select id="caffeineAmount">
+                    <option value="95">1 Cup of Coffee (approx. 95mg)</option>
+                    <option value="190">2 Cups of Coffee (approx. 190mg)</option>
+                    <option value="60">1 Espresso Shot (approx. 60mg)</option>
+                    <option value="40">1 Cup of Black Tea (approx. 40mg)</option>
+                    <option value="80">1 Energy Drink (approx. 80mg)</option>
+                    <option value="25">1 Can of Cola (approx. 25mg)</option>
+                </select>
+            </div>
+
+            <button class="btn" onclick="calculateCaffeine()">Calculate Caffeine Level ⏱️</button>
+
+            <div id="caffeineResult" class="result-box">
+                <h3>Your Current Status</h3>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" id="caffeineBar"></div>
+                </div>
+                <p id="mgText">You have approx. <strong>0mg</strong> of caffeine in your system right now.</p>
+                
+                <h3>Safe to Sleep?</h3>
+                <p id="statusText" class="status-text">Calculating...</p>
+                <p id="sleepTimeText" style="margin-top: 5px;"></p>
+            </div>
+        </div>
+
+        <!-- SEO CONTENT -->
+        <div class="content-section">
+            <h2>How long does caffeine stay in your system?</h2>
+            <p>If you are wondering <strong>"will coffee keep me awake"</strong>, you need to understand caffeine's half-life. The average half-life of caffeine is <strong>5 hours</strong>. This means it takes 5 hours for your body to eliminate 50% of the caffeine you consumed.</p>
+            <p>For example, if you drink a 95mg cup of coffee at 4:00 PM, you will still have around 47mg of caffeine in your system at 9:00 PM. It usually takes about 4 to 5 half-lives (20-25 hours) for caffeine to be completely eliminated from your body.</p>
+            
+            <h3>How to sleep after drinking coffee?</h3>
+            <p>If you are sensitive to caffeine, stop drinking coffee at least 8-10 hours before bedtime. You can also use our <a href="sleep-cycle.html" target="_blank" style="color:var(--accent-yellow);">Sleep Calculator</a> to plan your bedtime.</p>
+        </div>
+
+        <!-- FAQ SECTION -->
+        <div class="content-section">
+            <h2>Frequently Asked Questions</h2>
+            
+            <div class="faq-item">
+                <h4>How long to wait after coffee to sleep?</h4>
+                <p>It is recommended to wait at least 6 to 8 hours after your last cup of coffee before going to bed. For sensitive individuals, wait up to 10 hours.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h4>What is the caffeine half-life?</h4>
+                <p>The half-life of caffeine is the time it takes for your body to eliminate half of the caffeine consumed. For most healthy adults, this is around 5 hours, but it can range from 3 to 7 hours depending on genetics and metabolism.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>Is caffeine affecting my sleep quality?</h4>
+                <p>Yes, even if you fall asleep, lingering caffeine can reduce deep sleep and REM sleep, causing you to wake up feeling tired.</p>
+            </div>
+        </div>
+
+        <!-- RELATED TOOLS (NEW TABS) -->
+        <div class="related-tools-section">
+            <h2>Explore Other Sleep Tools</h2>
+            <div class="tools-grid">
+                
+                <a href="index.html" target="_blank" rel="noopener noreferrer" class="tool-card">
+                    <div class="tool-icon">🧮</div>
+                    <div class="tool-info">
+                        <h3>Sleep Debt Calculator</h3>
+                        <p>Find out how much sleep you owe your body.</p>
+                    </div>
+                </a>
+
+                <a href="sleep-cycle.html" target="_blank" rel="noopener noreferrer" class="tool-card">
+                    <div class="tool-icon">🌙</div>
+                    <div class="tool-info">
+                        <h3>Sleep Cycle Calculator</h3>
+                        <p>What time should I sleep or wake up?</p>
+                    </div>
+                </a>
+
+                <a href="nap.html" target="_blank" rel="noopener noreferrer" class="tool-card">
+                    <div class="tool-icon">😴</div>
+                    <div class="tool-info">
+                        <h3>Best Nap Time Calculator</h3>
+                        <p>Find the perfect power nap duration for energy.</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- ADSTERRA BOTTOM BANNER -->
+        <div class="ad-placeholder">Adsterra Bottom Banner Ad</div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 SleepDebtCalculator.online. All rights reserved.</p>
+        <div><a href="index.html">Home</a> | <a href="privacy.html">Privacy Policy</a></div>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        function calculateCaffeine() {
+            const timeInput = document.getElementById('caffeineTime').value;
+            const amountInput = parseFloat(document.getElementById('caffeineAmount').value);
+            const resultBox = document.getElementById('caffeineResult');
+            const bar = document.getElementById('caffeineBar');
+            const mgText = document.getElementById('mgText');
+            const statusText = document.getElementById('statusText');
+            const sleepTimeText = document.getElementById('sleepTimeText');
+
+            if (!timeInput) {
+                alert("Please select the time you had caffeine.");
+                return;
+            }
+
+            // Get current time and caffeine time
+            const now = new Date();
+            const [hours, minutes] = timeInput.split(':').map(Number);
+            const caffeineTime = new Date();
+            caffeineTime.setHours(hours, minutes, 0, 0);
+
+            // Calculate hours elapsed
+            let hoursElapsed = (now - caffeineTime) / (1000 * 60 * 60);
+
+            // If time is in the future, assume it was yesterday
+            if (hoursElapsed < 0) {
+                hoursElapsed += 24;
+            }
+
+            // Caffeine half-life is 5 hours
+            const remainingCaffeine = amountInput * Math.pow(0.5, (hoursElapsed / 5));
+
+            // Update UI
+            resultBox.style.display = 'block';
+            
+            // Set progress bar (max 200mg for visual purposes)
+            let percentage = (remainingCaffeine / 200) * 100;
+            if (percentage > 100) percentage = 100;
+            bar.style.width = percentage + '%';
+
+            mgText.innerHTML = `You have approx. <strong>${remainingCaffeine.toFixed(1)}mg</strong> of caffeine in your system right now.`;
+
+            // Check if safe to sleep (under 25mg is generally considered safe for most)
+            if (remainingCaffeine > 50) {
+                statusText.innerText = "❌ Too High for Sleep";
+                statusText.className = "status-text status-danger";
+                bar.style.backgroundColor = "#ff4d4d";
+                
+                // Calculate when it will drop below 50mg
+                let safeHours = 5 * (Math.log(remainingCaffeine / 50) / Math.log(2));
+                let safeTime = new Date(now.getTime() + safeHours * 60000 * 60);
+                
+                let safeH = safeTime.getHours();
+                let safeM = safeTime.getMinutes();
+                let ampm = safeH >= 12 ? 'PM' : 'AM';
+                safeH = safeH % 12; safeH = safeH ? safeH : 12;
+                safeM = safeM < 10 ? '0' + safeM : safeM;
+
+                sleepTimeText.innerText = `Wait at least ${safeHours.toFixed(1)} more hours (around ${safeH}:${safeM} ${ampm}) before sleeping.`;
+            } else {
+                statusText.innerText = "✅ Safe to Sleep";
+                statusText.className = "status-text status-safe";
+                bar.style.backgroundColor = "#4ade80";
+                sleepTimeText.innerText = "Caffeine levels are low enough that they shouldn't disrupt your sleep.";
+            }
+        }
+
+        // Set default time to 2 hours ago
+        window.onload = function() {
+            const d = new Date();
+            d.setHours(d.getHours() - 2);
+            const h = d.getHours().toString().padStart(2, '0');
+            const m = d.getMinutes().toString().padStart(2, '0');
+            document.getElementById('caffeineTime').value = `${h}:${m}`;
+        };
+    </script>
+</body>
+</html>
