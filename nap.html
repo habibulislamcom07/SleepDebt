@@ -11,14 +11,14 @@
     <meta name="robots" content="index, follow">
 
     <style>
-        /* --- SAME DARK THEME CSS --- */
+        /* --- FULL SCREEN DARK THEME --- */
         :root {
-            --bg-color: #090e1f;
-            --card-bg: #11182b;
+            --bg-color: #0b1021; /* Deep Navy Background */
+            --card-bg: #151e36;  /* Lighter box background */
             --text-main: #ffffff;
-            --text-muted: #8892b0;
+            --text-muted: #a0aec0;
             --accent-yellow: #f4d35e;
-            --border-color: #23304d;
+            --border-color: #2a3b5c;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
@@ -34,26 +34,34 @@
             overflow-x: hidden; 
         }
         
-        .main-container { width: 100%; max-width: 600px; padding: 15px; display: flex; flex-direction: column; gap: 20px; }
+        /* Wider container for desktop */
+        .main-container { 
+            width: 100%; 
+            max-width: 800px; 
+            padding: 40px 20px; 
+            display: flex; 
+            flex-direction: column; 
+            gap: 25px; 
+        }
         
         /* Logo Header */
-        .logo-container { text-align: center; margin-top: 30px; margin-bottom: 10px; display: flex; justify-content: center; align-items: center; gap: 10px; }
-        .logo-text { font-size: clamp(22px, 6vw, 28px); font-weight: 600; letter-spacing: 1px; }
-        .icon { color: var(--accent-yellow); font-size: clamp(28px, 7vw, 34px); }
+        .logo-container { text-align: center; margin-bottom: 10px; display: flex; justify-content: center; align-items: center; gap: 10px; }
+        .logo-text { font-size: clamp(24px, 5vw, 32px); font-weight: 600; letter-spacing: 1px; }
+        .icon { color: var(--accent-yellow); font-size: clamp(30px, 6vw, 40px); }
         
         /* Adsterra Placeholders */
         .ad-placeholder { width: 100%; min-height: 60px; background-color: var(--card-bg); border: 1px dashed var(--border-color); display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: 12px; text-align: center; border-radius: 8px; }
 
-        h1 { font-size: clamp(18px, 5vw, 24px); text-align: center; margin-bottom: 5px; }
-        .subtitle { text-align: center; font-size: clamp(13px, 4vw, 15px); color: var(--text-muted); margin-bottom: 10px; }
+        h1 { font-size: clamp(22px, 5vw, 28px); text-align: center; margin-bottom: 5px; }
+        .subtitle { text-align: center; font-size: clamp(14px, 3vw, 16px); color: var(--text-muted); margin-bottom: 10px; }
 
         /* Calculator Box */
         .calculator-box {
             background-color: var(--card-bg);
             border: 1px solid var(--border-color);
             border-radius: 12px;
-            padding: 20px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
             width: 100%;
             text-align: center;
         }
@@ -61,21 +69,21 @@
         .input-group {
             display: flex;
             justify-content: center;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
 
         input[type="time"] {
             background-color: var(--bg-color);
             color: var(--text-main);
             border: 1px solid var(--border-color);
-            padding: 12px 15px;
+            padding: 15px 20px;
             border-radius: 8px;
-            font-size: 20px;
+            font-size: 22px;
             font-weight: bold;
             outline: none;
             text-align: center;
             width: 100%;
-            max-width: 200px;
+            max-width: 250px;
         }
         input[type="time"]::-webkit-calendar-picker-indicator { filter: invert(1); cursor: pointer; }
 
@@ -84,9 +92,9 @@
             background-color: var(--accent-yellow);
             color: var(--bg-color);
             border: none;
-            padding: 15px;
+            padding: 16px;
             border-radius: 8px;
-            font-size: clamp(16px, 4.5vw, 18px);
+            font-size: clamp(16px, 4vw, 18px);
             font-weight: bold;
             cursor: pointer;
             transition: 0.3s;
@@ -99,7 +107,7 @@
 
         .result-box {
             margin-top: 20px;
-            padding: 15px;
+            padding: 20px;
             background-color: var(--bg-color);
             border: 1px solid var(--border-color);
             border-radius: 8px;
@@ -107,14 +115,14 @@
             text-align: left;
         }
 
-        .result-box p.top-text { font-size: 14px; color: var(--text-muted); margin-bottom: 15px; text-align: center; }
+        .result-box p.top-text { font-size: 15px; color: var(--text-muted); margin-bottom: 15px; text-align: center; }
         
         .nap-card {
             background-color: var(--card-bg);
             border: 1px solid var(--border-color);
             border-radius: 8px;
-            padding: 15px;
-            margin-bottom: 10px;
+            padding: 15px 20px;
+            margin-bottom: 12px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -122,49 +130,75 @@
         .nap-card:last-child { margin-bottom: 0; }
         
         .nap-info h4 { font-size: 16px; color: var(--accent-yellow); margin-bottom: 4px; }
-        .nap-info p { font-size: 12px; color: var(--text-muted); }
+        .nap-info p { font-size: 13px; color: var(--text-muted); }
         
-        .nap-time { font-size: 20px; font-weight: bold; color: var(--text-main); }
+        .nap-time { font-size: 22px; font-weight: bold; color: var(--text-main); }
         
-        .badge { font-size: 10px; background-color: #4ade80; color: #000; padding: 2px 6px; border-radius: 4px; margin-left: 5px; vertical-align: middle;}
+        .badge { font-size: 11px; background-color: #4ade80; color: #000; padding: 3px 8px; border-radius: 4px; margin-left: 5px; vertical-align: middle;}
         .badge-danger { background-color: #ff4d4d; color: white; }
 
         /* SEO Content & FAQ */
-        .content-section { background-color: var(--card-bg); padding: 20px; border-radius: 12px; border: 1px solid var(--border-color); width: 100%; }
-        .content-section h2 { color: var(--accent-yellow); font-size: clamp(16px, 4.5vw, 20px); margin-bottom: 12px; border-bottom: 1px solid var(--border-color); padding-bottom: 8px; }
-        .content-section h3 { font-size: clamp(14px, 4vw, 16px); margin-top: 15px; margin-bottom: 8px; color: var(--text-main); }
-        .content-section p { font-size: clamp(13px, 3.5vw, 14px); color: var(--text-muted); margin-bottom: 12px; }
+        .content-section { background-color: var(--card-bg); padding: 30px; border-radius: 12px; border: 1px solid var(--border-color); width: 100%; }
+        .content-section h2 { color: var(--accent-yellow); font-size: clamp(18px, 4vw, 22px); margin-bottom: 15px; border-bottom: 1px solid var(--border-color); padding-bottom: 10px; }
+        .content-section h3 { font-size: clamp(16px, 3.5vw, 18px); margin-top: 20px; margin-bottom: 10px; color: var(--text-main); }
+        .content-section p { font-size: clamp(14px, 3vw, 15px); color: var(--text-muted); margin-bottom: 15px; }
         
-        .faq-item { margin-bottom: 15px; }
-        .faq-item h4 { color: var(--accent-yellow); font-size: 14px; margin-bottom: 5px; }
+        .faq-item { margin-bottom: 20px; }
+        .faq-item h4 { color: var(--accent-yellow); font-size: 16px; margin-bottom: 5px; }
         .faq-item p { margin-bottom: 0; }
 
         /* Related Tools */
-        .related-tools-section { background-color: var(--card-bg); padding: 20px; border-radius: 12px; border: 1px solid var(--border-color); width: 100%; }
-        .related-tools-section h2 { text-align: center; font-size: clamp(16px, 4.5vw, 18px); margin-bottom: 15px; color: var(--text-main); }
-        .tools-grid { display: flex; flex-direction: column; gap: 10px; }
-        .tool-card { display: flex; align-items: center; background-color: var(--bg-color); border: 1px solid var(--border-color); padding: 12px; border-radius: 8px; text-decoration: none; transition: 0.3s; }
-        .tool-card:hover { border-color: var(--accent-yellow); transform: translateY(-2px); }
-        .tool-icon { font-size: 20px; margin-right: 12px; background-color: var(--card-bg); padding: 8px; border-radius: 50%; display: flex; justify-content: center; align-items: center; }
-        .tool-info h3 { font-size: 15px; color: var(--accent-yellow); margin: 0 0 3px 0; }
-        .tool-info p { font-size: 12px; color: var(--text-muted); margin: 0; }
+        .related-tools-section { background-color: var(--card-bg); padding: 30px; border-radius: 12px; border: 1px solid var(--border-color); width: 100%; }
+        .related-tools-section h2 { text-align: center; font-size: clamp(18px, 4vw, 20px); margin-bottom: 20px; color: var(--text-main); }
+        
+        /* Grid layout for tools */
+        .tools-grid { 
+            display: grid; 
+            grid-template-columns: 1fr; 
+            gap: 15px; 
+        }
+        
+        .tool-card { 
+            display: flex; 
+            align-items: center; 
+            background-color: var(--bg-color); 
+            border: 1px solid var(--border-color); 
+            padding: 15px; 
+            border-radius: 8px; 
+            text-decoration: none; 
+            transition: 0.3s; 
+        }
+        .tool-card:hover { border-color: var(--accent-yellow); transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+        .tool-icon { font-size: 24px; margin-right: 15px; background-color: var(--card-bg); padding: 10px; border-radius: 50%; display: flex; justify-content: center; align-items: center; }
+        .tool-info h3 { font-size: 16px; color: var(--accent-yellow); margin: 0 0 5px 0; }
+        .tool-info p { font-size: 13px; color: var(--text-muted); margin: 0; }
 
         /* Footer */
-        footer { padding: 20px; font-size: 12px; color: var(--text-muted); text-align: center; width: 100%; border-top: 1px solid var(--border-color); margin-top: 20px; display: flex; flex-direction: column; gap: 8px; }
-        footer a { color: var(--accent-yellow); text-decoration: none; margin: 0 5px; }
+        footer { padding: 30px 20px; font-size: 13px; color: var(--text-muted); text-align: center; width: 100%; border-top: 1px solid var(--border-color); margin-top: 20px; display: flex; flex-direction: column; gap: 10px; }
+        footer a { color: var(--accent-yellow); text-decoration: none; margin: 0 10px; }
 
-        @media (min-width: 768px) { .ad-placeholder { min-height: 90px; } footer { flex-direction: row; justify-content: center; } }
+        /* --- DESKTOP SPECIFIC FIXES --- */
+        @media (min-width: 768px) {
+            .ad-placeholder { min-height: 90px; }
+            footer { flex-direction: row; justify-content: center; }
+            
+            /* Make related tools 2 columns on desktop */
+            .tools-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
     </style>
 </head>
 <body>
 
-    <!-- Header Logo -->
-    <div class="logo-container">
-        <span class="icon">😴</span>
-        <span class="logo-text">Nap Time Calculator</span>
-    </div>
-
+    <!-- Main Wrapper -->
     <div class="main-container">
+
+        <!-- Header Logo -->
+        <div class="logo-container">
+            <span class="icon">😴</span>
+            <span class="logo-text">Nap Time Calculator</span>
+        </div>
 
         <!-- ADSTERRA TOP BANNER -->
         <div class="ad-placeholder">Adsterra Top Banner Ad</div>
@@ -275,13 +309,13 @@
         <!-- ADSTERRA BOTTOM BANNER -->
         <div class="ad-placeholder">Adsterra Bottom Banner Ad</div>
 
-    </div>
+        <!-- Footer -->
+        <footer>
+            <p>© 2026 SleepDebtCalculator.online. All rights reserved.</p>
+            <div><a href="index.html">Home</a> | <a href="privacy.html">Privacy Policy</a></div>
+        </footer>
 
-    <!-- Footer -->
-    <footer>
-        <p>© 2026 SleepDebtCalculator.online. All rights reserved.</p>
-        <div><a href="index.html">Home</a> | <a href="privacy.html">Privacy Policy</a></div>
-    </footer>
+    </div> <!-- End Main Container -->
 
     <!-- JavaScript Logic -->
     <script>
