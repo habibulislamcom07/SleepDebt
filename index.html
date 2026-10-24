@@ -12,23 +12,25 @@
     <link rel="icon" type="image/png" href="favicon.png">
 
     <style>
-        /* --- PREMIUM FULL-SCREEN DARK THEME --- */
+        /* --- PREMIUM DARK THEME CSS --- */
         :root {
             --bg-color: #0b1021; 
-            --card-bg: rgba(21, 30, 54, 0.85); 
+            --card-bg: rgba(21, 30, 54, 0.6); /* More transparent for glass effect */
             --text-main: #ffffff;
             --text-muted: #a0aec0;
             --accent-yellow: #f4d35e;
             --accent-gradient: linear-gradient(135deg, #f4d35e 0%, #e0c04b 100%);
-            --border-color: #2a3b5c;
-            --glow-color: rgba(244, 211, 94, 0.15);
+            --border-color: rgba(255, 255, 255, 0.1);
+            --glow-color: rgba(244, 211, 94, 0.2);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
 
         body {
             background-color: var(--bg-color);
-            background-image: radial-gradient(circle at 50% 0%, #17213b 0%, #0b1021 50%);
+            /* Beautiful radial gradient for a premium night sky feel */
+            background-image: radial-gradient(circle at 50% -10%, #1e2c4f 0%, #0b1021 60%);
+            background-attachment: fixed;
             color: var(--text-main);
             display: flex;
             flex-direction: column;
@@ -48,36 +50,145 @@
             align-items: center;
         }
 
-        /* --- PREMIUM LOGO WITH STARS --- */
-        .logo-container { text-align: center; margin-bottom: 25px; display: flex; justify-content: center; align-items: center; gap: 15px; }
-        .logo-text { font-size: clamp(28px, 5vw, 42px); font-weight: 800; letter-spacing: 1px; }
-        .moon { color: var(--accent-yellow); font-size: clamp(32px, 6vw, 50px); filter: drop-shadow(0 0 15px rgba(244, 211, 94, 0.5)); }
-        .stars { color: var(--accent-yellow); font-size: clamp(16px, 3vw, 24px); display: flex; gap: 5px; letter-spacing: 2px; }
+        /* --- ANIMATED PREMIUM LOGO --- */
+        .logo-container { 
+            text-align: center; 
+            margin-bottom: 20px; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            gap: 15px; 
+            animation: fadeInDown 0.8s ease;
+        }
+        .logo-text { 
+            font-size: clamp(28px, 5vw, 42px); 
+            font-weight: 900; 
+            letter-spacing: 1px; 
+            background: linear-gradient(to right, #ffffff, #d1d5db);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .moon { 
+            color: var(--accent-yellow); 
+            font-size: clamp(32px, 6vw, 50px); 
+            filter: drop-shadow(0 0 20px rgba(244, 211, 94, 0.6)); 
+            animation: float 3s ease-in-out infinite;
+        }
+        .stars { 
+            color: var(--accent-yellow); 
+            font-size: clamp(16px, 3vw, 24px); 
+            display: flex; 
+            gap: 5px; 
+            letter-spacing: 2px;
+            opacity: 0.8;
+        }
+
+        @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-8px); } 100% { transform: translateY(0px); } }
+        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
 
         /* Ad Placeholders */
         .ad-container { width: 100%; display: flex; justify-content: center; align-items: center; min-height: 60px; overflow: hidden; margin: 10px 0; }
 
         /* Main Headings */
-        h1 { font-size: clamp(24px, 4vw, 36px); text-align: center; margin-bottom: 10px; font-weight: 800; }
+        h1 { font-size: clamp(24px, 4vw, 38px); text-align: center; margin-bottom: 10px; font-weight: 800; letter-spacing: -0.5px;}
         .subtitle { text-align: center; font-size: clamp(16px, 2vw, 18px); color: var(--text-muted); margin-bottom: 20px; }
 
-        /* Calculator Box */
-        .calculator-box { background: var(--card-bg); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08); border-top: 2px solid rgba(255, 255, 255, 0.15); border-radius: 20px; padding: 45px; box-shadow: 0 20px 40px rgba(0,0,0,0.5); width: 100%; max-width: 800px; }
+        /* --- GLASSMORPHISM CALCULATOR BOX --- */
+        .calculator-box { 
+            background: var(--card-bg); 
+            backdrop-filter: blur(16px); 
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border-color); 
+            border-top: 1px solid rgba(255, 255, 255, 0.2); 
+            border-radius: 24px; 
+            padding: 45px; 
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6), inset 0 0 0 1px rgba(255,255,255,0.05); 
+            width: 100%; 
+            max-width: 800px; 
+            position: relative;
+            overflow: hidden;
+        }
 
-        .input-group { display: flex; justify-content: space-between; align-items: center; background-color: rgba(11, 16, 33, 0.7); border: 1px solid var(--border-color); border-radius: 12px; padding: 20px 25px; margin-bottom: 20px; transition: all 0.3s ease; }
-        .input-group:focus-within { border-color: var(--accent-yellow); box-shadow: 0 0 20px var(--glow-color); }
+        .input-group { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            background-color: rgba(11, 16, 33, 0.5); 
+            border: 1px solid var(--border-color); 
+            border-radius: 14px; 
+            padding: 20px 25px; 
+            margin-bottom: 20px; 
+            transition: all 0.3s ease; 
+        }
+        .input-group:focus-within { 
+            border-color: var(--accent-yellow); 
+            box-shadow: 0 0 20px var(--glow-color); 
+            background-color: rgba(11, 16, 33, 0.8); 
+        }
         .input-group label { font-size: 17px; color: var(--text-muted); flex: 1; font-weight: 600;}
-        .input-group input { background: transparent; border: none; color: var(--accent-yellow); font-size: 24px; font-weight: 800; text-align: right; width: 100px; outline: none; }
+        .input-group input { background: transparent; border: none; color: var(--accent-yellow); font-size: 26px; font-weight: 800; text-align: right; width: 100px; outline: none; }
         .input-group input::placeholder { color: #4a5568; font-weight: 500; font-size: 17px;}
 
-        .btn { width: 100%; background: var(--accent-gradient); color: #0b1021; border: none; padding: 20px; border-radius: 12px; font-size: 20px; font-weight: 900; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 10px 25px rgba(244, 211, 94, 0.3); text-transform: uppercase; letter-spacing: 1px; }
-        .btn:hover { transform: translateY(-3px); box-shadow: 0 15px 35px rgba(244, 211, 94, 0.5); }
+        .btn { 
+            width: 100%; 
+            background: var(--accent-gradient); 
+            color: #0b1021; 
+            border: none; 
+            padding: 20px; 
+            border-radius: 14px; 
+            font-size: 20px; 
+            font-weight: 900; 
+            cursor: pointer; 
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+            box-shadow: 0 10px 25px rgba(244, 211, 94, 0.3); 
+            text-transform: uppercase; 
+            letter-spacing: 1px;
+        }
+        .btn:hover { transform: translateY(-4px) scale(1.02); box-shadow: 0 20px 40px rgba(244, 211, 94, 0.5); }
 
-        #result { margin-top: 25px; padding: 25px; background-color: rgba(244, 211, 94, 0.08); border: 1px solid var(--accent-yellow); border-radius: 12px; font-size: 18px; color: var(--text-main); text-align: center; display: none; animation: fadeIn 0.5s ease; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+        #result { 
+            margin-top: 25px; 
+            padding: 25px; 
+            background-color: rgba(244, 211, 94, 0.1); 
+            border: 1px solid var(--accent-yellow); 
+            border-radius: 14px; 
+            font-size: 18px; 
+            color: var(--text-main); 
+            text-align: center; 
+            display: none; 
+            animation: fadeInUp 0.5s ease; 
+        }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         
-        /* SEO Content */
-        .content-section { background-color: var(--card-bg); padding: 45px; border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.05); width: 100%; }
+        /* Related Tools */
+        .related-tools-section { width: 100%; margin-top: 10px; margin-bottom: 10px; }
+        .related-tools-section h3 { text-align: center; font-size: 22px; color: var(--text-main); margin-bottom: 25px; font-weight: 600;}
+        .tools-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+        .tool-card { 
+            display: flex; 
+            align-items: center; 
+            background: var(--card-bg); 
+            backdrop-filter: blur(8px);
+            border: 1px solid var(--border-color); 
+            padding: 20px; 
+            border-radius: 16px; 
+            text-decoration: none; 
+            transition: all 0.3s ease; 
+        }
+        .tool-card:hover { border-color: var(--accent-yellow); transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.4); }
+        .tool-icon { font-size: 32px; margin-right: 20px; background-color: rgba(244, 211, 94, 0.1); padding: 15px; border-radius: 12px; }
+        .tool-info h4 { font-size: 20px; color: var(--accent-yellow); margin: 0 0 5px 0; }
+        .tool-info p { font-size: 15px; color: var(--text-muted); margin: 0; }
+
+                /* Content Section */
+        .content-section { 
+            background: var(--card-bg); 
+            backdrop-filter: blur(12px);
+            padding: 45px; 
+            border-radius: 20px; 
+            border: 1px solid var(--border-color); 
+            width: 100%; 
+        }
         .content-section h2 { color: var(--accent-yellow); font-size: clamp(24px, 3vw, 30px); margin-bottom: 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 15px; }
         .content-section h3 { font-size: clamp(20px, 2.5vw, 24px); margin-top: 30px; margin-bottom: 15px; color: var(--text-main); }
         .content-section p { font-size: clamp(16px, 1.8vw, 18px); color: var(--text-muted); margin-bottom: 20px; text-align: justify; line-height: 1.8;}
@@ -90,18 +201,8 @@
         .faq-item h4 { color: var(--accent-yellow); font-size: 20px; margin-bottom: 10px; }
         .faq-item p { margin-bottom: 0; }
 
-        /* Related Tools */
-        .related-tools-section { width: 100%; margin-top: 20px; }
-        .related-tools-section h3 { text-align: center; font-size: 22px; color: var(--text-muted); margin-bottom: 25px; font-weight: 500;}
-        .tools-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
-        .tool-card { display: flex; align-items: center; background-color: var(--card-bg); border: 1px solid var(--border-color); padding: 20px; border-radius: 16px; text-decoration: none; transition: all 0.3s ease; }
-        .tool-card:hover { border-color: var(--accent-yellow); transform: translateY(-4px); box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
-        .tool-icon { font-size: 32px; margin-right: 20px; background-color: rgba(244, 211, 94, 0.1); padding: 15px; border-radius: 12px; }
-        .tool-info h4 { font-size: 20px; color: var(--accent-yellow); margin: 0 0 5px 0; }
-        .tool-info p { font-size: 15px; color: var(--text-muted); margin: 0; }
-
         /* Footer */
-        footer { padding: 40px 20px; font-size: 15px; color: var(--text-muted); text-align: center; width: 100%; margin-top: auto; display: flex; flex-direction: column; gap: 15px; background: rgba(11, 16, 33, 0.9); border-top: 1px solid rgba(255,255,255,0.05); }
+        footer { padding: 40px 20px; font-size: 15px; color: var(--text-muted); text-align: center; width: 100%; margin-top: auto; display: flex; flex-direction: column; gap: 15px; background: rgba(11, 16, 33, 0.95); border-top: 1px solid var(--border-color); }
         .footer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; align-items: center; }
         .footer-links a { color: var(--accent-yellow); text-decoration: none; transition: 0.3s; font-weight: 600;}
         .footer-links a:hover { color: #ffffff; text-decoration: underline; }
@@ -122,7 +223,7 @@
 
     <div class="main-container">
 
-        <!-- LOGO WITH 3 STARS -->
+        <!-- ANIMATED PREMIUM LOGO -->
         <div class="logo-container">
             <div class="stars">✨<br>✨</div>
             <span class="moon">🌙</span>
@@ -167,41 +268,7 @@
             <div id="result"></div>
         </div>
 
-        <!-- SEO CONTENT PART 1 (Deep Content) -->
-        <div class="content-section">
-            <h2>The Science of Sleep Debt: Why You're Always Tired</h2>
-            <p>If you constantly find yourself asking <strong>"why am I always tired?"</strong> even after a full night's sleep, you might be suffering from a hidden epidemic: Sleep Debt. In today's fast-paced world, we often sacrifice sleep for work, socializing, or screen time. However, sleep is not a luxury; it is a biological necessity.</p>
-            
-            <h3>What Exactly is Sleep Debt?</h3>
-            <p>Sleep debt (also known as sleep deficit) is the cumulative effect of not getting enough sleep over a period of time. Think of it like a financial bank account. If you need 8 hours of sleep to function optimally but you only get 6 hours, you have built a deficit of 2 hours for that day. If this happens for 5 days, you now owe your body 10 hours of sleep.</p>
-            <p>Our <strong>sleep debt calculator</strong> above helps you quantify this exact loss so you can understand how much rest you actually need to recover.</p>
-
-            <h3>The Serious Health Effects of Sleep Deprivation</h3>
-            <p>Ignoring sleep debt doesn't just make you feel groggy; it has severe consequences on your physical and mental health. Chronic sleep deprivation is linked to:</p>
-            <ul>
-                <li><strong>Cognitive Decline:</strong> Poor memory, lack of focus, and decreased problem-solving skills.</li>
-                <li><strong>Weakened Immunity:</strong> You are more likely to catch colds, flu, and infections.</li>
-                <li><strong>Mental Health Issues:</strong> Increased risk of anxiety, depression, and mood swings.</li>
-                <li><strong>Physical Health Risks:</strong> Higher chances of high blood pressure, heart disease, and weight gain.</li>
-            </ul>
-        </div>
-
-                <!-- SEO CONTENT PART 2 (Recovery & Tips) -->
-        <div class="content-section">
-            <h3>How to Recover from Sleep Debt?</h3>
-            <p>You cannot fix a massive sleep deficit in just one night (like sleeping 12 hours on a Sunday). In fact, doing so can disrupt your circadian rhythm and make Monday morning even harder. The best way to recover is to gradually add 1-2 extra hours of sleep per night until your debt is cleared.</p>
-            <p>If you want to prevent sleep debt from accumulating, you must calculate your perfect bedtime. Use our <a href="sleep-cycle.html" target="_blank">Sleep Cycle Calculator</a> to find out exactly what time you should go to bed based on 90-minute cycles to avoid morning grogginess.</p>
-            
-            <h3>Tips to Improve Sleep Quality Tonight</h3>
-            <ul>
-                <li><strong>Limit Caffeine:</strong> Caffeine has a half-life of 5 hours. If you drink coffee at 4 PM, half of it is still in your system at 9 PM. Use our <a href="caffeine.html" target="_blank">Caffeine Calculator</a> to check.</li>
-                <li><strong>Take Power Naps:</strong> A 20-minute nap can boost alertness without the grogginess of deep sleep. Calculate your perfect nap with our <a href="nap.html" target="_blank">Nap Time Calculator</a>.</li>
-                <li><strong>Consistent Schedule:</strong> Try to go to bed and wake up at the same time every day, even on weekends.</li>
-                <li><strong>Digital Sunset:</strong> Turn off screens at least 30-60 minutes before bed to reduce blue light exposure.</li>
-            </ul>
-        </div>
-
-        <!-- RELATED TOOLS (Moved Above FAQ) -->
+        <!-- RELATED TOOLS -->
         <div class="related-tools-section">
             <h3>Explore Other Tools</h3>
             <div class="tools-grid">
@@ -229,7 +296,41 @@
             </div>
         </div>
 
-        <!-- FAQ SECTION (Moved Below Related Tools) -->
+        <!-- SEO CONTENT PART 1 -->
+        <div class="content-section">
+            <h2>The Science of Sleep Debt: Why You're Always Tired</h2>
+            <p>If you constantly find yourself asking <strong>"why am I always tired?"</strong> even after a full night's sleep, you might be suffering from a hidden epidemic: Sleep Debt. In today's fast-paced world, we often sacrifice sleep for work, socializing, or screen time. However, sleep is not a luxury; it is a biological necessity.</p>
+            
+            <h3>What Exactly is Sleep Debt?</h3>
+            <p>Sleep debt (also known as sleep deficit) is the cumulative effect of not getting enough sleep over a period of time. Think of it like a financial bank account. If you need 8 hours of sleep to function optimally but you only get 6 hours, you have built a deficit of 2 hours for that day. If this happens for 5 days, you now owe your body 10 hours of sleep.</p>
+            <p>Our <strong>sleep debt calculator</strong> above helps you quantify this exact loss so you can understand how much rest you actually need to recover.</p>
+
+            <h3>The Serious Health Effects of Sleep Deprivation</h3>
+            <p>Ignoring sleep debt doesn't just make you feel groggy; it has severe consequences on your physical and mental health. Chronic sleep deprivation is linked to:</p>
+            <ul>
+                <li><strong>Cognitive Decline:</strong> Poor memory, lack of focus, and decreased problem-solving skills.</li>
+                <li><strong>Weakened Immunity:</strong> You are more likely to catch colds, flu, and infections.</li>
+                <li><strong>Mental Health Issues:</strong> Increased risk of anxiety, depression, and mood swings.</li>
+                <li><strong>Physical Health Risks:</strong> Higher chances of high blood pressure, heart disease, and weight gain.</li>
+            </ul>
+        </div>
+
+        <!-- SEO CONTENT PART 2 -->
+        <div class="content-section">
+            <h3>How to Recover from Sleep Debt?</h3>
+            <p>You cannot fix a massive sleep deficit in just one night (like sleeping 12 hours on a Sunday). In fact, doing so can disrupt your circadian rhythm and make Monday morning even harder. The best way to recover is to gradually add 1-2 extra hours of sleep per night until your debt is cleared.</p>
+            <p>If you want to prevent sleep debt from accumulating, you must calculate your perfect bedtime. Use our <a href="sleep-cycle.html" target="_blank">Sleep Cycle Calculator</a> to find out exactly what time you should go to bed based on 90-minute cycles to avoid morning grogginess.</p>
+            
+            <h3>Tips to Improve Sleep Quality Tonight</h3>
+            <ul>
+                <li><strong>Limit Caffeine:</strong> Caffeine has a half-life of 5 hours. If you drink coffee at 4 PM, half of it is still in your system at 9 PM. Use our <a href="caffeine.html" target="_blank">Caffeine Calculator</a> to check.</li>
+                <li><strong>Take Power Naps:</strong> A 20-minute nap can boost alertness without the grogginess of deep sleep. Calculate your perfect nap with our <a href="nap.html" target="_blank">Nap Time Calculator</a>.</li>
+                <li><strong>Consistent Schedule:</strong> Try to go to bed and wake up at the same time every day, even on weekends.</li>
+                <li><strong>Digital Sunset:</strong> Turn off screens at least 30-60 minutes before bed to reduce blue light exposure.</li>
+            </ul>
+        </div>
+
+        <!-- FAQ SECTION -->
         <div class="content-section">
             <h2>Frequently Asked Questions</h2>
             
@@ -254,7 +355,7 @@
             </div>
         </div>
 
-        <!-- BOTTOM BANNER AD (Last mein) -->
+        <!-- BOTTOM BANNER AD -->
         <div class="ad-container">
             <div class="desktop-ad">
                 <script>
@@ -318,7 +419,7 @@
             resultDiv.style.backgroundColor = 'rgba(244, 211, 94, 0.1)';
             resultDiv.style.borderColor = '#f4d35e';
             resultDiv.style.color = '#f4d35e';
-            resultDiv.innerHTML = `Total Sleep Debt: <br><span style="font-size: 36px; font-weight: 900; color:#fff;">${totalDebt} hours</span><br> over ${days} days.`;
+            resultDiv.innerHTML = `Total Sleep Debt: <br><span style="font-size: 40px; font-weight: 900; color:#fff; text-shadow: 0 0 15px rgba(244,211,94,0.5);">${totalDebt} hours</span><br> over ${days} days.`;
         }
     </script>
 
