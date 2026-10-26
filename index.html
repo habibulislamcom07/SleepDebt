@@ -3,129 +3,261 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculate Your Total Sleep Debt</title>
-
+    
+    <!-- SEO Meta Tags -->
+    <title>Will your coffee keep you awake? - Caffeine Tracker</title>
+    <meta name="description" content="Calculate how long caffeine stays in your system. Find out if it's safe to sleep or if you need to wait more hours based on your coffee intake.">
+    
     <!-- Google Site Verification -->
     <meta name="google-site-verification" content="awSCkHr_s5knCd3tYxp5nvsfhrTB_qTyLbS5JiYS25M" />
 
-    <!-- CSS: Styling for the entire page -->
     <style>
-        /* Content Section */
-        .content-section {
-            background: var(--card-bg);
-            backdrop-filter: blur(12px);
-            padding: 25px;
-            border-radius: 16px;
-            border: 1px solid var(--border-color);
-            width: 100%;
-            max-width: 900px;
-        }
-        .content-section h2 { color: var(--accent-yellow); font-size: 22px; margin-bottom: 15px; border-bottom: 1px solid var(--border-color); padding-bottom: 10px; }
-        .content-section h3 { font-size: 18px; margin-top: 20px; margin-bottom: 10px; color: var(--text-main); }
-        .content-section p { font-size: 15px; color: var(--text-muted); margin-bottom: 15px; text-align: justify; line-height: 1.7; }
-        .content-section ul { margin-left: 20px; color: var(--text-muted); font-size: 15px; margin-bottom: 15px; line-height: 1.7; }
-        .content-section li { margin-bottom: 8px; }
-        .content-section a { color: var(--accent-yellow); text-decoration: none; font-weight: bold; }
-        .content-section a:hover { text-decoration: underline; }
-
-        .faq-item { margin-bottom: 20px; }
-        .faq-item h4 { color: var(--accent-yellow); font-size: 17px; margin-bottom: 8px; }
-        .faq-item p { margin-bottom: 0; }
-
-        /* Footer */
-        footer { padding: 30px 15px; font-size: 13px; color: var(--text-muted); text-align: center; width: 100%; margin-top: auto; display: flex; flex-direction: column; gap: 15px; background: rgba(11, 16, 33, 0.95); border-top: 1px solid var(--border-color); }
-        .footer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; align-items: center; }
-        .footer-links a { color: var(--accent-yellow); text-decoration: none; transition: 0.3s; font-weight: 600; }
-        .footer-links a:hover { color: #ffffff; text-decoration: underline; }
-        .footer-links span { color: var(--text-muted); opacity: 0.4; font-size: 12px; }
-
-        /* --- DESKTOP RESPONSIVE FIXES --- */
-        .desktop-ad { display: none; }
-        .mobile-ad { display: flex; justify-content: center; width: 100%; }
-
-        @media (min-width: 768px) {
-            .main-container { padding: 40px 20px; gap: 30px; }
-            .logo-text { font-size: 42px; }
-            .moon { font-size: 50px; }
-            h1 { font-size: 36px; }
-            .subtitle { font-size: 18px; }
-            .calculator-box { padding: 45px; border-radius: 24px; }
-            .input-group { padding: 20px 25px; }
-            .input-group label { font-size: 17px; }
-            .input-group input { font-size: 26px; width: 100px; }
-            .btn { padding: 20px; font-size: 20px; }
-
-            .tools-grid { grid-template-columns: repeat(3, 1fr); }
-            .content-section { padding: 45px; border-radius: 20px; }
-            .content-section h2 { font-size: 30px; }
-            .content-section h3 { font-size: 24px; }
-            .content-section p, .content-section ul { font-size: 17px; }
-            .faq-item h4 { font-size: 20px; }
-            
-            .desktop-ad { display: flex; justify-content: center; width: 100%; }
-            .mobile-ad { display: none; }
-        }
-
-        /* Basic Reset and Variables (Added for structure) */
+        /* --- CSS VARIABLES & RESET --- */
         :root {
-            --bg-color: #0b1021;
-            --card-bg: rgba(255, 255, 255, 0.05);
-            --border-color: rgba(255, 255, 255, 0.1);
-            --text-main: #ffffff;
-            --text-muted: #a0aabf;
-            --accent-yellow: #f1c40f;
+            --bg-color: #0f172a; /* Dark navy background */
+            --card-bg: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent-yellow: #facc15;
+            --border-color: #334155;
+            --danger: #ef4444;
+            --success: #22c55e;
         }
-        body {
+
+        * {
+            box-sizing: border-box;
             margin: 0;
+            padding: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
             background-color: var(--bg-color);
             color: var(--text-main);
+            line-height: 1.6;
             display: flex;
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
         }
-        .main-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+
+        .container {
             width: 100%;
-            max-width: 1000px;
+            max-width: 900px;
             padding: 20px;
-            box-sizing: border-box;
-            gap: 20px;
         }
+
+        /* --- ADS CONTAINER --- */
+        .ad-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin: 15px 0;
+            min-height: 100px;
+        }
+
+        /* --- HEADER --- */
+        .header {
+            text-align: center;
+            margin: 20px 0 30px;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            color: var(--text-main);
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: var(--text-muted);
+            font-size: 15px;
+        }
+
+        /* --- CALCULATOR BOX --- */
         .calculator-box {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
-            backdrop-filter: blur(12px);
             border-radius: 16px;
-            padding: 25px;
-            width: 100%;
-            max-width: 500px;
-            box-sizing: border-box;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
         }
-        .input-group { display: flex; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.2); border: 1px solid var(--border-color); border-radius: 8px; margin-bottom: 15px; padding: 15px; }
-        .input-group input { background: transparent; border: none; color: var(--accent-yellow); text-align: right; font-size: 20px; outline: none; width: 80px; }
-        .btn { width: 100%; padding: 15px; background: var(--accent-yellow); color: #000; border: none; border-radius: 8px; font-weight: bold; font-size: 18px; cursor: pointer; margin-top: 10px; }
-        .tools-grid { display: grid; grid-template-columns: 1fr; gap: 15px; width: 100%; max-width: 900px; }
-        .tool-card { display: flex; align-items: center; background: var(--card-bg); padding: 15px; border-radius: 12px; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-main); }
-        .tool-icon { font-size: 30px; margin-right: 15px; }
-        h1, h2, h3, p { margin-top: 0; }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+
+        .input-group input, .input-group select {
+            width: 100%;
+            padding: 15px;
+            background: #0f172a;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-main);
+            font-size: 16px;
+            outline: none;
+        }
+
+        .input-group input:focus, .input-group select:focus {
+            border-color: var(--accent-yellow);
+        }
+
+        .btn-calc {
+            width: 100%;
+            padding: 16px;
+            background: var(--accent-yellow);
+            color: #000;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 10px;
+        }
+
+        .btn-calc:hover {
+            background: #eab308;
+        }
+
+        /* Result Box */
+        .result-box {
+            background: #0f172a;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 25px;
+            text-align: center;
+        }
+        
+        .progress-bar-container {
+            width: 100%;
+            background: #334155;
+            border-radius: 10px;
+            height: 10px;
+            margin: 15px 0;
+            overflow: hidden;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background: var(--danger);
+            width: 70%;
+            transition: width 0.5s ease;
+        }
+
+        .status-text { font-weight: bold; margin-bottom: 5px; }
+        .safe-text { color: var(--danger); font-weight: bold; margin-top: 10px; }
+        .wait-text { font-size: 13px; color: var(--text-muted); margin-top: 10px; }
+
+        /* --- EXPLORE OTHER TOOLS --- */
+        .tools-section { margin-bottom: 40px; }
+        .tools-section h3 { text-align: center; font-size: 18px; margin-bottom: 20px; }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .tool-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 15px;
+            text-align: left;
+            text-decoration: none;
+            color: var(--text-main);
+            display: flex;
+            flex-direction: column;
+            transition: 0.3s;
+        }
+
+        .tool-card:hover { border-color: var(--accent-yellow); }
+        .tool-icon { font-size: 24px; margin-bottom: 10px; }
+        .tool-card h4 { font-size: 14px; margin-bottom: 4px; color: var(--accent-yellow); }
+        .tool-card p { font-size: 11px; color: var(--text-muted); }
+
+        /* --- CONTENT & FAQ SECTION --- */
+        .content-section {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .content-section h2 {
+            color: var(--accent-yellow);
+            font-size: 22px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+
+        .content-section h3 { font-size: 17px; margin: 20px 0 10px; color: var(--text-main); }
+        .content-section p { font-size: 15px; color: var(--text-muted); margin-bottom: 15px; text-align: justify; }
+        .content-section strong { color: var(--text-main); }
+
+        .faq-item { margin-bottom: 25px; }
+        .faq-item h4 { font-size: 16px; color: var(--accent-yellow); margin-bottom: 8px; }
+
+        /* --- FOOTER --- */
+        footer {
+            width: 100%;
+            background: #0b1120;
+            border-top: 1px solid var(--border-color);
+            padding: 30px 20px;
+            text-align: center;
+            margin-top: auto;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .footer-links a { color: var(--text-muted); text-decoration: none; font-size: 13px; transition: 0.3s; }
+        .footer-links a:hover { color: var(--accent-yellow); }
+        .footer-copyright { color: var(--text-muted); font-size: 12px; }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .tools-grid { grid-template-columns: 1fr; }
+            .calculator-box { padding: 20px; }
+        }
+        
+        /* Hide desktop ad on mobile */
+        .desktop-ad { display: none; }
+        .mobile-ad { display: flex; justify-content: center; width: 100%; }
+        
+        @media (min-width: 768px) {
+            .desktop-ad { display: flex; justify-content: center; width: 100%; }
+            .mobile-ad { display: none; }
+        }
     </style>
 </head>
+
 <body>
 
     <!-- TOP BANNER AD -->
-    <div class="ad-container" style="width: 100%; display: flex; justify-content: center; margin-bottom: 20px; margin-top: 10px;">
-        <!-- Desktop Ad -->
+    <div class="ad-container">
         <div class="desktop-ad">
             <script>
               atOptions = { 'key' : 'ef4f7b291c17b1009e33c2dd1269593c', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
             </script>
             <script type="text/javascript" src="https://bauval.org/22/ef4f7b291c17b1009e33c2dd1269593c"></script>
         </div>
-        <!-- Mobile Ad -->
         <div class="mobile-ad">
             <script type="text/javascript">
               atOptions = { 'key' : 'e58f96be627c4f39aa8b22755f020bce', 'format' : 'iframe', 'height' : 50, 'width' : 320, 'params' : {} };
@@ -134,62 +266,111 @@
         </div>
     </div>
 
-    <!-- MAIN CONTENT -->
-    <div class="main-container">
+    <div class="container">
         
-        <div style="text-align: center; margin-bottom: 20px;">
-            <h1 style="color: var(--accent-yellow);">🌙 Sleep Debt ✨</h1>
-            <p style="color: var(--text-muted);">Calculate Your Total Sleep Debt</p>
+        <!-- HEADER -->
+        <div class="header">
+            <h1>Will your coffee keep you awake?</h1>
+            <p>Calculate how long caffeine stays in your system.</p>
         </div>
 
+        <!-- CALCULATOR -->
         <div class="calculator-box">
             <div class="input-group">
-                <label>Ideal Sleep (Hrs)</label>
-                <input type="number" value="8" placeholder="8">
+                <label>When did you drink your coffee?</label>
+                <input type="time" id="coffeeTime" value="11:36">
             </div>
             <div class="input-group">
-                <label>Actual Sleep (Hrs)</label>
-                <input type="number" placeholder="e.g. 6">
+                <label>How much did you drink?</label>
+                <select id="coffeeAmount">
+                    <option value="95">1 Cup of Coffee (approx. 95mg)</option>
+                    <option value="190">2 Cups of Coffee (approx. 190mg)</option>
+                    <option value="63">1 Shot of Espresso (approx. 63mg)</option>
+                    <option value="30">Black Tea (approx. 30mg)</option>
+                </select>
             </div>
-            <div class="input-group">
-                <label>Number of Days</label>
-                <input type="number" placeholder="e.g. 7">
+            <button class="btn-calc" onclick="calculateCaffeine()">CALCULATE CAFFEINE LEVEL ⏱</button>
+
+            <!-- RESULT BOX -->
+            <div class="result-box" id="resultBox">
+                <div class="status-text">Your Current Status</div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" id="progressBar" style="width: 70%;"></div>
+                </div>
+                <p id="caffeineMg">You have approx. <strong>71.8mg</strong> of caffeine in your system right now.</p>
+                <p class="safe-text" id="safeStatus">Safe to Sleep? <br> ❌ Too High for Sleep</p>
+                <p class="wait-text" id="waitTime">Wait at least 2.6 more hours before sleeping.</p>
             </div>
-            <button class="btn">CALCULATE NOW 🧮</button>
         </div>
 
         <!-- EXPLORE OTHER TOOLS -->
-        <div style="width: 100%; max-width: 900px; margin-top: 30px;">
-            <h3 style="text-align: center; margin-bottom: 20px;">Explore Other Tools</h3>
+        <div class="tools-section">
+            <h3>Explore Other Tools</h3>
             <div class="tools-grid">
-                <a href="sleep-cycle.html" class="tool-card">
-                    <div class="tool-icon">⏰</div>
-                    <div>
-                        <h4 style="margin: 0;">Sleep Cycle</h4>
-                        <p style="margin: 0; font-size: 14px; color: var(--text-muted);">Best bedtime & wake-up time.</p>
-                    </div>
+                <a href="index.html" class="tool-card">
+                    <div class="tool-icon">📖</div>
+                    <h4>Sleep Debt</h4>
+                    <p>How much sleep do you owe?</p>
                 </a>
-                <a href="caffeine.html" class="tool-card">
-                    <div class="tool-icon">☕</div>
-                    <div>
-                        <h4 style="margin: 0;">Caffeine Tracker</h4>
-                        <p style="margin: 0; font-size: 14px; color: var(--text-muted);">Will coffee ruin your sleep?</p>
-                    </div>
+                <a href="sleep-cycle.html" class="tool-card">
+                    <div class="tool-icon">🌙</div>
+                    <h4>Sleep Cycle</h4>
+                    <p>Best bedtime & wake-up time.</p>
                 </a>
                 <a href="nap.html" class="tool-card">
                     <div class="tool-icon">😴</div>
-                    <div>
-                        <h4 style="margin: 0;">Nap Time</h4>
-                        <p style="margin: 0; font-size: 14px; color: var(--text-muted);">Perfect power nap duration.</p>
-                    </div>
+                    <h4>Nap Time</h4>
+                    <p>Perfect power nap duration.</p>
                 </a>
             </div>
         </div>
 
-        <!-- Content / FAQ Section (Optional, based on previous CSS) -->
-        <div class="content-section" style="margin-top: 30px;">
-            <h2>Why is Sleep Debt Important?</h2>
-            <p>Sleep debt is the difference between the amount of sleep you should be getting and the amount you actually get. Consistently missing out on sleep can affect your physical and mental health.</p>
+        <!-- SEO CONTENT -->
+        <div class="content-section">
+            <h2>How long does caffeine stay in your system?</h2>
+            <p>If you are wondering <strong>"will coffee keep me awake"</strong>, you need to understand caffeine's half-life. The average half-life of caffeine in a healthy adult is <strong>about 5 hours</strong>. This means it takes 5 hours for your body (specifically your liver) to eliminate 50% of the caffeine you consumed.</p>
+            <p>For example, if you drink a standard 95mg cup of coffee at 4:00 PM, you will still have around 47.5mg of caffeine in your system at 9:00 PM. It usually takes about 4 to 5 half-lives (20-25 hours) for caffeine to be almost completely eliminated from your body.</p>
+
+            <h3>How does caffeine affect your sleep?</h3>
+            <p>Caffeine is a stimulant that works by blocking adenosine, a chemical in your brain that makes you feel tired. Even if you fall asleep after drinking coffee, lingering caffeine can severely reduce your <strong>deep sleep and REM sleep</strong>. This means you might sleep for 8 hours but still wake up feeling groggy and tired because your sleep quality was poor.</p>
+
+            <h3>How to sleep after drinking coffee?</h3>
+            <p>If you are sensitive to caffeine, stop drinking coffee at least 8-10 hours before bedtime. You can also use our <a href="sleep-cycle.html" style="color: var(--accent-yellow); text-decoration: none;">Sleep Cycle Calculator</a> to plan your bedtime and ensure you wake up between cycles.</p>
+        </div>
+
+        <!-- FAQ SECTION -->
+        <div class="content-section">
+            <h2>Frequently Asked Questions</h2>
+            
+            <div class="faq-item">
+                <h4>How long to wait after coffee to sleep?</h4>
+                <p>It is recommended to wait at least 6 to 8 hours after your last cup of coffee before going to bed. For highly sensitive individuals, it is best to wait up to 10 hours to ensure the caffeine level drops below 25mg.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>Does decaf coffee have caffeine?</h4>
+                <p>Yes, decaf coffee is not 100% caffeine-free. A standard cup of decaf coffee still contains about 2 to 5 mg of caffeine. While this is very low, drinking multiple cups right before bed could still affect highly sensitive sleepers.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>What is the caffeine half-life?</h4>
+                <p>The half-life of caffeine is the time it takes for your body to eliminate half of the caffeine consumed. For most healthy adults, this is around 5 hours, but it can range from 3 to 7 hours depending on genetics, metabolism, pregnancy, and medications.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>Which drinks have the most caffeine?</h4>
+                <p>Espresso and brewed coffee generally have the highest concentration of caffeine per ounce. Energy drinks are also heavily caffeinated. However, the total amount depends on the serving size. Always check the label.</p>
+            </div>
+        </div>
+
+        <!-- BOTTOM BANNER AD (Download style) -->
+        <div style="width: 100%; display: flex; justify-content: center; margin-bottom: 30px;">
+            <a href="#" style="display: flex; align-items: center; justify-content: space-between; background: white; padding: 10px 20px; border-radius: 8px; width: 100%; max-width: 600px; text-decoration: none;">
+                <span style="color: #1a73e8; font-weight: 600; font-size: 15px;">Click here to download now for free</span>
+                <span style="background: #22c55e; color: white; padding: 10px 20px; border-radius: 25px; font-weight: bold; display: flex; align-items: center; gap: 8px;">
+                    ⬇ DOWNLOAD
+                </span>
+            </a>
         </div>
 
     </div>
@@ -197,18 +378,82 @@
     <!-- FOOTER -->
     <footer>
         <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="sleep-cycle.html">Sleep Cycle</a>
+            <a href="caffeine.html">Caffeine</a>
+            <a href="nap.html">Nap Time</a>
+            <a href="#">About Us</a>
             <a href="#">Privacy Policy</a>
-            <span>•</span>
             <a href="#">Terms of Service</a>
-            <span>•</span>
-            <a href="#">Contact</a>
+            <a href="#">Disclaimer</a>
+            <a href="#">Contact Us</a>
         </div>
-        <p style="margin: 0;">&copy; 2024 Sleep Debt Calculator. All rights reserved.</p>
+        <div class="footer-copyright">
+            &copy; 2026 SleepDebtCalculator.online. All rights reserved.
+        </div>
     </footer>
 
     <!-- BACKGROUND SCRIPTS (POPUNDER & SOCIAL BAR) -->
     <script data-cfasync="false" src="https://bauval.org/14/c2e8b6a0744b11045176ac8027b166fe"></script>
     <script data-cfasync="false" src="https://abscloud.org/1/7b543158f36ec26f083d375b2a6547ec"></script>
+
+    <!-- CALCULATOR JAVASCRIPT LOGIC -->
+    <script>
+        function calculateCaffeine() {
+            const timeInput = document.getElementById('coffeeTime').value;
+            const amount = parseInt(document.getElementById('coffeeAmount').value);
+            
+            if(!timeInput) {
+                alert("Please select a time.");
+                return;
+            }
+
+            const now = new Date();
+            const [hours, minutes] = timeInput.split(':');
+            const coffeeTime = new Date();
+            coffeeTime.setHours(hours, minutes, 0, 0);
+
+            let diffMs = now - coffeeTime;
+            
+            if (diffMs < 0) {
+                coffeeTime.setDate(coffeeTime.getDate() - 1);
+                diffMs = now - coffeeTime;
+            }
+
+            const hoursPassed = diffMs / (1000 * 60 * 60);
+            const remainingCaffeine = amount * Math.pow(0.5, (hoursPassed / 5));
+            
+            document.getElementById('caffeineMg').innerHTML = `You have approx. <strong>${remainingCaffeine.toFixed(1)}mg</strong> of caffeine in your system right now.`;
+            
+            const progressBar = document.getElementById('progressBar');
+            const safeStatus = document.getElementById('safeStatus');
+            const waitTime = document.getElementById('waitTime');
+
+            let percentage = (remainingCaffeine / amount) * 100;
+            progressBar.style.width = `${percentage}%`;
+
+            if (remainingCaffeine > 30) {
+                progressBar.style.background = 'var(--danger)';
+                safeStatus.innerHTML = 'Safe to Sleep? <br> ❌ Too High for Sleep';
+                safeStatus.style.color = 'var(--danger)';
+                
+                const hoursToWait = 5 * (Math.log(remainingCaffeine / 30) / Math.log(2));
+                
+                if(hoursToWait > 0) {
+                    waitTime.innerText = `Wait at least ${hoursToWait.toFixed(1)} more hours before sleeping.`;
+                } else {
+                    waitTime.innerText = "It might be safe to sleep soon.";
+                }
+            } else {
+                progressBar.style.background = 'var(--success)';
+                safeStatus.innerHTML = 'Safe to Sleep? <br> ✅ Safe to Sleep';
+                safeStatus.style.color = 'var(--success)';
+                waitTime.innerText = "Caffeine levels are low. You can sleep now.";
+            }
+        }
+        
+        window.onload = calculateCaffeine;
+    </script>
 
 </body>
 </html>
