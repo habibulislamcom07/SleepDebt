@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- SEO Meta Tags -->
-    <title>Will your coffee keep you awake? - Caffeine Tracker</title>
-    <meta name="description" content="Calculate how long caffeine stays in your system. Find out if it's safe to sleep or if you need to wait more hours based on your coffee intake.">
+    <title>Sleep Debt Calculator - Calculate Your Total Sleep Debt</title>
+    <meta name="description" content="Find out exactly how many hours of sleep you owe your body. Use our free Sleep Debt Calculator to improve your sleep health and feel more energized.">
     
     <!-- Google Site Verification -->
     <meta name="google-site-verification" content="awSCkHr_s5knCd3tYxp5nvsfhrTB_qTyLbS5JiYS25M" />
@@ -64,7 +64,7 @@
 
         .header h1 {
             font-size: 28px;
-            color: var(--text-main);
+            color: var(--accent-yellow);
             margin-bottom: 10px;
         }
 
@@ -84,29 +84,30 @@
         }
 
         .input-group {
-            margin-bottom: 20px;
-        }
-
-        .input-group label {
-            display: block;
-            font-size: 14px;
-            color: var(--text-muted);
-            margin-bottom: 8px;
-        }
-
-        .input-group input, .input-group select {
-            width: 100%;
-            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             background: #0f172a;
             border: 1px solid var(--border-color);
             border-radius: 8px;
-            color: var(--text-main);
-            font-size: 16px;
-            outline: none;
+            padding: 15px 20px;
+            margin-bottom: 15px;
         }
 
-        .input-group input:focus, .input-group select:focus {
-            border-color: var(--accent-yellow);
+        .input-group label {
+            font-size: 15px;
+            color: var(--text-main);
+        }
+
+        .input-group input {
+            background: transparent;
+            border: none;
+            color: var(--accent-yellow);
+            font-size: 20px;
+            font-weight: bold;
+            text-align: right;
+            width: 100px;
+            outline: none;
         }
 
         .btn-calc {
@@ -135,27 +136,13 @@
             padding: 20px;
             margin-top: 25px;
             text-align: center;
-        }
-        
-        .progress-bar-container {
-            width: 100%;
-            background: #334155;
-            border-radius: 10px;
-            height: 10px;
-            margin: 15px 0;
-            overflow: hidden;
-        }
-        
-        .progress-bar {
-            height: 100%;
-            background: var(--danger);
-            width: 70%;
-            transition: width 0.5s ease;
+            display: none; /* Hidden by default */
         }
 
-        .status-text { font-weight: bold; margin-bottom: 5px; }
-        .safe-text { color: var(--danger); font-weight: bold; margin-top: 10px; }
-        .wait-text { font-size: 13px; color: var(--text-muted); margin-top: 10px; }
+        .result-title { font-size: 14px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
+        .result-number { font-size: 36px; font-weight: bold; margin: 10px 0; }
+        .result-status { font-size: 15px; font-weight: bold; margin-top: 10px; }
+        .result-desc { font-size: 13px; color: var(--text-muted); margin-top: 5px; }
 
         /* --- EXPLORE OTHER TOOLS --- */
         .tools-section { margin-bottom: 40px; }
@@ -204,11 +191,7 @@
 
         .content-section h3 { font-size: 17px; margin: 20px 0 10px; color: var(--text-main); }
         .content-section p { font-size: 15px; color: var(--text-muted); margin-bottom: 15px; text-align: justify; }
-        .content-section strong { color: var(--text-main); }
-
-        .faq-item { margin-bottom: 25px; }
-        .faq-item h4 { font-size: 16px; color: var(--accent-yellow); margin-bottom: 8px; }
-
+        
         /* --- FOOTER --- */
         footer {
             width: 100%;
@@ -270,36 +253,32 @@
         
         <!-- HEADER -->
         <div class="header">
-            <h1>Will your coffee keep you awake?</h1>
-            <p>Calculate how long caffeine stays in your system.</p>
+            <h1>🌙 Sleep Debt Calculator ✨</h1>
+            <p>Find out exactly how many hours of sleep you owe your body.</p>
         </div>
 
         <!-- CALCULATOR -->
         <div class="calculator-box">
             <div class="input-group">
-                <label>When did you drink your coffee?</label>
-                <input type="time" id="coffeeTime" value="11:36">
+                <label>Ideal Sleep (Hrs)</label>
+                <input type="number" id="idealSleep" value="8" min="1" max="24">
             </div>
             <div class="input-group">
-                <label>How much did you drink?</label>
-                <select id="coffeeAmount">
-                    <option value="95">1 Cup of Coffee (approx. 95mg)</option>
-                    <option value="190">2 Cups of Coffee (approx. 190mg)</option>
-                    <option value="63">1 Shot of Espresso (approx. 63mg)</option>
-                    <option value="30">Black Tea (approx. 30mg)</option>
-                </select>
+                <label>Actual Sleep (Hrs)</label>
+                <input type="number" id="actualSleep" placeholder="e.g. 6" min="0" max="24">
             </div>
-            <button class="btn-calc" onclick="calculateCaffeine()">CALCULATE CAFFEINE LEVEL ⏱</button>
+            <div class="input-group">
+                <label>Number of Days</label>
+                <input type="number" id="daysInput" placeholder="e.g. 7" min="1" max="365">
+            </div>
+            <button class="btn-calc" onclick="calculateSleepDebt()">CALCULATE NOW 🧮</button>
 
             <!-- RESULT BOX -->
             <div class="result-box" id="resultBox">
-                <div class="status-text">Your Current Status</div>
-                <div class="progress-bar-container">
-                    <div class="progress-bar" id="progressBar" style="width: 70%;"></div>
-                </div>
-                <p id="caffeineMg">You have approx. <strong>71.8mg</strong> of caffeine in your system right now.</p>
-                <p class="safe-text" id="safeStatus">Safe to Sleep? <br> ❌ Too High for Sleep</p>
-                <p class="wait-text" id="waitTime">Wait at least 2.6 more hours before sleeping.</p>
+                <div class="result-title">Your Total Sleep Debt</div>
+                <div class="result-number" id="debtAmount">0 Hrs</div>
+                <div class="result-status" id="debtStatus"></div>
+                <div class="result-desc" id="debtDesc"></div>
             </div>
         </div>
 
@@ -307,10 +286,11 @@
         <div class="tools-section">
             <h3>Explore Other Tools</h3>
             <div class="tools-grid">
-                <a href="index.html" class="tool-card">
-                    <div class="tool-icon">📖</div>
-                    <h4>Sleep Debt</h4>
-                    <p>How much sleep do you owe?</p>
+                <!-- Caffeine link updated -->
+                <a href="caffeine.html" class="tool-card">
+                    <div class="tool-icon">☕</div>
+                    <h4>Caffeine Tracker</h4>
+                    <p>Will coffee ruin your sleep?</p>
                 </a>
                 <a href="sleep-cycle.html" class="tool-card">
                     <div class="tool-icon">🌙</div>
@@ -327,43 +307,14 @@
 
         <!-- SEO CONTENT -->
         <div class="content-section">
-            <h2>How long does caffeine stay in your system?</h2>
-            <p>If you are wondering <strong>"will coffee keep me awake"</strong>, you need to understand caffeine's half-life. The average half-life of caffeine in a healthy adult is <strong>about 5 hours</strong>. This means it takes 5 hours for your body (specifically your liver) to eliminate 50% of the caffeine you consumed.</p>
-            <p>For example, if you drink a standard 95mg cup of coffee at 4:00 PM, you will still have around 47.5mg of caffeine in your system at 9:00 PM. It usually takes about 4 to 5 half-lives (20-25 hours) for caffeine to be almost completely eliminated from your body.</p>
-
-            <h3>How does caffeine affect your sleep?</h3>
-            <p>Caffeine is a stimulant that works by blocking adenosine, a chemical in your brain that makes you feel tired. Even if you fall asleep after drinking coffee, lingering caffeine can severely reduce your <strong>deep sleep and REM sleep</strong>. This means you might sleep for 8 hours but still wake up feeling groggy and tired because your sleep quality was poor.</p>
-
-            <h3>How to sleep after drinking coffee?</h3>
-            <p>If you are sensitive to caffeine, stop drinking coffee at least 8-10 hours before bedtime. You can also use our <a href="sleep-cycle.html" style="color: var(--accent-yellow); text-decoration: none;">Sleep Cycle Calculator</a> to plan your bedtime and ensure you wake up between cycles.</p>
-        </div>
-
-        <!-- FAQ SECTION -->
-        <div class="content-section">
-            <h2>Frequently Asked Questions</h2>
+            <h2>Why is Sleep Debt Important?</h2>
+            <p>Sleep debt is the difference between the amount of sleep you should be getting and the amount you actually get. If you need 8 hours of sleep but only get 6 hours for a week, you accumulate 14 hours of sleep debt. Consistently missing out on sleep can affect your physical and mental health, leading to fatigue, lack of focus, and a weakened immune system.</p>
             
-            <div class="faq-item">
-                <h4>How long to wait after coffee to sleep?</h4>
-                <p>It is recommended to wait at least 6 to 8 hours after your last cup of coffee before going to bed. For highly sensitive individuals, it is best to wait up to 10 hours to ensure the caffeine level drops below 25mg.</p>
-            </div>
-
-            <div class="faq-item">
-                <h4>Does decaf coffee have caffeine?</h4>
-                <p>Yes, decaf coffee is not 100% caffeine-free. A standard cup of decaf coffee still contains about 2 to 5 mg of caffeine. While this is very low, drinking multiple cups right before bed could still affect highly sensitive sleepers.</p>
-            </div>
-
-            <div class="faq-item">
-                <h4>What is the caffeine half-life?</h4>
-                <p>The half-life of caffeine is the time it takes for your body to eliminate half of the caffeine consumed. For most healthy adults, this is around 5 hours, but it can range from 3 to 7 hours depending on genetics, metabolism, pregnancy, and medications.</p>
-            </div>
-
-            <div class="faq-item">
-                <h4>Which drinks have the most caffeine?</h4>
-                <p>Espresso and brewed coffee generally have the highest concentration of caffeine per ounce. Energy drinks are also heavily caffeinated. However, the total amount depends on the serving size. Always check the label.</p>
-            </div>
+            <h3>How to Calculate Sleep Debt?</h3>
+            <p>The formula is simple: <strong>Sleep Debt = (Ideal Sleep - Actual Sleep) × Number of Days</strong>. Our calculator does this math instantly for you. While you can't repay sleep debt all at once, you can recover from it by getting extra sleep over several nights.</p>
         </div>
 
-        <!-- BOTTOM BANNER AD (Download style) -->
+        <!-- BOTTOM BANNER AD -->
         <div style="width: 100%; display: flex; justify-content: center; margin-bottom: 30px;">
             <a href="#" style="display: flex; align-items: center; justify-content: space-between; background: white; padding: 10px 20px; border-radius: 8px; width: 100%; max-width: 600px; text-decoration: none;">
                 <span style="color: #1a73e8; font-weight: 600; font-size: 15px;">Click here to download now for free</span>
@@ -389,7 +340,7 @@
             <a href="#">Contact Us</a>
         </div>
         <div class="footer-copyright">
-            &copy; 2026 SleepDebtCalculator.online. All rights reserved.
+            &copy; 2024 SleepDebtCalculator.online. All rights reserved.
         </div>
     </footer>
 
@@ -397,62 +348,63 @@
     <script data-cfasync="false" src="https://bauval.org/14/c2e8b6a0744b11045176ac8027b166fe"></script>
     <script data-cfasync="false" src="https://abscloud.org/1/7b543158f36ec26f083d375b2a6547ec"></script>
 
-    <!-- CALCULATOR JAVASCRIPT LOGIC -->
+    <!-- SLEEP DEBT CALCULATOR JAVASCRIPT LOGIC -->
     <script>
-        function calculateCaffeine() {
-            const timeInput = document.getElementById('coffeeTime').value;
-            const amount = parseInt(document.getElementById('coffeeAmount').value);
+        function calculateSleepDebt() {
+            // Get values from inputs
+            const ideal = parseFloat(document.getElementById('idealSleep').value);
+            const actual = parseFloat(document.getElementById('actualSleep').value);
+            const days = parseInt(document.getElementById('daysInput').value);
             
-            if(!timeInput) {
-                alert("Please select a time.");
+            // Validation
+            if (isNaN(ideal) || isNaN(actual) || isNaN(days) || actual > ideal) {
+                if(actual > ideal) {
+                    alert("Actual sleep cannot be greater than Ideal sleep!");
+                } else {
+                    alert("Please fill in all fields with valid numbers.");
+                }
                 return;
             }
 
-            const now = new Date();
-            const [hours, minutes] = timeInput.split(':');
-            const coffeeTime = new Date();
-            coffeeTime.setHours(hours, minutes, 0, 0);
+            // Calculation
+            const dailyDeficit = ideal - actual;
+            const totalDebt = dailyDeficit * days;
 
-            let diffMs = now - coffeeTime;
+            // Show Result Box
+            const resultBox = document.getElementById('resultBox');
+            resultBox.style.display = 'block';
+
+            // Update UI
+            document.getElementById('debtAmount').innerText = `${totalDebt} Hrs`;
             
-            if (diffMs < 0) {
-                coffeeTime.setDate(coffeeTime.getDate() - 1);
-                diffMs = now - coffeeTime;
-            }
+            const statusEl = document.getElementById('debtStatus');
+            const descEl = document.getElementById('debtDesc');
 
-            const hoursPassed = diffMs / (1000 * 60 * 60);
-            const remainingCaffeine = amount * Math.pow(0.5, (hoursPassed / 5));
-            
-            document.getElementById('caffeineMg').innerHTML = `You have approx. <strong>${remainingCaffeine.toFixed(1)}mg</strong> of caffeine in your system right now.`;
-            
-            const progressBar = document.getElementById('progressBar');
-            const safeStatus = document.getElementById('safeStatus');
-            const waitTime = document.getElementById('waitTime');
-
-            let percentage = (remainingCaffeine / amount) * 100;
-            progressBar.style.width = `${percentage}%`;
-
-            if (remainingCaffeine > 30) {
-                progressBar.style.background = 'var(--danger)';
-                safeStatus.innerHTML = 'Safe to Sleep? <br> ❌ Too High for Sleep';
-                safeStatus.style.color = 'var(--danger)';
-                
-                const hoursToWait = 5 * (Math.log(remainingCaffeine / 30) / Math.log(2));
-                
-                if(hoursToWait > 0) {
-                    waitTime.innerText = `Wait at least ${hoursToWait.toFixed(1)} more hours before sleeping.`;
-                } else {
-                    waitTime.innerText = "It might be safe to sleep soon.";
-                }
-            } else {
-                progressBar.style.background = 'var(--success)';
-                safeStatus.innerHTML = 'Safe to Sleep? <br> ✅ Safe to Sleep';
-                safeStatus.style.color = 'var(--success)';
-                waitTime.innerText = "Caffeine levels are low. You can sleep now.";
+            if (totalDebt === 0) {
+                document.getElementById('debtAmount').style.color = 'var(--success)';
+                statusEl.innerText = "Perfect!";
+                statusEl.style.color = 'var(--success)';
+                descEl.innerText = "You have no sleep debt. Keep up the good work!";
+            } 
+            else if (totalDebt <= 5) {
+                document.getElementById('debtAmount').style.color = 'var(--accent-yellow)';
+                statusEl.innerText = "Mild Sleep Debt";
+                statusEl.style.color = 'var(--accent-yellow)';
+                descEl.innerText = "Try to sleep an extra 30-60 mins for the next few nights to recover.";
+            } 
+            else if (totalDebt <= 15) {
+                document.getElementById('debtAmount').style.color = '#f97316'; // Orange
+                statusEl.innerText = "Moderate Sleep Debt";
+                statusEl.style.color = '#f97316';
+                descEl.innerText = "You need to catch up on sleep. Prioritize going to bed earlier this week.";
+            } 
+            else {
+                document.getElementById('debtAmount').style.color = 'var(--danger)';
+                statusEl.innerText = "Severe Sleep Debt";
+                statusEl.style.color = 'var(--danger)';
+                descEl.innerText = "This is high! Your health and focus are at risk. Make sleep a top priority immediately.";
             }
         }
-        
-        window.onload = calculateCaffeine;
     </script>
 
 </body>
