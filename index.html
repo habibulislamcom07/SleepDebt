@@ -192,6 +192,11 @@
         .content-section h3 { font-size: 17px; margin: 20px 0 10px; color: var(--text-main); }
         .content-section p { font-size: 15px; color: var(--text-muted); margin-bottom: 15px; text-align: justify; }
         
+        /* FAQ Specific Styles */
+        .faq-item { margin-bottom: 20px; }
+        .faq-item h4 { font-size: 16px; color: var(--accent-yellow); margin-bottom: 8px; }
+        .faq-item p { margin-bottom: 0; font-size: 14px; }
+
         /* --- FOOTER --- */
         footer {
             width: 100%;
@@ -230,7 +235,6 @@
         }
     </style>
 </head>
-
 
     <body>
 
@@ -287,7 +291,6 @@
         <div class="tools-section">
             <h3>Explore Other Tools</h3>
             <div class="tools-grid">
-                <!-- Caffeine link updated -->
                 <a href="caffeine.html" class="tool-card">
                     <div class="tool-icon">☕</div>
                     <h4>Caffeine Tracker</h4>
@@ -313,6 +316,31 @@
             
             <h3>How to Calculate Sleep Debt?</h3>
             <p>The formula is simple: <strong>Sleep Debt = (Ideal Sleep - Actual Sleep) × Number of Days</strong>. Our calculator does this math instantly for you. While you can't repay sleep debt all at once, you can recover from it by getting extra sleep over several nights.</p>
+        </div>
+
+        <!-- FAQ SECTION (New Addition) -->
+        <div class="content-section">
+            <h2>Frequently Asked Questions</h2>
+            
+            <div class="faq-item">
+                <h4>Can you actually pay off sleep debt?</h4>
+                <p>Yes, you can recover from sleep debt, but you cannot pay it back hour-for-hour all at once. The best way to recover is to add 1-2 extra hours of sleep per night over a few days or weeks until you feel rested. Catching up on weekends can help, but a regular sleep schedule is the most effective solution.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>How much sleep debt is too much?</h4>
+                <p>There is no exact number, but accumulating more than 10-15 hours of sleep debt is considered severe. Chronic sleep debt (losing 1-2 hours every night) impairs cognitive function, weakens the immune system, and increases the risk of health issues like heart disease and diabetes.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>Does napping help reduce sleep debt?</h4>
+                <p>Short power naps (20-30 minutes) can improve alertness and temporarily reduce the feeling of sleep debt. However, they do not fully replace the deep sleep you get at night. If you have a large sleep debt, prioritizing your nighttime sleep is essential.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>Why do I feel tired even after 8 hours of sleep?</h4>
+                <p>Feeling tired after 8 hours could be due to poor sleep quality (waking up during the night), sleeping at the wrong time in your sleep cycle, or underlying health issues like sleep apnea. It could also mean your body is still trying to recover from past sleep debt.</p>
+            </div>
         </div>
 
         <!-- BOTTOM BANNER AD -->
@@ -352,12 +380,10 @@
     <!-- SLEEP DEBT CALCULATOR JAVASCRIPT LOGIC -->
     <script>
         function calculateSleepDebt() {
-            // Get values from inputs
             const ideal = parseFloat(document.getElementById('idealSleep').value);
             const actual = parseFloat(document.getElementById('actualSleep').value);
             const days = parseInt(document.getElementById('daysInput').value);
             
-            // Validation
             if (isNaN(ideal) || isNaN(actual) || isNaN(days) || actual > ideal) {
                 if(actual > ideal) {
                     alert("Actual sleep cannot be greater than Ideal sleep!");
@@ -367,15 +393,12 @@
                 return;
             }
 
-            // Calculation
             const dailyDeficit = ideal - actual;
             const totalDebt = dailyDeficit * days;
 
-            // Show Result Box
             const resultBox = document.getElementById('resultBox');
             resultBox.style.display = 'block';
 
-            // Update UI
             document.getElementById('debtAmount').innerText = `${totalDebt} Hrs`;
             
             const statusEl = document.getElementById('debtStatus');
